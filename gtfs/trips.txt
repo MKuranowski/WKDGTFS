@@ -1,285 +1,457 @@
 route_id,service_id,trip_id,trip_headsign,trip_short_name,direction_id,shape_id,wheelchair_accessible,bikes_allowed
-A1,C,C-102,Warszawa Śródmieście WKD,102,1,0,1,1
-A1,C,C-104,Warszawa Śródmieście WKD,104,1,0,1,1
-ZA12,C,C-5300,Podkowa Leśna Główna,5300,1,1,1,2
-A1,C,C-106,Warszawa Śródmieście WKD,106,1,0,1,1
-A1,C,C-108,Warszawa Śródmieście WKD,108,1,0,1,1
-A1,C,C-304,Warszawa Śródmieście WKD,304,1,2,1,1
-ZA12,C,C-5302,Podkowa Leśna Główna,5302,1,1,1,2
-A1,C,C-110,Warszawa Śródmieście WKD,110,1,0,1,1
-A1,C,C-306,Warszawa Śródmieście WKD,306,1,2,1,1
-A1,C,C-308,Warszawa Śródmieście WKD,308,1,2,1,1
-ZA12,C,C-5304,Podkowa Leśna Główna,5304,1,1,1,2
-A1,C,C-112,Warszawa Śródmieście WKD,112,1,0,1,1
-A1,C,C-310,Warszawa Śródmieście WKD,310,1,2,1,1
-A1,C,C-312,Warszawa Śródmieście WKD,312,1,2,1,1
-ZA12,C,C-5306,Podkowa Leśna Główna,5306,1,1,1,2
-A1,C,C-114,Warszawa Śródmieście WKD,114,1,0,1,1
-A1,C,C-314,Warszawa Śródmieście WKD,314,1,2,1,1
-A1,C,C-316,Warszawa Śródmieście WKD,316,1,2,1,1
-ZA12,C,C-5308,Podkowa Leśna Główna,5308,1,1,1,2
-A1,C,C-116,Warszawa Śródmieście WKD,116,1,0,1,1
-A1,C,C-318,Warszawa Śródmieście WKD,318,1,2,1,1
-A1,C,C-320,Warszawa Śródmieście WKD,320,1,2,1,1
-ZA12,C,C-5310,Podkowa Leśna Główna,5310,1,1,1,2
-A1,C,C-118,Warszawa Śródmieście WKD,118,1,0,1,1
-A1,C,C-322,Warszawa Śródmieście WKD,322,1,2,1,1
-A1,C,C-324,Warszawa Śródmieście WKD,324,1,2,1,1
-ZA12,C,C-5312,Podkowa Leśna Główna,5312,1,1,1,2
-A1,C,C-120,Warszawa Śródmieście WKD,120,1,0,1,1
-A1,C,C-326,Warszawa Śródmieście WKD,326,1,2,1,1
-A1,C,C-328,Warszawa Śródmieście WKD,328,1,2,1,1
-ZA12,C,C-5314,Podkowa Leśna Główna,5314,1,1,1,2
-A1,C,C-122,Warszawa Śródmieście WKD,122,1,0,1,1
-A1,C,C-330,Warszawa Śródmieście WKD,330,1,2,1,1
-A1,C,C-332,Warszawa Śródmieście WKD,332,1,2,1,1
-ZA12,C,C-5316,Podkowa Leśna Główna,5316,1,1,1,2
-A1,C,C-124,Warszawa Śródmieście WKD,124,1,0,1,1
-A1,C,C-334,Warszawa Śródmieście WKD,334,1,2,1,1
-A1,C,C-336,Warszawa Śródmieście WKD,336,1,2,1,1
-ZA12,C,C-5318,Podkowa Leśna Główna,5318,1,1,1,2
-A1,C,C-126,Warszawa Śródmieście WKD,126,1,0,1,1
-A1,C,C-338,Warszawa Śródmieście WKD,338,1,2,1,1
-A1,C,C-340,Warszawa Śródmieście WKD,340,1,2,1,1
-ZA12,C,C-5320,Podkowa Leśna Główna,5320,1,1,1,2
-A1,C,C-128,Warszawa Śródmieście WKD,128,1,0,1,1
-A1,C,C-342,Warszawa Śródmieście WKD,342,1,2,1,1
-A1,C,C-344,Warszawa Śródmieście WKD,344,1,2,1,1
-ZA12,C,C-5322,Podkowa Leśna Główna,5322,1,1,1,2
-A1,C,C-130,Warszawa Śródmieście WKD,130,1,0,1,1
-A1,C,C-346,Warszawa Śródmieście WKD,346,1,2,1,1
-A1,C,C-348,Warszawa Śródmieście WKD,348,1,2,1,1
-ZA12,C,C-5324,Podkowa Leśna Główna,5324,1,1,1,2
-A1,C,C-132,Warszawa Śródmieście WKD,132,1,0,1,1
-A1,C,C-350,Warszawa Śródmieście WKD,350,1,2,1,1
-A1,C,C-352,Warszawa Śródmieście WKD,352,1,2,1,1
-ZA12,C,C-5326,Podkowa Leśna Główna,5326,1,1,1,2
-A1,C,C-134,Warszawa Śródmieście WKD,134,1,0,1,1
-A1,C,C-354,Warszawa Śródmieście WKD,354,1,2,1,1
-A1,C,C-356,Warszawa Śródmieście WKD,356,1,2,1,1
-ZA12,C,C-5328,Podkowa Leśna Główna,5328,1,1,1,2
-A1,C,C-136,Warszawa Śródmieście WKD,136,1,0,1,1
-A1,C,C-358,Warszawa Śródmieście WKD,358,1,2,1,1
-A1,C,C-360,Warszawa Śródmieście WKD,360,1,2,1,1
-ZA12,C,C-5330,Podkowa Leśna Główna,5330,1,1,1,2
-A1,C,C-138,Warszawa Śródmieście WKD,138,1,0,1,1
-A1,C,C-362,Warszawa Śródmieście WKD,362,1,2,1,1
-A1,C,C-300,Warszawa Śródmieście WKD,300,1,2,1,1
-A1,C,C-100,Warszawa Śródmieście WKD,100,1,0,1,1
-A1,C,C-302,Warszawa Śródmieście WKD,302,1,2,1,1
-A1,D,D-102,Warszawa Śródmieście WKD,102,1,0,1,1
-A1,D,D-104,Warszawa Śródmieście WKD,104,1,0,1,1
-ZA12,D,D-5300,Podkowa Leśna Główna,5300,1,1,1,2
-A1,D,D-106,Warszawa Śródmieście WKD,106,1,0,1,1
-A1,D,D-108,Warszawa Śródmieście WKD,108,1,0,1,1
-A1,D,D-304,Warszawa Śródmieście WKD,304,1,2,1,1
-ZA12,D,D-5302,Podkowa Leśna Główna,5302,1,1,1,2
-A1,D,D-110,Warszawa Śródmieście WKD,110,1,0,1,1
-A1,D,D-306,Warszawa Śródmieście WKD,306,1,2,1,1
-A1,D,D-308,Warszawa Śródmieście WKD,308,1,2,1,1
-ZA12,D,D-5304,Podkowa Leśna Główna,5304,1,1,1,2
-A1,D,D-112,Warszawa Śródmieście WKD,112,1,0,1,1
-A1,D,D-310,Warszawa Śródmieście WKD,310,1,2,1,1
-A1,D,D-312,Warszawa Śródmieście WKD,312,1,2,1,1
-ZA12,D,D-5306,Podkowa Leśna Główna,5306,1,1,1,2
-A1,D,D-114,Warszawa Śródmieście WKD,114,1,0,1,1
-A1,D,D-314,Warszawa Śródmieście WKD,314,1,2,1,1
-A1,D,D-316,Warszawa Śródmieście WKD,316,1,2,1,1
-ZA12,D,D-5308,Podkowa Leśna Główna,5308,1,1,1,2
-A1,D,D-3116,Warszawa Śródmieście WKD,3116,1,2,1,1
-ZA1,D,D-5100,Podkowa Leśna Główna,5100,1,3,1,2
-A1,D,D-318,Warszawa Śródmieście WKD,318,1,2,1,1
-A1,D,D-320,Warszawa Śródmieście WKD,320,1,2,1,1
-ZA12,D,D-5310,Podkowa Leśna Główna,5310,1,1,1,2
-A1,D,D-3118,Warszawa Śródmieście WKD,3118,1,2,1,1
-ZA1,D,D-5102,Podkowa Leśna Główna,5102,1,3,1,2
-A1,D,D-322,Warszawa Śródmieście WKD,322,1,2,1,1
-A1,D,D-324,Warszawa Śródmieście WKD,324,1,2,1,1
-ZA12,D,D-5312,Podkowa Leśna Główna,5312,1,1,1,2
-A1,D,D-3120,Warszawa Śródmieście WKD,3120,1,2,1,1
-ZA1,D,D-5104,Podkowa Leśna Główna,5104,1,3,1,2
-A1,D,D-326,Warszawa Śródmieście WKD,326,1,2,1,1
-A1,D,D-328,Warszawa Śródmieście WKD,328,1,2,1,1
-ZA12,D,D-5314,Podkowa Leśna Główna,5314,1,1,1,2
-A1,D,D-3122,Warszawa Śródmieście WKD,3122,1,2,1,1
-ZA1,D,D-5106,Podkowa Leśna Główna,5106,1,3,1,2
-A1,D,D-330,Warszawa Śródmieście WKD,330,1,2,1,1
-A1,D,D-332,Warszawa Śródmieście WKD,332,1,2,1,1
-ZA12,D,D-5316,Podkowa Leśna Główna,5316,1,1,1,2
-A1,D,D-3124,Warszawa Śródmieście WKD,3124,1,2,1,1
-ZA1,D,D-5108,Podkowa Leśna Główna,5108,1,3,1,2
-A1,D,D-334,Warszawa Śródmieście WKD,334,1,2,1,1
-A1,D,D-336,Warszawa Śródmieście WKD,336,1,2,1,1
-ZA12,D,D-5318,Podkowa Leśna Główna,5318,1,1,1,2
-A1,D,D-3126,Warszawa Śródmieście WKD,3126,1,2,1,1
-ZA1,D,D-5110,Podkowa Leśna Główna,5110,1,3,1,2
-A1,D,D-338,Warszawa Śródmieście WKD,338,1,2,1,1
-A1,D,D-340,Warszawa Śródmieście WKD,340,1,2,1,1
-ZA12,D,D-5320,Podkowa Leśna Główna,5320,1,1,1,2
-A1,D,D-128,Warszawa Śródmieście WKD,128,1,0,1,1
-A1,D,D-342,Warszawa Śródmieście WKD,342,1,2,1,1
-A1,D,D-344,Warszawa Śródmieście WKD,344,1,2,1,1
-ZA12,D,D-5322,Podkowa Leśna Główna,5322,1,1,1,2
-A1,D,D-130,Warszawa Śródmieście WKD,130,1,0,1,1
-A1,D,D-346,Warszawa Śródmieście WKD,346,1,2,1,1
-A1,D,D-348,Warszawa Śródmieście WKD,348,1,2,1,1
-ZA12,D,D-5324,Podkowa Leśna Główna,5324,1,1,1,2
-A1,D,D-132,Warszawa Śródmieście WKD,132,1,0,1,1
-A1,D,D-350,Warszawa Śródmieście WKD,350,1,2,1,1
-A1,D,D-352,Warszawa Śródmieście WKD,352,1,2,1,1
-ZA12,D,D-5326,Podkowa Leśna Główna,5326,1,1,1,2
-A1,D,D-134,Warszawa Śródmieście WKD,134,1,0,1,1
-A1,D,D-354,Warszawa Śródmieście WKD,354,1,2,1,1
-A1,D,D-356,Warszawa Śródmieście WKD,356,1,2,1,1
-ZA12,D,D-5328,Podkowa Leśna Główna,5328,1,1,1,2
-A1,D,D-136,Warszawa Śródmieście WKD,136,1,0,1,1
-A1,D,D-358,Warszawa Śródmieście WKD,358,1,2,1,1
-A1,D,D-360,Warszawa Śródmieście WKD,360,1,2,1,1
-ZA12,D,D-5330,Podkowa Leśna Główna,5330,1,1,1,2
-A1,D,D-138,Warszawa Śródmieście WKD,138,1,0,1,1
-A1,D,D-362,Warszawa Śródmieście WKD,362,1,2,1,1
-A1,D,D-300,Warszawa Śródmieście WKD,300,1,2,1,1
-A1,D,D-100,Warszawa Śródmieście WKD,100,1,0,1,1
-A1,D,D-302,Warszawa Śródmieście WKD,302,1,2,1,1
-A1,C,C-301,Podkowa Leśna Główna,301,0,4,1,1
-ZA12,C,C-5301,Milanówek Grudów,5301,0,5,1,2
-A1,C,C-107,Grodzisk Mazowiecki Radońska,107,0,6,1,1
-A1,C,C-303,Podkowa Leśna Główna,303,0,4,1,1
-A1,C,C-305,Podkowa Leśna Główna,305,0,4,1,1
-ZA12,C,C-5303,Milanówek Grudów,5303,0,5,1,2
-A1,C,C-109,Grodzisk Mazowiecki Radońska,109,0,6,1,1
-A1,C,C-307,Podkowa Leśna Główna,307,0,4,1,1
-A1,C,C-309,Podkowa Leśna Główna,309,0,4,1,1
-ZA12,C,C-5305,Milanówek Grudów,5305,0,5,1,2
-A1,C,C-111,Grodzisk Mazowiecki Radońska,111,0,6,1,1
-A1,C,C-311,Podkowa Leśna Główna,311,0,4,1,1
-A1,C,C-313,Podkowa Leśna Główna,313,0,4,1,1
-ZA12,C,C-5307,Milanówek Grudów,5307,0,5,1,2
-A1,C,C-113,Grodzisk Mazowiecki Radońska,113,0,6,1,1
-A1,C,C-315,Podkowa Leśna Główna,315,0,4,1,1
-A1,C,C-317,Podkowa Leśna Główna,317,0,4,1,1
-ZA12,C,C-5309,Milanówek Grudów,5309,0,5,1,2
-A1,C,C-115,Grodzisk Mazowiecki Radońska,115,0,6,1,1
-A1,C,C-319,Podkowa Leśna Główna,319,0,4,1,1
-A1,C,C-321,Podkowa Leśna Główna,321,0,4,1,1
-ZA12,C,C-5311,Milanówek Grudów,5311,0,5,1,2
-A1,C,C-117,Grodzisk Mazowiecki Radońska,117,0,6,1,1
-A1,C,C-323,Podkowa Leśna Główna,323,0,4,1,1
-A1,C,C-325,Podkowa Leśna Główna,325,0,4,1,1
-ZA12,C,C-5313,Milanówek Grudów,5313,0,5,1,2
-A1,C,C-119,Grodzisk Mazowiecki Radońska,119,0,6,1,1
-A1,C,C-327,Podkowa Leśna Główna,327,0,4,1,1
-A1,C,C-329,Podkowa Leśna Główna,329,0,4,1,1
-ZA12,C,C-5315,Milanówek Grudów,5315,0,5,1,2
-A1,C,C-121,Grodzisk Mazowiecki Radońska,121,0,6,1,1
-A1,C,C-331,Podkowa Leśna Główna,331,0,4,1,1
-A1,C,C-333,Podkowa Leśna Główna,333,0,4,1,1
-ZA12,C,C-5317,Milanówek Grudów,5317,0,5,1,2
-A1,C,C-123,Grodzisk Mazowiecki Radońska,123,0,6,1,1
-A1,C,C-335,Podkowa Leśna Główna,335,0,4,1,1
-A1,C,C-337,Podkowa Leśna Główna,337,0,4,1,1
-ZA12,C,C-5319,Milanówek Grudów,5319,0,5,1,2
-A1,C,C-125,Grodzisk Mazowiecki Radońska,125,0,6,1,1
-A1,C,C-339,Podkowa Leśna Główna,339,0,4,1,1
-A1,C,C-341,Podkowa Leśna Główna,341,0,4,1,1
-ZA12,C,C-5321,Milanówek Grudów,5321,0,5,1,2
-A1,C,C-127,Grodzisk Mazowiecki Radońska,127,0,6,1,1
-A1,C,C-343,Podkowa Leśna Główna,343,0,4,1,1
-A1,C,C-345,Podkowa Leśna Główna,345,0,4,1,1
-ZA12,C,C-5323,Milanówek Grudów,5323,0,5,1,2
-A1,C,C-129,Grodzisk Mazowiecki Radońska,129,0,6,1,1
-A1,C,C-347,Podkowa Leśna Główna,347,0,4,1,1
-A1,C,C-349,Podkowa Leśna Główna,349,0,4,1,1
-ZA12,C,C-5325,Milanówek Grudów,5325,0,5,1,2
-A1,C,C-131,Grodzisk Mazowiecki Radońska,131,0,6,1,1
-A1,C,C-351,Podkowa Leśna Główna,351,0,4,1,1
-A1,C,C-353,Podkowa Leśna Główna,353,0,4,1,1
-ZA12,C,C-5327,Milanówek Grudów,5327,0,5,1,2
-A1,C,C-133,Grodzisk Mazowiecki Radońska,133,0,6,1,1
-A1,C,C-355,Podkowa Leśna Główna,355,0,4,1,1
-A1,C,C-357,Podkowa Leśna Główna,357,0,4,1,1
-ZA12,C,C-5329,Milanówek Grudów,5329,0,5,1,2
-A1,C,C-135,Grodzisk Mazowiecki Radońska,135,0,6,1,1
-A1,C,C-359,Podkowa Leśna Główna,359,0,4,1,1
-A1,C,C-361,Podkowa Leśna Główna,361,0,4,1,1
-ZA12,C,C-5331,Milanówek Grudów,5331,0,5,1,2
-A1,C,C-137,Grodzisk Mazowiecki Radońska,137,0,6,1,1
-A1,C,C-363,Podkowa Leśna Główna,363,0,4,1,1
-A1,C,C-139,Grodzisk Mazowiecki Radońska,139,0,6,1,1
-A1,C,C-101,Grodzisk Mazowiecki Radońska,101,0,6,1,1
-A1,C,C-103,Grodzisk Mazowiecki Radońska,103,0,6,1,1
-A1,C,C-105,Grodzisk Mazowiecki Radońska,105,0,6,1,1
-A1,D,D-301,Podkowa Leśna Główna,301,0,4,1,1
-ZA12,D,D-5301,Milanówek Grudów,5301,0,5,1,2
-A1,D,D-107,Grodzisk Mazowiecki Radońska,107,0,6,1,1
-A1,D,D-303,Podkowa Leśna Główna,303,0,4,1,1
-A1,D,D-305,Podkowa Leśna Główna,305,0,4,1,1
-ZA12,D,D-5303,Milanówek Grudów,5303,0,5,1,2
-A1,D,D-109,Grodzisk Mazowiecki Radońska,109,0,6,1,1
-A1,D,D-307,Podkowa Leśna Główna,307,0,4,1,1
-A1,D,D-309,Podkowa Leśna Główna,309,0,4,1,1
-ZA12,D,D-5305,Milanówek Grudów,5305,0,5,1,2
-A1,D,D-111,Grodzisk Mazowiecki Radońska,111,0,6,1,1
-A1,D,D-311,Podkowa Leśna Główna,311,0,4,1,1
-A1,D,D-313,Podkowa Leśna Główna,313,0,4,1,1
-ZA12,D,D-5307,Milanówek Grudów,5307,0,5,1,2
-A1,D,D-3113,Podkowa Leśna Główna,3113,0,4,1,1
-ZA1,D,D-5101,Grodzisk Mazowiecki Radońska,5101,0,7,1,2
-A1,D,D-315,Podkowa Leśna Główna,315,0,4,1,1
-A1,D,D-317,Podkowa Leśna Główna,317,0,4,1,1
-ZA12,D,D-5309,Milanówek Grudów,5309,0,5,1,2
-A1,D,D-3115,Podkowa Leśna Główna,3115,0,4,1,1
-ZA1,D,D-5103,Grodzisk Mazowiecki Radońska,5103,0,7,1,2
-A1,D,D-319,Podkowa Leśna Główna,319,0,4,1,1
-A1,D,D-321,Podkowa Leśna Główna,321,0,4,1,1
-ZA12,D,D-5311,Milanówek Grudów,5311,0,5,1,2
-A1,D,D-3117,Podkowa Leśna Główna,3117,0,4,1,1
-ZA1,D,D-5105,Grodzisk Mazowiecki Radońska,5105,0,7,1,2
-A1,D,D-323,Podkowa Leśna Główna,323,0,4,1,1
-A1,D,D-325,Podkowa Leśna Główna,325,0,4,1,1
-ZA12,D,D-5313,Milanówek Grudów,5313,0,5,1,2
-A1,D,D-3119,Podkowa Leśna Główna,3119,0,4,1,1
-ZA1,D,D-5107,Grodzisk Mazowiecki Radońska,5107,0,7,1,2
-A1,D,D-327,Podkowa Leśna Główna,327,0,4,1,1
-A1,D,D-329,Podkowa Leśna Główna,329,0,4,1,1
-ZA12,D,D-5315,Milanówek Grudów,5315,0,5,1,2
-A1,D,D-3121,Podkowa Leśna Główna,3121,0,4,1,1
-ZA1,D,D-5109,Grodzisk Mazowiecki Radońska,5109,0,7,1,2
-A1,D,D-331,Podkowa Leśna Główna,331,0,4,1,1
-A1,D,D-333,Podkowa Leśna Główna,333,0,4,1,1
-ZA12,D,D-5317,Milanówek Grudów,5317,0,5,1,2
-A1,D,D-3123,Podkowa Leśna Główna,3123,0,4,1,1
-ZA1,D,D-5111,Grodzisk Mazowiecki Radońska,5111,0,7,1,2
-A1,D,D-335,Podkowa Leśna Główna,335,0,4,1,1
-A1,D,D-337,Podkowa Leśna Główna,337,0,4,1,1
-ZA12,D,D-5319,Milanówek Grudów,5319,0,5,1,2
-A1,D,D-125,Grodzisk Mazowiecki Radońska,125,0,6,1,1
-A1,D,D-339,Podkowa Leśna Główna,339,0,4,1,1
-A1,D,D-341,Podkowa Leśna Główna,341,0,4,1,1
-ZA12,D,D-5321,Milanówek Grudów,5321,0,5,1,2
-A1,D,D-127,Grodzisk Mazowiecki Radońska,127,0,6,1,1
-A1,D,D-343,Podkowa Leśna Główna,343,0,4,1,1
-A1,D,D-345,Podkowa Leśna Główna,345,0,4,1,1
-ZA12,D,D-5323,Milanówek Grudów,5323,0,5,1,2
-A1,D,D-129,Grodzisk Mazowiecki Radońska,129,0,6,1,1
-A1,D,D-347,Podkowa Leśna Główna,347,0,4,1,1
-A1,D,D-349,Podkowa Leśna Główna,349,0,4,1,1
-ZA12,D,D-5325,Milanówek Grudów,5325,0,5,1,2
-A1,D,D-131,Grodzisk Mazowiecki Radońska,131,0,6,1,1
-A1,D,D-351,Podkowa Leśna Główna,351,0,4,1,1
-A1,D,D-353,Podkowa Leśna Główna,353,0,4,1,1
-ZA12,D,D-5327,Milanówek Grudów,5327,0,5,1,2
-A1,D,D-133,Grodzisk Mazowiecki Radońska,133,0,6,1,1
-A1,D,D-355,Podkowa Leśna Główna,355,0,4,1,1
-A1,D,D-357,Podkowa Leśna Główna,357,0,4,1,1
-ZA12,D,D-5329,Milanówek Grudów,5329,0,5,1,2
-A1,D,D-135,Grodzisk Mazowiecki Radońska,135,0,6,1,1
-A1,D,D-359,Podkowa Leśna Główna,359,0,4,1,1
-A1,D,D-361,Podkowa Leśna Główna,361,0,4,1,1
-ZA12,D,D-5331,Milanówek Grudów,5331,0,5,1,2
-A1,D,D-137,Grodzisk Mazowiecki Radońska,137,0,6,1,1
-A1,D,D-363,Podkowa Leśna Główna,363,0,4,1,1
-A1,D,D-139,Grodzisk Mazowiecki Radońska,139,0,6,1,1
-A1,D,D-101,Grodzisk Mazowiecki Radońska,101,0,6,1,1
-A1,D,D-103,Grodzisk Mazowiecki Radońska,103,0,6,1,1
-A1,D,D-105,Grodzisk Mazowiecki Radońska,105,0,6,1,1
+A1,20230721,20230721-301,Podkowa Leśna Główna,301,0,0,1,1
+ZA12,20230721,20230721-5301,Milanówek Grudów,5301,0,1,1,2
+A1,20230721,20230721-105,Grodzisk Mazowiecki Radońska,105,0,2,1,1
+A1,20230721,20230721-303,Podkowa Leśna Główna,303,0,0,1,1
+ZA12,20230721,20230721-5303,Milanówek Grudów,5303,0,1,1,2
+A1,20230721,20230721-107,Grodzisk Mazowiecki Radońska,107,0,2,1,1
+A1,20230721,20230721-305,Podkowa Leśna Główna,305,0,0,1,1
+ZA12,20230721,20230721-5305,Milanówek Grudów,5305,0,1,1,2
+A1,20230721,20230721-109,Grodzisk Mazowiecki Radońska,109,0,2,1,1
+A1,20230721,20230721-307,Podkowa Leśna Główna,307,0,0,1,1
+ZA12,20230721,20230721-5307,Milanówek Grudów,5307,0,1,1,2
+A1,20230721,20230721-3111,Podkowa Leśna Główna,3111,0,0,1,1
+ZA1,20230721,20230721-5111,Grodzisk Mazowiecki Radońska,5111,0,3,1,2
+A1,20230721,20230721-309,Podkowa Leśna Główna,309,0,0,1,1
+ZA12,20230721,20230721-5309,Milanówek Grudów,5309,0,1,1,2
+A1,20230721,20230721-3113,Podkowa Leśna Główna,3113,0,0,1,1
+ZA1,20230721,20230721-5113,Grodzisk Mazowiecki Radońska,5113,0,3,1,2
+A1,20230721,20230721-311,Podkowa Leśna Główna,311,0,0,1,1
+ZA12,20230721,20230721-5311,Milanówek Grudów,5311,0,1,1,2
+A1,20230721,20230721-3115,Podkowa Leśna Główna,3115,0,0,1,1
+ZA1,20230721,20230721-5115,Grodzisk Mazowiecki Radońska,5115,0,3,1,2
+A1,20230721,20230721-313,Podkowa Leśna Główna,313,0,0,1,1
+ZA12,20230721,20230721-5313,Milanówek Grudów,5313,0,1,1,2
+A1,20230721,20230721-3117,Podkowa Leśna Główna,3117,0,0,1,1
+ZA1,20230721,20230721-5117,Grodzisk Mazowiecki Radońska,5117,0,3,1,2
+A1,20230721,20230721-315,Podkowa Leśna Główna,315,0,0,1,1
+ZA12,20230721,20230721-5315,Milanówek Grudów,5315,0,1,1,2
+A1,20230721,20230721-3119,Podkowa Leśna Główna,3119,0,0,1,1
+ZA1,20230721,20230721-5119,Grodzisk Mazowiecki Radońska,5119,0,3,1,2
+A1,20230721,20230721-317,Podkowa Leśna Główna,317,0,0,1,1
+ZA12,20230721,20230721-5317,Milanówek Grudów,5317,0,1,1,2
+A1,20230721,20230721-3121,Podkowa Leśna Główna,3121,0,0,1,1
+ZA1,20230721,20230721-5121,Grodzisk Mazowiecki Radońska,5121,0,3,1,2
+A1,20230721,20230721-319,Podkowa Leśna Główna,319,0,0,1,1
+ZA12,20230721,20230721-5319,Milanówek Grudów,5319,0,1,1,2
+A1,20230721,20230721-3123,Podkowa Leśna Główna,3123,0,0,1,1
+ZA1,20230721,20230721-5123,Grodzisk Mazowiecki Radońska,5123,0,3,1,2
+A1,20230721,20230721-321,Podkowa Leśna Główna,321,0,0,1,1
+ZA12,20230721,20230721-5321,Milanówek Grudów,5321,0,1,1,2
+A1,20230721,20230721-3125,Podkowa Leśna Główna,3125,0,0,1,1
+ZA1,20230721,20230721-5125,Grodzisk Mazowiecki Radońska,5125,0,3,1,2
+A1,20230721,20230721-323,Podkowa Leśna Główna,323,0,0,1,1
+ZA12,20230721,20230721-5323,Milanówek Grudów,5323,0,1,1,2
+A1,20230721,20230721-3127,Podkowa Leśna Główna,3127,0,0,1,1
+ZA1,20230721,20230721-5127,Grodzisk Mazowiecki Radońska,5127,0,3,1,2
+A1,20230721,20230721-325,Podkowa Leśna Główna,325,0,0,1,1
+ZA12,20230721,20230721-5325,Milanówek Grudów,5325,0,1,1,2
+A1,20230721,20230721-3129,Podkowa Leśna Główna,3129,0,0,1,1
+ZA1,20230721,20230721-5129,Grodzisk Mazowiecki Radońska,5129,0,3,1,2
+A1,20230721,20230721-327,Podkowa Leśna Główna,327,0,0,1,1
+ZA12,20230721,20230721-5327,Milanówek Grudów,5327,0,1,1,2
+A1,20230721,20230721-3131,Podkowa Leśna Główna,3131,0,0,1,1
+ZA1,20230721,20230721-5131,Grodzisk Mazowiecki Radońska,5131,0,3,1,2
+A1,20230721,20230721-329,Podkowa Leśna Główna,329,0,0,1,1
+ZA12,20230721,20230721-5329,Milanówek Grudów,5329,0,1,1,2
+A1,20230721,20230721-3133,Podkowa Leśna Główna,3133,0,0,1,1
+ZA1,20230721,20230721-5133,Grodzisk Mazowiecki Radońska,5133,0,3,1,2
+A1,20230721,20230721-331,Podkowa Leśna Główna,331,0,0,1,1
+ZA12,20230721,20230721-5331,Milanówek Grudów,5331,0,1,1,2
+A1,20230721,20230721-3135,Podkowa Leśna Główna,3135,0,0,1,1
+ZA1,20230721,20230721-5135,Grodzisk Mazowiecki Radońska,5135,0,3,1,2
+A1,20230721,20230721-333,Podkowa Leśna Główna,333,0,0,1,1
+ZA12,20230721,20230721-5333,Milanówek Grudów,5333,0,1,1,2
+A1,20230721,20230721-3137,Podkowa Leśna Główna,3137,0,0,1,1
+ZA1,20230721,20230721-5137,Grodzisk Mazowiecki Radońska,5137,0,3,1,2
+A1,20230721,20230721-335,Podkowa Leśna Główna,335,0,0,1,1
+ZA12,20230721,20230721-5335,Milanówek Grudów,5335,0,1,1,2
+A1,20230721,20230721-3139,Podkowa Leśna Główna,3139,0,0,1,1
+ZA1,20230721,20230721-5139,Grodzisk Mazowiecki Radońska,5139,0,3,1,2
+A1,20230721,20230721-337,Podkowa Leśna Główna,337,0,0,1,1
+ZA12,20230721,20230721-5337,Milanówek Grudów,5337,0,1,1,2
+A1,20230721,20230721-3141,Podkowa Leśna Główna,3141,0,0,1,1
+ZA1,20230721,20230721-5141,Grodzisk Mazowiecki Radońska,5141,0,3,1,2
+A1,20230721,20230721-3143,Podkowa Leśna Główna,3143,0,0,1,1
+A1,20230721,20230721-3101,Podkowa Leśna Główna,3101,0,0,1,1
+A1,20230721,20230721-3103,Podkowa Leśna Główna,3103,0,0,1,1
+ZA1,20230721,20230721-5103,Grodzisk Mazowiecki Radońska,5103,0,3,1,2
+A1,20230721,20230721-100,Warszawa Śródmieście WKD,100,1,4,1,1
+A1,20230721,20230721-102,Warszawa Śródmieście WKD,102,1,4,1,1
+ZA12,20230721,20230721-5300,Podkowa Leśna Główna,5300,1,5,1,2
+A1,20230721,20230721-104,Warszawa Śródmieście WKD,104,1,4,1,1
+A1,20230721,20230721-106,Warszawa Śródmieście WKD,106,1,4,1,1
+A1,20230721,20230721-302,Warszawa Śródmieście WKD,302,1,6,1,1
+ZA12,20230721,20230721-5302,Podkowa Leśna Główna,5302,1,5,1,2
+A1,20230721,20230721-108,Warszawa Śródmieście WKD,108,1,4,1,1
+A1,20230721,20230721-304,Warszawa Śródmieście WKD,304,1,6,1,1
+ZA12,20230721,20230721-5304,Podkowa Leśna Główna,5304,1,5,1,2
+A1,20230721,20230721-110,Warszawa Śródmieście WKD,110,1,4,1,1
+A1,20230721,20230721-306,Warszawa Śródmieście WKD,306,1,6,1,1
+ZA12,20230721,20230721-5306,Podkowa Leśna Główna,5306,1,5,1,2
+A1,20230721,20230721-112,Warszawa Śródmieście WKD,112,1,4,1,1
+A1,20230721,20230721-308,Warszawa Śródmieście WKD,308,1,6,1,1
+ZA12,20230721,20230721-5308,Podkowa Leśna Główna,5308,1,5,1,2
+A1,20230721,20230721-3114,Warszawa Śródmieście WKD,3114,1,6,1,1
+ZA1,20230721,20230721-5114,Podkowa Leśna Główna,5114,1,7,1,2
+A1,20230721,20230721-310,Warszawa Śródmieście WKD,310,1,6,1,1
+ZA12,20230721,20230721-5310,Podkowa Leśna Główna,5310,1,5,1,2
+A1,20230721,20230721-3116,Warszawa Śródmieście WKD,3116,1,6,1,1
+ZA1,20230721,20230721-5116,Podkowa Leśna Główna,5116,1,7,1,2
+A1,20230721,20230721-312,Warszawa Śródmieście WKD,312,1,6,1,1
+ZA12,20230721,20230721-5312,Podkowa Leśna Główna,5312,1,5,1,2
+A1,20230721,20230721-3118,Warszawa Śródmieście WKD,3118,1,6,1,1
+ZA1,20230721,20230721-5118,Podkowa Leśna Główna,5118,1,7,1,2
+A1,20230721,20230721-314,Warszawa Śródmieście WKD,314,1,6,1,1
+ZA12,20230721,20230721-5314,Podkowa Leśna Główna,5314,1,5,1,2
+A1,20230721,20230721-3120,Warszawa Śródmieście WKD,3120,1,6,1,1
+ZA1,20230721,20230721-5120,Podkowa Leśna Główna,5120,1,7,1,2
+A1,20230721,20230721-316,Warszawa Śródmieście WKD,316,1,6,1,1
+ZA12,20230721,20230721-5316,Podkowa Leśna Główna,5316,1,5,1,2
+A1,20230721,20230721-3122,Warszawa Śródmieście WKD,3122,1,6,1,1
+ZA1,20230721,20230721-5122,Podkowa Leśna Główna,5122,1,7,1,2
+A1,20230721,20230721-318,Warszawa Śródmieście WKD,318,1,6,1,1
+ZA12,20230721,20230721-5318,Podkowa Leśna Główna,5318,1,5,1,2
+A1,20230721,20230721-3124,Warszawa Śródmieście WKD,3124,1,6,1,1
+ZA1,20230721,20230721-5124,Podkowa Leśna Główna,5124,1,7,1,2
+A1,20230721,20230721-320,Warszawa Śródmieście WKD,320,1,6,1,1
+ZA12,20230721,20230721-5320,Podkowa Leśna Główna,5320,1,5,1,2
+A1,20230721,20230721-3126,Warszawa Śródmieście WKD,3126,1,6,1,1
+ZA1,20230721,20230721-5126,Podkowa Leśna Główna,5126,1,7,1,2
+A1,20230721,20230721-322,Warszawa Śródmieście WKD,322,1,6,1,1
+ZA12,20230721,20230721-5322,Podkowa Leśna Główna,5322,1,5,1,2
+A1,20230721,20230721-3128,Warszawa Śródmieście WKD,3128,1,6,1,1
+ZA1,20230721,20230721-5128,Podkowa Leśna Główna,5128,1,7,1,2
+A1,20230721,20230721-324,Warszawa Śródmieście WKD,324,1,6,1,1
+ZA12,20230721,20230721-5324,Podkowa Leśna Główna,5324,1,5,1,2
+A1,20230721,20230721-3130,Warszawa Śródmieście WKD,3130,1,6,1,1
+ZA1,20230721,20230721-5130,Podkowa Leśna Główna,5130,1,7,1,2
+A1,20230721,20230721-326,Warszawa Śródmieście WKD,326,1,6,1,1
+ZA12,20230721,20230721-5326,Podkowa Leśna Główna,5326,1,5,1,2
+A1,20230721,20230721-3132,Warszawa Śródmieście WKD,3132,1,6,1,1
+ZA1,20230721,20230721-5132,Podkowa Leśna Główna,5132,1,7,1,2
+A1,20230721,20230721-328,Warszawa Śródmieście WKD,328,1,6,1,1
+ZA12,20230721,20230721-5328,Podkowa Leśna Główna,5328,1,5,1,2
+A1,20230721,20230721-3134,Warszawa Śródmieście WKD,3134,1,6,1,1
+ZA1,20230721,20230721-5134,Podkowa Leśna Główna,5134,1,7,1,2
+A1,20230721,20230721-330,Warszawa Śródmieście WKD,330,1,6,1,1
+ZA12,20230721,20230721-5330,Podkowa Leśna Główna,5330,1,5,1,2
+A1,20230721,20230721-3136,Warszawa Śródmieście WKD,3136,1,6,1,1
+ZA1,20230721,20230721-5136,Podkowa Leśna Główna,5136,1,7,1,2
+A1,20230721,20230721-332,Warszawa Śródmieście WKD,332,1,6,1,1
+ZA12,20230721,20230721-5332,Podkowa Leśna Główna,5332,1,5,1,2
+A1,20230721,20230721-3138,Warszawa Śródmieście WKD,3138,1,6,1,1
+ZA1,20230721,20230721-5138,Podkowa Leśna Główna,5138,1,7,1,2
+A1,20230721,20230721-334,Warszawa Śródmieście WKD,334,1,6,1,1
+ZA12,20230721,20230721-5334,Podkowa Leśna Główna,5334,1,5,1,2
+A1,20230721,20230721-3140,Warszawa Śródmieście WKD,3140,1,6,1,1
+ZA1,20230721,20230721-5140,Podkowa Leśna Główna,5140,1,7,1,2
+A1,20230721,20230721-336,Warszawa Śródmieście WKD,336,1,6,1,1
+ZA12,20230721,20230721-5336,Podkowa Leśna Główna,5336,1,5,1,2
+A1,20230721,20230721-3142,Warszawa Śródmieście WKD,3142,1,6,1,1
+A1,20230721,20230721-300,Warszawa Śródmieście WKD,300,1,6,1,1
+ZA1,20230721,20230721-5100,Podkowa Leśna Główna,5100,1,7,1,2
+A1,20230722,20230722-3100,Warszawa Śródmieście WKD,3100,1,6,1,1
+A1,20230722,20230722-3102,Warszawa Śródmieście WKD,3102,1,6,1,1
+ZA1,20230722,20230722-5102,Podkowa Leśna Główna,5102,1,7,1,2
+A1,20230722,20230722-3104,Warszawa Śródmieście WKD,3104,1,6,1,1
+ZA12,20230722,20230722-5300,Podkowa Leśna Główna,5300,1,5,1,2
+A1,20230722,20230722-3106,Warszawa Śródmieście WKD,3106,1,6,1,1
+ZA1,20230722,20230722-5106,Podkowa Leśna Główna,5106,1,7,1,2
+A1,20230722,20230722-302,Warszawa Śródmieście WKD,302,1,6,1,1
+ZA12,20230722,20230722-5302,Podkowa Leśna Główna,5302,1,5,1,2
+A1,20230722,20230722-3108,Warszawa Śródmieście WKD,3108,1,6,1,1
+ZA1,20230722,20230722-5108,Podkowa Leśna Główna,5108,1,7,1,2
+A1,20230722,20230722-304,Warszawa Śródmieście WKD,304,1,6,1,1
+ZA12,20230722,20230722-5304,Podkowa Leśna Główna,5304,1,5,1,2
+A1,20230722,20230722-3110,Warszawa Śródmieście WKD,3110,1,6,1,1
+ZA1,20230722,20230722-5110,Podkowa Leśna Główna,5110,1,7,1,2
+A1,20230722,20230722-306,Warszawa Śródmieście WKD,306,1,6,1,1
+ZA12,20230722,20230722-5306,Podkowa Leśna Główna,5306,1,5,1,2
+A1,20230722,20230722-3112,Warszawa Śródmieście WKD,3112,1,6,1,1
+ZA1,20230722,20230722-5112,Podkowa Leśna Główna,5112,1,7,1,2
+A1,20230722,20230722-308,Warszawa Śródmieście WKD,308,1,6,1,1
+ZA12,20230722,20230722-5308,Podkowa Leśna Główna,5308,1,5,1,2
+A1,20230722,20230722-3114,Warszawa Śródmieście WKD,3114,1,6,1,1
+ZA1,20230722,20230722-5114,Podkowa Leśna Główna,5114,1,7,1,2
+A1,20230722,20230722-310,Warszawa Śródmieście WKD,310,1,6,1,1
+ZA12,20230722,20230722-5310,Podkowa Leśna Główna,5310,1,5,1,2
+A1,20230722,20230722-3116,Warszawa Śródmieście WKD,3116,1,6,1,1
+ZA1,20230722,20230722-5116,Podkowa Leśna Główna,5116,1,7,1,2
+A1,20230722,20230722-312,Warszawa Śródmieście WKD,312,1,6,1,1
+ZA12,20230722,20230722-5312,Podkowa Leśna Główna,5312,1,5,1,2
+A1,20230722,20230722-3118,Warszawa Śródmieście WKD,3118,1,6,1,1
+ZA1,20230722,20230722-5118,Podkowa Leśna Główna,5118,1,7,1,2
+A1,20230722,20230722-314,Warszawa Śródmieście WKD,314,1,6,1,1
+ZA12,20230722,20230722-5314,Podkowa Leśna Główna,5314,1,5,1,2
+A1,20230722,20230722-3120,Warszawa Śródmieście WKD,3120,1,6,1,1
+ZA1,20230722,20230722-5120,Podkowa Leśna Główna,5120,1,7,1,2
+A1,20230722,20230722-316,Warszawa Śródmieście WKD,316,1,6,1,1
+ZA12,20230722,20230722-5316,Podkowa Leśna Główna,5316,1,5,1,2
+A1,20230722,20230722-3122,Warszawa Śródmieście WKD,3122,1,6,1,1
+ZA1,20230722,20230722-5122,Podkowa Leśna Główna,5122,1,7,1,2
+A1,20230722,20230722-318,Warszawa Śródmieście WKD,318,1,6,1,1
+ZA12,20230722,20230722-5318,Podkowa Leśna Główna,5318,1,5,1,2
+A1,20230722,20230722-3124,Warszawa Śródmieście WKD,3124,1,6,1,1
+ZA1,20230722,20230722-5124,Podkowa Leśna Główna,5124,1,7,1,2
+A1,20230722,20230722-320,Warszawa Śródmieście WKD,320,1,6,1,1
+ZA12,20230722,20230722-5320,Podkowa Leśna Główna,5320,1,5,1,2
+A1,20230722,20230722-3126,Warszawa Śródmieście WKD,3126,1,6,1,1
+ZA1,20230722,20230722-5126,Podkowa Leśna Główna,5126,1,7,1,2
+A1,20230722,20230722-322,Warszawa Śródmieście WKD,322,1,6,1,1
+ZA12,20230722,20230722-5322,Podkowa Leśna Główna,5322,1,5,1,2
+A1,20230722,20230722-3128,Warszawa Śródmieście WKD,3128,1,6,1,1
+ZA1,20230722,20230722-5128,Podkowa Leśna Główna,5128,1,7,1,2
+A1,20230722,20230722-324,Warszawa Śródmieście WKD,324,1,6,1,1
+ZA12,20230722,20230722-5324,Podkowa Leśna Główna,5324,1,5,1,2
+A1,20230722,20230722-3130,Warszawa Śródmieście WKD,3130,1,6,1,1
+ZA1,20230722,20230722-5130,Podkowa Leśna Główna,5130,1,7,1,2
+A1,20230722,20230722-326,Warszawa Śródmieście WKD,326,1,6,1,1
+ZA12,20230722,20230722-5326,Podkowa Leśna Główna,5326,1,5,1,2
+A1,20230722,20230722-3132,Warszawa Śródmieście WKD,3132,1,6,1,1
+ZA1,20230722,20230722-5132,Podkowa Leśna Główna,5132,1,7,1,2
+A1,20230722,20230722-328,Warszawa Śródmieście WKD,328,1,6,1,1
+ZA12,20230722,20230722-5328,Podkowa Leśna Główna,5328,1,5,1,2
+A1,20230722,20230722-3134,Warszawa Śródmieście WKD,3134,1,6,1,1
+ZA1,20230722,20230722-5134,Podkowa Leśna Główna,5134,1,7,1,2
+A1,20230722,20230722-330,Warszawa Śródmieście WKD,330,1,6,1,1
+ZA12,20230722,20230722-5330,Podkowa Leśna Główna,5330,1,5,1,2
+A1,20230722,20230722-3136,Warszawa Śródmieście WKD,3136,1,6,1,1
+ZA1,20230722,20230722-5136,Podkowa Leśna Główna,5136,1,7,1,2
+A1,20230722,20230722-332,Warszawa Śródmieście WKD,332,1,6,1,1
+ZA12,20230722,20230722-5332,Podkowa Leśna Główna,5332,1,5,1,2
+A1,20230722,20230722-3138,Warszawa Śródmieście WKD,3138,1,6,1,1
+ZA1,20230722,20230722-5138,Podkowa Leśna Główna,5138,1,7,1,2
+A1,20230722,20230722-334,Warszawa Śródmieście WKD,334,1,6,1,1
+ZA12,20230722,20230722-5334,Podkowa Leśna Główna,5334,1,5,1,2
+A1,20230722,20230722-3140,Warszawa Śródmieście WKD,3140,1,6,1,1
+ZA1,20230722,20230722-5140,Podkowa Leśna Główna,5140,1,7,1,2
+A1,20230722,20230722-336,Warszawa Śródmieście WKD,336,1,6,1,1
+ZA12,20230722,20230722-5336,Podkowa Leśna Główna,5336,1,5,1,2
+A1,20230722,20230722-3142,Warszawa Śródmieście WKD,3142,1,6,1,1
+A1,20230722,20230722-300,Warszawa Śródmieście WKD,300,1,6,1,1
+ZA1,20230722,20230722-5100,Podkowa Leśna Główna,5100,1,7,1,2
+A1,20230723,20230723-3100,Warszawa Śródmieście WKD,3100,1,6,1,1
+A1,20230723,20230723-3102,Warszawa Śródmieście WKD,3102,1,6,1,1
+ZA1,20230723,20230723-5102,Podkowa Leśna Główna,5102,1,7,1,2
+A1,20230723,20230723-3104,Warszawa Śródmieście WKD,3104,1,6,1,1
+ZA12,20230723,20230723-5300,Podkowa Leśna Główna,5300,1,5,1,2
+A1,20230723,20230723-3106,Warszawa Śródmieście WKD,3106,1,6,1,1
+ZA1,20230723,20230723-5106,Podkowa Leśna Główna,5106,1,7,1,2
+A1,20230723,20230723-302,Warszawa Śródmieście WKD,302,1,6,1,1
+ZA12,20230723,20230723-5302,Podkowa Leśna Główna,5302,1,5,1,2
+A1,20230723,20230723-3108,Warszawa Śródmieście WKD,3108,1,6,1,1
+ZA1,20230723,20230723-5108,Podkowa Leśna Główna,5108,1,7,1,2
+A1,20230723,20230723-304,Warszawa Śródmieście WKD,304,1,6,1,1
+ZA12,20230723,20230723-5304,Podkowa Leśna Główna,5304,1,5,1,2
+A1,20230723,20230723-3110,Warszawa Śródmieście WKD,3110,1,6,1,1
+ZA1,20230723,20230723-5110,Podkowa Leśna Główna,5110,1,7,1,2
+A1,20230723,20230723-306,Warszawa Śródmieście WKD,306,1,6,1,1
+ZA12,20230723,20230723-5306,Podkowa Leśna Główna,5306,1,5,1,2
+A1,20230723,20230723-3112,Warszawa Śródmieście WKD,3112,1,6,1,1
+ZA1,20230723,20230723-5112,Podkowa Leśna Główna,5112,1,7,1,2
+A1,20230723,20230723-308,Warszawa Śródmieście WKD,308,1,6,1,1
+ZA12,20230723,20230723-5308,Podkowa Leśna Główna,5308,1,5,1,2
+A1,20230723,20230723-3114,Warszawa Śródmieście WKD,3114,1,6,1,1
+ZA1,20230723,20230723-5114,Podkowa Leśna Główna,5114,1,7,1,2
+A1,20230723,20230723-310,Warszawa Śródmieście WKD,310,1,6,1,1
+ZA12,20230723,20230723-5310,Podkowa Leśna Główna,5310,1,5,1,2
+A1,20230723,20230723-3116,Warszawa Śródmieście WKD,3116,1,6,1,1
+ZA1,20230723,20230723-5116,Podkowa Leśna Główna,5116,1,7,1,2
+A1,20230723,20230723-312,Warszawa Śródmieście WKD,312,1,6,1,1
+ZA12,20230723,20230723-5312,Podkowa Leśna Główna,5312,1,5,1,2
+A1,20230723,20230723-3118,Warszawa Śródmieście WKD,3118,1,6,1,1
+ZA1,20230723,20230723-5118,Podkowa Leśna Główna,5118,1,7,1,2
+A1,20230723,20230723-314,Warszawa Śródmieście WKD,314,1,6,1,1
+ZA12,20230723,20230723-5314,Podkowa Leśna Główna,5314,1,5,1,2
+A1,20230723,20230723-3120,Warszawa Śródmieście WKD,3120,1,6,1,1
+ZA1,20230723,20230723-5120,Podkowa Leśna Główna,5120,1,7,1,2
+A1,20230723,20230723-316,Warszawa Śródmieście WKD,316,1,6,1,1
+ZA12,20230723,20230723-5316,Podkowa Leśna Główna,5316,1,5,1,2
+A1,20230723,20230723-3122,Warszawa Śródmieście WKD,3122,1,6,1,1
+ZA1,20230723,20230723-5122,Podkowa Leśna Główna,5122,1,7,1,2
+A1,20230723,20230723-318,Warszawa Śródmieście WKD,318,1,6,1,1
+ZA12,20230723,20230723-5318,Podkowa Leśna Główna,5318,1,5,1,2
+A1,20230723,20230723-3124,Warszawa Śródmieście WKD,3124,1,6,1,1
+ZA1,20230723,20230723-5124,Podkowa Leśna Główna,5124,1,7,1,2
+A1,20230723,20230723-320,Warszawa Śródmieście WKD,320,1,6,1,1
+ZA12,20230723,20230723-5320,Podkowa Leśna Główna,5320,1,5,1,2
+A1,20230723,20230723-3126,Warszawa Śródmieście WKD,3126,1,6,1,1
+ZA1,20230723,20230723-5126,Podkowa Leśna Główna,5126,1,7,1,2
+A1,20230723,20230723-322,Warszawa Śródmieście WKD,322,1,6,1,1
+ZA12,20230723,20230723-5322,Podkowa Leśna Główna,5322,1,5,1,2
+A1,20230723,20230723-3128,Warszawa Śródmieście WKD,3128,1,6,1,1
+ZA1,20230723,20230723-5128,Podkowa Leśna Główna,5128,1,7,1,2
+A1,20230723,20230723-324,Warszawa Śródmieście WKD,324,1,6,1,1
+ZA12,20230723,20230723-5324,Podkowa Leśna Główna,5324,1,5,1,2
+A1,20230723,20230723-130,Warszawa Śródmieście WKD,130,1,4,1,1
+A1,20230723,20230723-326,Warszawa Śródmieście WKD,326,1,6,1,1
+ZA12,20230723,20230723-5326,Podkowa Leśna Główna,5326,1,5,1,2
+A1,20230723,20230723-132,Warszawa Śródmieście WKD,132,1,4,1,1
+A1,20230723,20230723-328,Warszawa Śródmieście WKD,328,1,6,1,1
+ZA12,20230723,20230723-5328,Podkowa Leśna Główna,5328,1,5,1,2
+A1,20230723,20230723-134,Warszawa Śródmieście WKD,134,1,4,1,1
+A1,20230723,20230723-330,Warszawa Śródmieście WKD,330,1,6,1,1
+ZA12,20230723,20230723-5330,Podkowa Leśna Główna,5330,1,5,1,2
+A1,20230723,20230723-136,Warszawa Śródmieście WKD,136,1,4,1,1
+A1,20230723,20230723-332,Warszawa Śródmieście WKD,332,1,6,1,1
+ZA12,20230723,20230723-5332,Podkowa Leśna Główna,5332,1,5,1,2
+A1,20230723,20230723-138,Warszawa Śródmieście WKD,138,1,4,1,1
+A1,20230723,20230723-334,Warszawa Śródmieście WKD,334,1,6,1,1
+ZA12,20230723,20230723-5334,Podkowa Leśna Główna,5334,1,5,1,2
+A1,20230723,20230723-140,Warszawa Śródmieście WKD,140,1,4,1,1
+A1,20230723,20230723-336,Warszawa Śródmieście WKD,336,1,6,1,1
+ZA12,20230723,20230723-5336,Podkowa Leśna Główna,5336,1,5,1,2
+A1,20230723,20230723-142,Warszawa Śródmieście WKD,142,1,4,1,1
+A1,20230723,20230723-300,Warszawa Śródmieście WKD,300,1,6,1,1
+A1,20230723,20230723-301,Podkowa Leśna Główna,301,0,0,1,1
+ZA12,20230723,20230723-5301,Milanówek Grudów,5301,0,1,1,2
+A1,20230723,20230723-3105,Podkowa Leśna Główna,3105,0,0,1,1
+ZA1,20230723,20230723-5105,Grodzisk Mazowiecki Radońska,5105,0,3,1,2
+A1,20230723,20230723-303,Podkowa Leśna Główna,303,0,0,1,1
+ZA12,20230723,20230723-5303,Milanówek Grudów,5303,0,1,1,2
+A1,20230723,20230723-3107,Podkowa Leśna Główna,3107,0,0,1,1
+ZA1,20230723,20230723-5107,Grodzisk Mazowiecki Radońska,5107,0,3,1,2
+A1,20230723,20230723-305,Podkowa Leśna Główna,305,0,0,1,1
+ZA12,20230723,20230723-5305,Milanówek Grudów,5305,0,1,1,2
+ZA1,20230723,20230723-3109,Podkowa Leśna Główna,3109,0,0,1,2
+ZA1,20230723,20230723-5109,Grodzisk Mazowiecki Radońska,5109,0,3,1,2
+A1,20230723,20230723-307,Podkowa Leśna Główna,307,0,0,1,1
+ZA12,20230723,20230723-5307,Milanówek Grudów,5307,0,1,1,2
+A1,20230723,20230723-3111,Podkowa Leśna Główna,3111,0,0,1,1
+ZA1,20230723,20230723-5111,Grodzisk Mazowiecki Radońska,5111,0,3,1,2
+A1,20230723,20230723-309,Podkowa Leśna Główna,309,0,0,1,1
+ZA12,20230723,20230723-5309,Milanówek Grudów,5309,0,1,1,2
+A1,20230723,20230723-3113,Podkowa Leśna Główna,3113,0,0,1,1
+ZA1,20230723,20230723-5113,Grodzisk Mazowiecki Radońska,5113,0,3,1,2
+A1,20230723,20230723-311,Podkowa Leśna Główna,311,0,0,1,1
+ZA12,20230723,20230723-5311,Milanówek Grudów,5311,0,1,1,2
+A1,20230723,20230723-3115,Podkowa Leśna Główna,3115,0,0,1,1
+ZA1,20230723,20230723-5115,Grodzisk Mazowiecki Radońska,5115,0,3,1,2
+A1,20230723,20230723-313,Podkowa Leśna Główna,313,0,0,1,1
+ZA12,20230723,20230723-5313,Milanówek Grudów,5313,0,1,1,2
+A1,20230723,20230723-3117,Podkowa Leśna Główna,3117,0,0,1,1
+ZA1,20230723,20230723-5117,Grodzisk Mazowiecki Radońska,5117,0,3,1,2
+A1,20230723,20230723-315,Podkowa Leśna Główna,315,0,0,1,1
+ZA12,20230723,20230723-5315,Milanówek Grudów,5315,0,1,1,2
+A1,20230723,20230723-3119,Podkowa Leśna Główna,3119,0,0,1,1
+ZA1,20230723,20230723-5119,Grodzisk Mazowiecki Radońska,5119,0,3,1,2
+A1,20230723,20230723-317,Podkowa Leśna Główna,317,0,0,1,1
+ZA12,20230723,20230723-5317,Milanówek Grudów,5317,0,1,1,2
+A1,20230723,20230723-3121,Podkowa Leśna Główna,3121,0,0,1,1
+ZA1,20230723,20230723-5121,Grodzisk Mazowiecki Radońska,5121,0,3,1,2
+A1,20230723,20230723-319,Podkowa Leśna Główna,319,0,0,1,1
+ZA12,20230723,20230723-5319,Milanówek Grudów,5319,0,1,1,2
+A1,20230723,20230723-3123,Podkowa Leśna Główna,3123,0,0,1,1
+ZA1,20230723,20230723-5123,Grodzisk Mazowiecki Radońska,5123,0,3,1,2
+A1,20230723,20230723-321,Podkowa Leśna Główna,321,0,0,1,1
+ZA12,20230723,20230723-5321,Milanówek Grudów,5321,0,1,1,2
+A1,20230723,20230723-3125,Podkowa Leśna Główna,3125,0,0,1,1
+ZA1,20230723,20230723-5125,Grodzisk Mazowiecki Radońska,5125,0,3,1,2
+A1,20230723,20230723-323,Podkowa Leśna Główna,323,0,0,1,1
+ZA12,20230723,20230723-5323,Milanówek Grudów,5323,0,1,1,2
+A1,20230723,20230723-127,Grodzisk Mazowiecki Radońska,127,0,2,1,1
+A1,20230723,20230723-325,Podkowa Leśna Główna,325,0,0,1,1
+ZA12,20230723,20230723-5325,Milanówek Grudów,5325,0,1,1,2
+A1,20230723,20230723-129,Grodzisk Mazowiecki Radońska,129,0,2,1,1
+A1,20230723,20230723-327,Podkowa Leśna Główna,327,0,0,1,1
+ZA12,20230723,20230723-5327,Milanówek Grudów,5327,0,1,1,2
+A1,20230723,20230723-131,Grodzisk Mazowiecki Radońska,131,0,2,1,1
+A1,20230723,20230723-329,Podkowa Leśna Główna,329,0,0,1,1
+ZA12,20230723,20230723-5329,Milanówek Grudów,5329,0,1,1,2
+A1,20230723,20230723-133,Grodzisk Mazowiecki Radońska,133,0,2,1,1
+A1,20230723,20230723-331,Podkowa Leśna Główna,331,0,0,1,1
+ZA12,20230723,20230723-5331,Milanówek Grudów,5331,0,1,1,2
+A1,20230723,20230723-135,Grodzisk Mazowiecki Radońska,135,0,2,1,1
+A1,20230723,20230723-333,Podkowa Leśna Główna,333,0,0,1,1
+ZA12,20230723,20230723-5333,Milanówek Grudów,5333,0,1,1,2
+A1,20230723,20230723-137,Grodzisk Mazowiecki Radońska,137,0,2,1,1
+A1,20230723,20230723-335,Podkowa Leśna Główna,335,0,0,1,1
+ZA12,20230723,20230723-5335,Milanówek Grudów,5335,0,1,1,2
+A1,20230723,20230723-139,Grodzisk Mazowiecki Radońska,139,0,2,1,1
+A1,20230723,20230723-337,Podkowa Leśna Główna,337,0,0,1,1
+ZA12,20230723,20230723-5337,Milanówek Grudów,5337,0,1,1,2
+A1,20230723,20230723-141,Grodzisk Mazowiecki Radońska,141,0,2,1,1
+A1,20230723,20230723-143,Grodzisk Mazowiecki Radońska,143,0,2,1,1
+A1,20230723,20230723-101,Grodzisk Mazowiecki Radońska,101,0,2,1,1
+A1,20230723,20230723-103,Grodzisk Mazowiecki Radońska,103,0,2,1,1
+A1,20230722,20230722-301,Podkowa Leśna Główna,301,0,0,1,1
+ZA12,20230722,20230722-5301,Milanówek Grudów,5301,0,1,1,2
+A1,20230722,20230722-3105,Podkowa Leśna Główna,3105,0,0,1,1
+ZA1,20230722,20230722-5105,Grodzisk Mazowiecki Radońska,5105,0,3,1,2
+A1,20230722,20230722-303,Podkowa Leśna Główna,303,0,0,1,1
+ZA12,20230722,20230722-5303,Milanówek Grudów,5303,0,1,1,2
+A1,20230722,20230722-3107,Podkowa Leśna Główna,3107,0,0,1,1
+ZA1,20230722,20230722-5107,Grodzisk Mazowiecki Radońska,5107,0,3,1,2
+A1,20230722,20230722-305,Podkowa Leśna Główna,305,0,0,1,1
+ZA12,20230722,20230722-5305,Milanówek Grudów,5305,0,1,1,2
+A1,20230722,20230722-3109,Podkowa Leśna Główna,3109,0,0,1,1
+ZA1,20230722,20230722-5109,Grodzisk Mazowiecki Radońska,5109,0,3,1,2
+A1,20230722,20230722-307,Podkowa Leśna Główna,307,0,0,1,1
+ZA12,20230722,20230722-5307,Milanówek Grudów,5307,0,1,1,2
+A1,20230722,20230722-3111,Podkowa Leśna Główna,3111,0,0,1,1
+ZA1,20230722,20230722-5111,Grodzisk Mazowiecki Radońska,5111,0,3,1,2
+A1,20230722,20230722-309,Podkowa Leśna Główna,309,0,0,1,1
+ZA12,20230722,20230722-5309,Milanówek Grudów,5309,0,1,1,2
+A1,20230722,20230722-3113,Podkowa Leśna Główna,3113,0,0,1,1
+ZA1,20230722,20230722-5113,Grodzisk Mazowiecki Radońska,5113,0,3,1,2
+A1,20230722,20230722-311,Podkowa Leśna Główna,311,0,0,1,1
+ZA12,20230722,20230722-5311,Milanówek Grudów,5311,0,1,1,2
+A1,20230722,20230722-3115,Podkowa Leśna Główna,3115,0,0,1,1
+ZA1,20230722,20230722-5115,Grodzisk Mazowiecki Radońska,5115,0,3,1,2
+A1,20230722,20230722-313,Podkowa Leśna Główna,313,0,0,1,1
+ZA12,20230722,20230722-5313,Milanówek Grudów,5313,0,1,1,2
+A1,20230722,20230722-3117,Podkowa Leśna Główna,3117,0,0,1,1
+ZA1,20230722,20230722-5117,Grodzisk Mazowiecki Radońska,5117,0,3,1,2
+A1,20230722,20230722-315,Podkowa Leśna Główna,315,0,0,1,1
+ZA12,20230722,20230722-5315,Milanówek Grudów,5315,0,1,1,2
+A1,20230722,20230722-3119,Podkowa Leśna Główna,3119,0,0,1,1
+ZA1,20230722,20230722-5119,Grodzisk Mazowiecki Radońska,5119,0,3,1,2
+A1,20230722,20230722-317,Podkowa Leśna Główna,317,0,0,1,1
+ZA12,20230722,20230722-5317,Milanówek Grudów,5317,0,1,1,2
+A1,20230722,20230722-3121,Podkowa Leśna Główna,3121,0,0,1,1
+ZA1,20230722,20230722-5121,Grodzisk Mazowiecki Radońska,5121,0,3,1,2
+A1,20230722,20230722-319,Podkowa Leśna Główna,319,0,0,1,1
+ZA12,20230722,20230722-5319,Milanówek Grudów,5319,0,1,1,2
+A1,20230722,20230722-3123,Podkowa Leśna Główna,3123,0,0,1,1
+ZA1,20230722,20230722-5123,Grodzisk Mazowiecki Radońska,5123,0,3,1,2
+A1,20230722,20230722-321,Podkowa Leśna Główna,321,0,0,1,1
+ZA12,20230722,20230722-5321,Milanówek Grudów,5321,0,1,1,2
+A1,20230722,20230722-3125,Podkowa Leśna Główna,3125,0,0,1,1
+ZA1,20230722,20230722-5125,Grodzisk Mazowiecki Radońska,5125,0,3,1,2
+A1,20230722,20230722-323,Podkowa Leśna Główna,323,0,0,1,1
+ZA12,20230722,20230722-5323,Milanówek Grudów,5323,0,1,1,2
+A1,20230722,20230722-3127,Podkowa Leśna Główna,3127,0,0,1,1
+ZA1,20230722,20230722-5127,Grodzisk Mazowiecki Radońska,5127,0,3,1,2
+A1,20230722,20230722-325,Podkowa Leśna Główna,325,0,0,1,1
+ZA12,20230722,20230722-5325,Milanówek Grudów,5325,0,1,1,2
+A1,20230722,20230722-3129,Podkowa Leśna Główna,3129,0,0,1,1
+ZA1,20230722,20230722-5129,Grodzisk Mazowiecki Radońska,5129,0,3,1,2
+A1,20230722,20230722-327,Podkowa Leśna Główna,327,0,0,1,1
+ZA12,20230722,20230722-5327,Milanówek Grudów,5327,0,1,1,2
+A1,20230722,20230722-3131,Podkowa Leśna Główna,3131,0,0,1,1
+ZA1,20230722,20230722-5131,Grodzisk Mazowiecki Radońska,5131,0,3,1,2
+A1,20230722,20230722-329,Podkowa Leśna Główna,329,0,0,1,1
+ZA12,20230722,20230722-5329,Milanówek Grudów,5329,0,1,1,2
+A1,20230722,20230722-3133,Podkowa Leśna Główna,3133,0,0,1,1
+ZA1,20230722,20230722-5133,Grodzisk Mazowiecki Radońska,5133,0,3,1,2
+A1,20230722,20230722-331,Podkowa Leśna Główna,331,0,0,1,1
+ZA12,20230722,20230722-5331,Milanówek Grudów,5331,0,1,1,2
+A1,20230722,20230722-3135,Podkowa Leśna Główna,3135,0,0,1,1
+ZA1,20230722,20230722-5135,Grodzisk Mazowiecki Radońska,5135,0,3,1,2
+A1,20230722,20230722-333,Podkowa Leśna Główna,333,0,0,1,1
+ZA12,20230722,20230722-5333,Milanówek Grudów,5333,0,1,1,2
+A1,20230722,20230722-3137,Podkowa Leśna Główna,3137,0,0,1,1
+ZA1,20230722,20230722-5137,Grodzisk Mazowiecki Radońska,5137,0,3,1,2
+A1,20230722,20230722-335,Podkowa Leśna Główna,335,0,0,1,1
+ZA12,20230722,20230722-5335,Milanówek Grudów,5335,0,1,1,2
+A1,20230722,20230722-3139,Podkowa Leśna Główna,3139,0,0,1,1
+ZA1,20230722,20230722-5139,Grodzisk Mazowiecki Radońska,5139,0,3,1,2
+A1,20230722,20230722-337,Podkowa Leśna Główna,337,0,0,1,1
+ZA12,20230722,20230722-5337,Milanówek Grudów,5337,0,1,1,2
+A1,20230722,20230722-3141,Podkowa Leśna Główna,3141,0,0,1,1
+ZA1,20230722,20230722-5141,Grodzisk Mazowiecki Radońska,5141,0,3,1,2
+A1,20230722,20230722-3143,Podkowa Leśna Główna,3143,0,0,1,1
+A1,20230722,20230722-3101,Podkowa Leśna Główna,3101,0,0,1,1
+A1,20230722,20230722-3103,Podkowa Leśna Główna,3103,0,0,1,1
+ZA1,20230722,20230722-5103,Grodzisk Mazowiecki Radońska,5103,0,3,1,2
