@@ -1,2 +1,2 @@
 feed_publisher_name,feed_publisher_url,feed_lang,feed_version
-"Mikołaj Kuranowski","https://mkuran.pl/gtfs/",pl,2023-07-24
+"Mikołaj Kuranowski","https://mkuran.pl/gtfs/",pl,2023-09-03

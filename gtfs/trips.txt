@@ -1,121 +1,257 @@
 route_id,service_id,trip_id,trip_headsign,trip_short_name,direction_id,shape_id,wheelchair_accessible,bikes_allowed
-A1,A,A-100,Warszawa Śródmieście WKD,100,1,0,1,1
-A1,A,A-102,Warszawa Śródmieście WKD,102,1,0,1,1
-ZA12,A,A-5300,Podkowa Leśna Główna,5300,1,1,1,2
-A1,A,A-104,Warszawa Śródmieście WKD,104,1,0,1,1
-A1,A,A-106,Warszawa Śródmieście WKD,106,1,0,1,1
-A1,A,A-302,Warszawa Śródmieście WKD,302,1,2,1,1
-ZA12,A,A-5302,Podkowa Leśna Główna,5302,1,1,1,2
-A1,A,A-108,Warszawa Śródmieście WKD,108,1,0,1,1
-A1,A,A-304,Warszawa Śródmieście WKD,304,1,2,1,1
-ZA12,A,A-5304,Podkowa Leśna Główna,5304,1,1,1,2
-A1,A,A-110,Warszawa Śródmieście WKD,110,1,0,1,1
-A1,A,A-306,Warszawa Śródmieście WKD,306,1,2,1,1
-ZA12,A,A-5306,Podkowa Leśna Główna,5306,1,1,1,2
-A1,A,A-112,Warszawa Śródmieście WKD,112,1,0,1,1
-A1,A,A-308,Warszawa Śródmieście WKD,308,1,2,1,1
-ZA12,A,A-5308,Podkowa Leśna Główna,5308,1,1,1,2
-A1,A,A-114,Warszawa Śródmieście WKD,114,1,0,1,1
-A1,A,A-310,Warszawa Śródmieście WKD,310,1,2,1,1
-ZA12,A,A-5310,Podkowa Leśna Główna,5310,1,1,1,2
-A1,A,A-116,Warszawa Śródmieście WKD,116,1,0,1,1
-A1,A,A-312,Warszawa Śródmieście WKD,312,1,2,1,1
-ZA12,A,A-5312,Podkowa Leśna Główna,5312,1,1,1,2
-A1,A,A-118,Warszawa Śródmieście WKD,118,1,0,1,1
-A1,A,A-314,Warszawa Śródmieście WKD,314,1,2,1,1
-ZA12,A,A-5314,Podkowa Leśna Główna,5314,1,1,1,2
-A1,A,A-120,Warszawa Śródmieście WKD,120,1,0,1,1
-A1,A,A-316,Warszawa Śródmieście WKD,316,1,2,1,1
-ZA12,A,A-5316,Podkowa Leśna Główna,5316,1,1,1,2
-A1,A,A-122,Warszawa Śródmieście WKD,122,1,0,1,1
-A1,A,A-318,Warszawa Śródmieście WKD,318,1,2,1,1
-ZA12,A,A-5318,Podkowa Leśna Główna,5318,1,1,1,2
-A1,A,A-124,Warszawa Śródmieście WKD,124,1,0,1,1
-A1,A,A-320,Warszawa Śródmieście WKD,320,1,2,1,1
-ZA12,A,A-5320,Podkowa Leśna Główna,5320,1,1,1,2
-A1,A,A-126,Warszawa Śródmieście WKD,126,1,0,1,1
-A1,A,A-322,Warszawa Śródmieście WKD,322,1,2,1,1
-ZA12,A,A-5322,Podkowa Leśna Główna,5322,1,1,1,2
-A1,A,A-128,Warszawa Śródmieście WKD,128,1,0,1,1
-A1,A,A-324,Warszawa Śródmieście WKD,324,1,2,1,1
-ZA12,A,A-5324,Podkowa Leśna Główna,5324,1,1,1,2
-A1,A,A-130,Warszawa Śródmieście WKD,130,1,0,1,1
-A1,A,A-326,Warszawa Śródmieście WKD,326,1,2,1,1
-ZA12,A,A-5326,Podkowa Leśna Główna,5326,1,1,1,2
-A1,A,A-132,Warszawa Śródmieście WKD,132,1,0,1,1
-A1,A,A-328,Warszawa Śródmieście WKD,328,1,2,1,1
-ZA12,A,A-5328,Podkowa Leśna Główna,5328,1,1,1,2
-A1,A,A-134,Warszawa Śródmieście WKD,134,1,0,1,1
-A1,A,A-330,Warszawa Śródmieście WKD,330,1,2,1,1
-ZA12,A,A-5330,Podkowa Leśna Główna,5330,1,1,1,2
-A1,A,A-136,Warszawa Śródmieście WKD,136,1,0,1,1
-A1,A,A-332,Warszawa Śródmieście WKD,332,1,2,1,1
-ZA12,A,A-5332,Podkowa Leśna Główna,5332,1,1,1,2
-A1,A,A-138,Warszawa Śródmieście WKD,138,1,0,1,1
-A1,A,A-334,Warszawa Śródmieście WKD,334,1,2,1,1
-ZA12,A,A-5334,Podkowa Leśna Główna,5334,1,1,1,2
-A1,A,A-140,Warszawa Śródmieście WKD,140,1,0,1,1
-A1,A,A-336,Warszawa Śródmieście WKD,336,1,2,1,1
-ZA12,A,A-5336,Podkowa Leśna Główna,5336,1,1,1,2
-A1,A,A-142,Warszawa Śródmieście WKD,142,1,0,1,1
-A1,A,A-300,Warszawa Śródmieście WKD,300,1,2,1,1
-A1,A,A-301,Podkowa Leśna Główna,301,0,3,1,1
-ZA12,A,A-5301,Milanówek Grudów,5301,0,4,1,2
-A1,A,A-105,Grodzisk Mazowiecki Radońska,105,0,5,1,1
-A1,A,A-303,Podkowa Leśna Główna,303,0,3,1,1
-ZA12,A,A-5303,Milanówek Grudów,5303,0,4,1,2
-A1,A,A-107,Grodzisk Mazowiecki Radońska,107,0,5,1,1
-A1,A,A-305,Podkowa Leśna Główna,305,0,3,1,1
-ZA12,A,A-5305,Milanówek Grudów,5305,0,4,1,2
-A1,A,A-109,Grodzisk Mazowiecki Radońska,109,0,5,1,1
-A1,A,A-307,Podkowa Leśna Główna,307,0,3,1,1
-ZA12,A,A-5307,Milanówek Grudów,5307,0,4,1,2
-A1,A,A-111,Grodzisk Mazowiecki Radońska,111,0,5,1,1
-A1,A,A-309,Podkowa Leśna Główna,309,0,3,1,1
-ZA12,A,A-5309,Milanówek Grudów,5309,0,4,1,2
-A1,A,A-113,Grodzisk Mazowiecki Radońska,113,0,5,1,1
-A1,A,A-311,Podkowa Leśna Główna,311,0,3,1,1
-ZA12,A,A-5311,Milanówek Grudów,5311,0,4,1,2
-A1,A,A-115,Grodzisk Mazowiecki Radońska,115,0,5,1,1
-A1,A,A-313,Podkowa Leśna Główna,313,0,3,1,1
-ZA12,A,A-5313,Milanówek Grudów,5313,0,4,1,2
-A1,A,A-117,Grodzisk Mazowiecki Radońska,117,0,5,1,1
-A1,A,A-315,Podkowa Leśna Główna,315,0,3,1,1
-ZA12,A,A-5315,Milanówek Grudów,5315,0,4,1,2
-A1,A,A-119,Grodzisk Mazowiecki Radońska,119,0,5,1,1
-A1,A,A-317,Podkowa Leśna Główna,317,0,3,1,1
-ZA12,A,A-5317,Milanówek Grudów,5317,0,4,1,2
-A1,A,A-121,Grodzisk Mazowiecki Radońska,121,0,5,1,1
-A1,A,A-319,Podkowa Leśna Główna,319,0,3,1,1
-ZA12,A,A-5319,Milanówek Grudów,5319,0,4,1,2
-A1,A,A-123,Grodzisk Mazowiecki Radońska,123,0,5,1,1
-A1,A,A-321,Podkowa Leśna Główna,321,0,3,1,1
-ZA12,A,A-5321,Milanówek Grudów,5321,0,4,1,2
-A1,A,A-125,Grodzisk Mazowiecki Radońska,125,0,5,1,1
-A1,A,A-323,Podkowa Leśna Główna,323,0,3,1,1
-ZA12,A,A-5323,Milanówek Grudów,5323,0,4,1,2
-A1,A,A-127,Grodzisk Mazowiecki Radońska,127,0,5,1,1
-A1,A,A-325,Podkowa Leśna Główna,325,0,3,1,1
-ZA12,A,A-5325,Milanówek Grudów,5325,0,4,1,2
-A1,A,A-129,Grodzisk Mazowiecki Radońska,129,0,5,1,1
-A1,A,A-327,Podkowa Leśna Główna,327,0,3,1,1
-ZA12,A,A-5327,Milanówek Grudów,5327,0,4,1,2
-A1,A,A-131,Grodzisk Mazowiecki Radońska,131,0,5,1,1
-A1,A,A-329,Podkowa Leśna Główna,329,0,3,1,1
-ZA12,A,A-5329,Milanówek Grudów,5329,0,4,1,2
-A1,A,A-133,Grodzisk Mazowiecki Radońska,133,0,5,1,1
-A1,A,A-331,Podkowa Leśna Główna,331,0,3,1,1
-ZA12,A,A-5331,Milanówek Grudów,5331,0,4,1,2
-A1,A,A-135,Grodzisk Mazowiecki Radońska,135,0,5,1,1
-A1,A,A-333,Podkowa Leśna Główna,333,0,3,1,1
-ZA12,A,A-5333,Milanówek Grudów,5333,0,4,1,2
-A1,A,A-137,Grodzisk Mazowiecki Radońska,137,0,5,1,1
-A1,A,A-335,Podkowa Leśna Główna,335,0,3,1,1
-ZA12,A,A-5335,Milanówek Grudów,5335,0,4,1,2
-A1,A,A-139,Grodzisk Mazowiecki Radońska,139,0,5,1,1
-A1,A,A-337,Podkowa Leśna Główna,337,0,3,1,1
-ZA12,A,A-5337,Milanówek Grudów,5337,0,4,1,2
-A1,A,A-141,Grodzisk Mazowiecki Radońska,141,0,5,1,1
-A1,A,A-143,Grodzisk Mazowiecki Radońska,143,0,5,1,1
-A1,A,A-101,Grodzisk Mazowiecki Radońska,101,0,5,1,1
-A1,A,A-103,Grodzisk Mazowiecki Radońska,103,0,5,1,1
+A1,C,C-155,Grodzisk Mazowiecki Radońska,155,0,0,1,1
+ZA12,C,C-5351,Milanówek Grudów,5351,0,1,1,2
+A1,C,C-361,Podkowa Leśna Główna,361,0,2,1,1
+ZA12,C,C-5353,Milanówek Grudów,5353,0,1,1,2
+A1,C,C-157,Grodzisk Mazowiecki Radońska,157,0,0,1,1
+A1,C,C-363,Podkowa Leśna Główna,363,0,2,1,1
+ZA12,C,C-5355,Milanówek Grudów,5355,0,1,1,2
+A1,C,C-159,Grodzisk Mazowiecki Radońska,159,0,0,1,1
+A1,C,C-365,Podkowa Leśna Główna,365,0,2,1,1
+ZA12,C,C-5357,Milanówek Grudów,5357,0,1,1,2
+A1,C,C-161,Grodzisk Mazowiecki Radońska,161,0,0,1,1
+A1,C,C-367,Podkowa Leśna Główna,367,0,2,1,1
+ZA12,C,C-5359,Milanówek Grudów,5359,0,1,1,2
+A1,C,C-163,Grodzisk Mazowiecki Radońska,163,0,0,1,1
+A1,C,C-369,Podkowa Leśna Główna,369,0,2,1,1
+ZA12,C,C-5361,Milanówek Grudów,5361,0,1,1,2
+A1,C,C-165,Grodzisk Mazowiecki Radońska,165,0,0,1,1
+A1,C,C-371,Podkowa Leśna Główna,371,0,2,1,1
+ZA12,C,C-5363,Milanówek Grudów,5363,0,1,1,2
+A1,C,C-167,Grodzisk Mazowiecki Radońska,167,0,0,1,1
+A1,C,C-373,Podkowa Leśna Główna,373,0,2,1,1
+ZA12,C,C-5365,Milanówek Grudów,5365,0,1,1,2
+A1,C,C-169,Grodzisk Mazowiecki Radońska,169,0,0,1,1
+A1,C,C-375,Podkowa Leśna Główna,375,0,2,1,1
+ZA12,C,C-5367,Milanówek Grudów,5367,0,1,1,2
+A1,C,C-171,Grodzisk Mazowiecki Radońska,171,0,0,1,1
+A1,C,C-377,Podkowa Leśna Główna,377,0,2,1,1
+ZA12,C,C-5369,Milanówek Grudów,5369,0,1,1,2
+A1,C,C-173,Grodzisk Mazowiecki Radońska,173,0,0,1,1
+A1,C,C-379,Podkowa Leśna Główna,379,0,2,1,1
+ZA12,C,C-5371,Milanówek Grudów,5371,0,1,1,2
+A1,C,C-175,Grodzisk Mazowiecki Radońska,175,0,0,1,1
+A1,C,C-381,Podkowa Leśna Główna,381,0,2,1,1
+ZA12,C,C-5373,Milanówek Grudów,5373,0,1,1,2
+A1,C,C-177,Grodzisk Mazowiecki Radońska,177,0,0,1,1
+A1,C,C-383,Podkowa Leśna Główna,383,0,2,1,1
+ZA12,C,C-5375,Milanówek Grudów,5375,0,1,1,2
+A1,C,C-179,Grodzisk Mazowiecki Radońska,179,0,0,1,1
+A1,C,C-385,Podkowa Leśna Główna,385,0,2,1,1
+ZA12,C,C-5377,Milanówek Grudów,5377,0,1,1,2
+A1,C,C-181,Grodzisk Mazowiecki Radońska,181,0,0,1,1
+A1,C,C-387,Podkowa Leśna Główna,387,0,2,1,1
+ZA12,C,C-5379,Milanówek Grudów,5379,0,1,1,2
+A1,C,C-183,Grodzisk Mazowiecki Radońska,183,0,0,1,1
+A1,C,C-389,Podkowa Leśna Główna,389,0,2,1,1
+ZA12,C,C-5381,Milanówek Grudów,5381,0,1,1,2
+A1,C,C-185,Grodzisk Mazowiecki Radońska,185,0,0,1,1
+A1,C,C-391,Podkowa Leśna Główna,391,0,2,1,1
+ZA12,C,C-5383,Milanówek Grudów,5383,0,1,1,2
+A1,C,C-187,Grodzisk Mazowiecki Radońska,187,0,0,1,1
+A1,C,C-393,Podkowa Leśna Główna,393,0,2,1,1
+ZA12,C,C-5385,Milanówek Grudów,5385,0,1,1,2
+A1,C,C-189,Grodzisk Mazowiecki Radońska,189,0,0,1,1
+A1,C,C-395,Podkowa Leśna Główna,395,0,2,1,1
+ZA12,C,C-5387,Milanówek Grudów,5387,0,1,1,2
+A1,C,C-191,Grodzisk Mazowiecki Radońska,191,0,0,1,1
+A1,C,C-397,Podkowa Leśna Główna,397,0,2,1,1
+A1,C,C-151,Grodzisk Mazowiecki Radońska,151,0,0,1,1
+A1,C,C-153,Grodzisk Mazowiecki Radońska,153,0,0,1,1
+A1,C,C-150,Warszawa Reduta Ordona,150,1,3,1,1
+A1,C,C-152,Warszawa Reduta Ordona,152,1,3,1,1
+A1,C,C-360,Warszawa Reduta Ordona,360,1,4,1,1
+ZA12,C,C-5350,Podkowa Leśna Główna,5350,1,5,1,2
+A1,C,C-154,Warszawa Reduta Ordona,154,1,3,1,1
+A1,C,C-362,Warszawa Reduta Ordona,362,1,4,1,1
+ZA12,C,C-5352,Podkowa Leśna Główna,5352,1,5,1,2
+A1,C,C-156,Warszawa Reduta Ordona,156,1,3,1,1
+A1,C,C-364,Warszawa Reduta Ordona,364,1,4,1,1
+ZA12,C,C-5354,Podkowa Leśna Główna,5354,1,5,1,2
+A1,C,C-158,Warszawa Reduta Ordona,158,1,3,1,1
+A1,C,C-366,Warszawa Reduta Ordona,366,1,4,1,1
+ZA12,C,C-5356,Podkowa Leśna Główna,5356,1,5,1,2
+A1,C,C-160,Warszawa Reduta Ordona,160,1,3,1,1
+A1,C,C-368,Warszawa Reduta Ordona,368,1,4,1,1
+ZA12,C,C-5358,Podkowa Leśna Główna,5358,1,5,1,2
+A1,C,C-162,Warszawa Reduta Ordona,162,1,3,1,1
+A1,C,C-370,Warszawa Reduta Ordona,370,1,4,1,1
+ZA12,C,C-5360,Podkowa Leśna Główna,5360,1,5,1,2
+A1,C,C-164,Warszawa Reduta Ordona,164,1,3,1,1
+A1,C,C-372,Warszawa Reduta Ordona,372,1,4,1,1
+ZA12,C,C-5362,Podkowa Leśna Główna,5362,1,5,1,2
+A1,C,C-166,Warszawa Reduta Ordona,166,1,3,1,1
+A1,C,C-374,Warszawa Reduta Ordona,374,1,4,1,1
+ZA12,C,C-5364,Podkowa Leśna Główna,5364,1,5,1,2
+A1,C,C-168,Warszawa Reduta Ordona,168,1,3,1,1
+A1,C,C-376,Warszawa Reduta Ordona,376,1,4,1,1
+ZA12,C,C-5366,Podkowa Leśna Główna,5366,1,5,1,2
+A1,C,C-170,Warszawa Reduta Ordona,170,1,3,1,1
+A1,C,C-378,Warszawa Reduta Ordona,378,1,4,1,1
+ZA12,C,C-5368,Podkowa Leśna Główna,5368,1,5,1,2
+A1,C,C-172,Warszawa Reduta Ordona,172,1,3,1,1
+A1,C,C-380,Warszawa Reduta Ordona,380,1,4,1,1
+ZA12,C,C-5370,Podkowa Leśna Główna,5370,1,5,1,2
+A1,C,C-174,Warszawa Reduta Ordona,174,1,3,1,1
+A1,C,C-382,Warszawa Reduta Ordona,382,1,4,1,1
+ZA12,C,C-5372,Podkowa Leśna Główna,5372,1,5,1,2
+A1,C,C-176,Warszawa Reduta Ordona,176,1,3,1,1
+A1,C,C-384,Warszawa Reduta Ordona,384,1,4,1,1
+ZA12,C,C-5374,Podkowa Leśna Główna,5374,1,5,1,2
+A1,C,C-178,Warszawa Reduta Ordona,178,1,3,1,1
+A1,C,C-386,Warszawa Reduta Ordona,386,1,4,1,1
+ZA12,C,C-5376,Podkowa Leśna Główna,5376,1,5,1,2
+A1,C,C-180,Warszawa Reduta Ordona,180,1,3,1,1
+A1,C,C-388,Warszawa Reduta Ordona,388,1,4,1,1
+ZA12,C,C-5378,Podkowa Leśna Główna,5378,1,5,1,2
+A1,C,C-182,Warszawa Reduta Ordona,182,1,3,1,1
+A1,C,C-390,Warszawa Reduta Ordona,390,1,4,1,1
+ZA12,C,C-5380,Podkowa Leśna Główna,5380,1,5,1,2
+A1,C,C-184,Warszawa Reduta Ordona,184,1,3,1,1
+A1,C,C-392,Warszawa Reduta Ordona,392,1,4,1,1
+ZA12,C,C-5382,Podkowa Leśna Główna,5382,1,5,1,2
+A1,C,C-186,Warszawa Reduta Ordona,186,1,3,1,1
+A1,C,C-394,Warszawa Reduta Ordona,394,1,4,1,1
+ZA12,C,C-5384,Podkowa Leśna Główna,5384,1,5,1,2
+A1,C,C-188,Warszawa Reduta Ordona,188,1,3,1,1
+A1,C,C-396,Warszawa Reduta Ordona,396,1,4,1,1
+ZA12,C,C-5386,Podkowa Leśna Główna,5386,1,5,1,2
+A1,C,C-190,Warszawa Reduta Ordona,190,1,3,1,1
+A1,D,D-105,Grodzisk Mazowiecki Radońska,105,0,0,1,1
+ZA12,D,D-5301,Milanówek Grudów,5301,0,1,1,2
+A1,D,D-301,Podkowa Leśna Główna,301,0,2,1,1
+A1,D,D-303,Podkowa Leśna Główna,303,0,2,1,1
+ZA12,D,D-5303,Milanówek Grudów,5303,0,1,1,2
+A1,D,D-107,Grodzisk Mazowiecki Radońska,107,0,0,1,1
+A1,D,D-305,Podkowa Leśna Główna,305,0,2,1,1
+ZA12,D,D-5305,Milanówek Grudów,5305,0,1,1,2
+A1,D,D-307,Podkowa Leśna Główna,307,0,2,1,1
+A1,D,D-109,Grodzisk Mazowiecki Radońska,109,0,0,1,1
+A1,D,D-309,Podkowa Leśna Główna,309,0,2,1,1
+ZA12,D,D-5307,Milanówek Grudów,5307,0,1,1,2
+A1,D,D-311,Podkowa Leśna Główna,311,0,2,1,1
+A1,D,D-111,Grodzisk Mazowiecki Radońska,111,0,0,1,1
+A1,D,D-313,Podkowa Leśna Główna,313,0,2,1,1
+ZA12,D,D-5309,Milanówek Grudów,5309,0,1,1,2
+A1,D,D-315,Podkowa Leśna Główna,315,0,2,1,1
+A1,D,D-113,Grodzisk Mazowiecki Radońska,113,0,0,1,1
+A1,D,D-317,Podkowa Leśna Główna,317,0,2,1,1
+ZA12,D,D-5311,Milanówek Grudów,5311,0,1,1,2
+A1,D,D-115,Grodzisk Mazowiecki Radońska,115,0,0,1,1
+A1,D,D-319,Podkowa Leśna Główna,319,0,2,1,1
+ZA12,D,D-5313,Milanówek Grudów,5313,0,1,1,2
+A1,D,D-117,Grodzisk Mazowiecki Radońska,117,0,0,1,1
+A1,D,D-321,Podkowa Leśna Główna,321,0,2,1,1
+ZA12,D,D-5315,Milanówek Grudów,5315,0,1,1,2
+A1,D,D-119,Grodzisk Mazowiecki Radońska,119,0,0,1,1
+A1,D,D-323,Podkowa Leśna Główna,323,0,2,1,1
+ZA12,D,D-5317,Milanówek Grudów,5317,0,1,1,2
+A1,D,D-121,Grodzisk Mazowiecki Radońska,121,0,0,1,1
+A1,D,D-325,Podkowa Leśna Główna,325,0,2,1,1
+ZA12,D,D-5319,Milanówek Grudów,5319,0,1,1,2
+A1,D,D-123,Grodzisk Mazowiecki Radońska,123,0,0,1,1
+A1,D,D-327,Podkowa Leśna Główna,327,0,2,1,1
+A1,D,D-329,Podkowa Leśna Główna,329,0,2,1,1
+ZA12,D,D-5321,Milanówek Grudów,5321,0,1,1,2
+A1,D,D-125,Grodzisk Mazowiecki Radońska,125,0,0,1,1
+A1,D,D-331,Podkowa Leśna Główna,331,0,2,1,1
+A1,D,D-333,Podkowa Leśna Główna,333,0,2,1,1
+ZA12,D,D-5323,Milanówek Grudów,5323,0,1,1,2
+A1,D,D-127,Grodzisk Mazowiecki Radońska,127,0,0,1,1
+A1,D,D-335,Podkowa Leśna Główna,335,0,2,1,1
+A1,D,D-337,Podkowa Leśna Główna,337,0,2,1,1
+ZA12,D,D-5325,Milanówek Grudów,5325,0,1,1,2
+A1,D,D-129,Grodzisk Mazowiecki Radońska,129,0,0,1,1
+A1,D,D-339,Podkowa Leśna Główna,339,0,2,1,1
+A1,D,D-341,Podkowa Leśna Główna,341,0,2,1,1
+ZA12,D,D-5327,Milanówek Grudów,5327,0,1,1,2
+A1,D,D-131,Grodzisk Mazowiecki Radońska,131,0,0,1,1
+A1,D,D-343,Podkowa Leśna Główna,343,0,2,1,1
+A1,D,D-345,Podkowa Leśna Główna,345,0,2,1,1
+ZA12,D,D-5329,Milanówek Grudów,5329,0,1,1,2
+A1,D,D-133,Grodzisk Mazowiecki Radońska,133,0,0,1,1
+A1,D,D-347,Podkowa Leśna Główna,347,0,2,1,1
+ZA12,D,D-5331,Milanówek Grudów,5331,0,1,1,2
+A1,D,D-135,Grodzisk Mazowiecki Radońska,135,0,0,1,1
+A1,D,D-349,Podkowa Leśna Główna,349,0,2,1,1
+ZA12,D,D-5333,Milanówek Grudów,5333,0,1,1,2
+A1,D,D-137,Grodzisk Mazowiecki Radońska,137,0,0,1,1
+A1,D,D-351,Podkowa Leśna Główna,351,0,2,1,1
+ZA12,D,D-5335,Milanówek Grudów,5335,0,1,1,2
+A1,D,D-139,Grodzisk Mazowiecki Radońska,139,0,0,1,1
+A1,D,D-353,Podkowa Leśna Główna,353,0,2,1,1
+ZA12,D,D-5337,Milanówek Grudów,5337,0,1,1,2
+A1,D,D-141,Grodzisk Mazowiecki Radońska,141,0,0,1,1
+A1,D,D-143,Grodzisk Mazowiecki Radońska,143,0,0,1,1
+A1,D,D-145,Grodzisk Mazowiecki Radońska,145,0,0,1,1
+A1,D,D-101,Grodzisk Mazowiecki Radońska,101,0,0,1,1
+A1,D,D-103,Grodzisk Mazowiecki Radońska,103,0,0,1,1
+A1,D,D-100,Warszawa Reduta Ordona,100,1,3,1,1
+A1,D,D-102,Warszawa Reduta Ordona,102,1,3,1,1
+ZA12,D,D-5300,Podkowa Leśna Główna,5300,1,5,1,2
+A1,D,D-104,Warszawa Reduta Ordona,104,1,3,1,1
+A1,D,D-106,Warszawa Reduta Ordona,106,1,3,1,1
+A1,D,D-300,Warszawa Reduta Ordona,300,1,4,1,1
+A1,D,D-302,Warszawa Reduta Ordona,302,1,4,1,1
+ZA12,D,D-5302,Podkowa Leśna Główna,5302,1,5,1,2
+A1,D,D-108,Warszawa Reduta Ordona,108,1,3,1,1
+A1,D,D-110,Warszawa Reduta Ordona,110,1,3,1,1
+A1,D,D-304,Warszawa Reduta Ordona,304,1,4,1,1
+ZA12,D,D-5304,Podkowa Leśna Główna,5304,1,5,1,2
+A1,D,D-306,Warszawa Reduta Ordona,306,1,4,1,1
+A1,D,D-112,Warszawa Reduta Ordona,112,1,3,1,1
+A1,D,D-308,Warszawa Reduta Ordona,308,1,4,1,1
+ZA12,D,D-5306,Podkowa Leśna Główna,5306,1,5,1,2
+A1,D,D-310,Warszawa Reduta Ordona,310,1,4,1,1
+A1,D,D-114,Warszawa Reduta Ordona,114,1,3,1,1
+A1,D,D-312,Warszawa Reduta Ordona,312,1,4,1,1
+ZA12,D,D-5308,Podkowa Leśna Główna,5308,1,5,1,2
+A1,D,D-116,Warszawa Reduta Ordona,116,1,3,1,1
+A1,D,D-314,Warszawa Reduta Ordona,314,1,4,1,1
+ZA12,D,D-5310,Podkowa Leśna Główna,5310,1,5,1,2
+A1,D,D-118,Warszawa Reduta Ordona,118,1,3,1,1
+A1,D,D-316,Warszawa Reduta Ordona,316,1,4,1,1
+ZA12,D,D-5312,Podkowa Leśna Główna,5312,1,5,1,2
+A1,D,D-120,Warszawa Reduta Ordona,120,1,3,1,1
+A1,D,D-318,Warszawa Reduta Ordona,318,1,4,1,1
+ZA12,D,D-5314,Podkowa Leśna Główna,5314,1,5,1,2
+A1,D,D-122,Warszawa Reduta Ordona,122,1,3,1,1
+A1,D,D-320,Warszawa Reduta Ordona,320,1,4,1,1
+ZA12,D,D-5316,Podkowa Leśna Główna,5316,1,5,1,2
+A1,D,D-124,Warszawa Reduta Ordona,124,1,3,1,1
+A1,D,D-322,Warszawa Reduta Ordona,322,1,4,1,1
+A1,D,D-324,Warszawa Reduta Ordona,324,1,4,1,1
+ZA12,D,D-5318,Podkowa Leśna Główna,5318,1,5,1,2
+A1,D,D-126,Warszawa Reduta Ordona,126,1,3,1,1
+A1,D,D-326,Warszawa Reduta Ordona,326,1,4,1,1
+A1,D,D-328,Warszawa Reduta Ordona,328,1,4,1,1
+ZA12,D,D-5320,Podkowa Leśna Główna,5320,1,5,1,2
+A1,D,D-128,Warszawa Reduta Ordona,128,1,3,1,1
+A1,D,D-330,Warszawa Reduta Ordona,330,1,4,1,1
+A1,D,D-332,Warszawa Reduta Ordona,332,1,4,1,1
+ZA12,D,D-5322,Podkowa Leśna Główna,5322,1,5,1,2
+A1,D,D-130,Warszawa Reduta Ordona,130,1,3,1,1
+A1,D,D-334,Warszawa Reduta Ordona,334,1,4,1,1
+A1,D,D-336,Warszawa Reduta Ordona,336,1,4,1,1
+ZA12,D,D-5324,Podkowa Leśna Główna,5324,1,5,1,2
+A1,D,D-132,Warszawa Reduta Ordona,132,1,3,1,1
+A1,D,D-338,Warszawa Reduta Ordona,338,1,4,1,1
+A1,D,D-340,Warszawa Reduta Ordona,340,1,4,1,1
+ZA12,D,D-5326,Podkowa Leśna Główna,5326,1,5,1,2
+A1,D,D-134,Warszawa Reduta Ordona,134,1,3,1,1
+A1,D,D-342,Warszawa Reduta Ordona,342,1,4,1,1
+ZA12,D,D-5328,Podkowa Leśna Główna,5328,1,5,1,2
+A1,D,D-136,Warszawa Reduta Ordona,136,1,3,1,1
+A1,D,D-344,Warszawa Reduta Ordona,344,1,4,1,1
+ZA12,D,D-5330,Podkowa Leśna Główna,5330,1,5,1,2
+A1,D,D-138,Warszawa Reduta Ordona,138,1,3,1,1
+A1,D,D-346,Warszawa Reduta Ordona,346,1,4,1,1
+ZA12,D,D-5332,Podkowa Leśna Główna,5332,1,5,1,2
+A1,D,D-140,Warszawa Reduta Ordona,140,1,3,1,1
+A1,D,D-348,Warszawa Reduta Ordona,348,1,4,1,1
+ZA12,D,D-5334,Podkowa Leśna Główna,5334,1,5,1,2
+A1,D,D-142,Warszawa Reduta Ordona,142,1,3,1,1
+A1,D,D-350,Warszawa Reduta Ordona,350,1,4,1,1
+ZA12,D,D-5336,Podkowa Leśna Główna,5336,1,5,1,2
+A1,D,D-352,Warszawa Reduta Ordona,352,1,4,1,1
+A1,D,D-144,Warszawa Reduta Ordona,144,1,3,1,1
