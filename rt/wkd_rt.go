@@ -32,8 +32,8 @@ import (
 )
 
 const (
-	ColorReset  = "\x1B[33m"
-	ColorYellow = "\x1B[0m"
+	ColorReset  = "\x1B[0m"
+	ColorYellow = "\x1B[33m"
 )
 
 type ReadAtSeeker interface {
