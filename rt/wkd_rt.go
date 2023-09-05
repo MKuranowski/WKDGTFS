@@ -196,8 +196,8 @@ func scrapeDirectionList(trainsInfoContentRow *goquery.Selection) (boards map[st
 		// Find the list with all departures
 		details := stationElement.Find(".station-timetable-details")
 		if details.Length() == 0 {
-			err = fmt.Errorf("element %d (%s): missing departure list (.station-timetable-details)", i, stationName)
-			return false
+			// No departures from this stop
+			return true
 		}
 
 		// Parse the departure list
