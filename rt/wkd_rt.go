@@ -219,6 +219,8 @@ func scrapeDirectionList(trainsInfoContentRow *goquery.Selection) (boards map[st
 var timetableEntryPattern = regexp.MustCompile(`train\s+nr\s+(\w+)\s+at\s+(\d?\d:\d\d)`)
 
 func scrapeStationTimetableDetails(stationTimetableDetails *goquery.Selection) (board []BoardEntry, err error) {
+	seenNumbers := make(set.Set[string])
+
 	// NOTE: No checking if there are no <li> elements in stationTimetableDetails;
 	//       missing departures are expected e.g. at night, when no trains are running.
 	stationTimetableDetails.Find("li").EachWithBreak(func(i int, entry *goquery.Selection) bool {
@@ -234,6 +236,12 @@ func scrapeStationTimetableDetails(stationTimetableDetails *goquery.Selection) (
 		}
 
 		number := strings.TrimLeft(match[1], "0")
+
+		// Prevent duplicate facts for the same train
+		if seenNumbers.Has(number) {
+			return true
+		}
+		seenNumbers.Add(number)
 
 		// Try to parse the time value from the match
 		var time Time
