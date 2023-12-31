@@ -47,7 +47,7 @@ A12,D,D-2205,Milanówek Grudów,2205,0,0,1,1
 A1,D,D-105,Grodzisk Mazowiecki Radońska,105,0,1,1,1
 A1,D,D-107,Grodzisk Mazowiecki Radońska,107,0,1,1,1
 A12,D,D-201,Grodzisk Mazowiecki Radońska,201,0,4,1,1
-A1,,-109,Podkowa Leśna Zachodnia,109,0,5,1,1
+A1,D,D-109,Podkowa Leśna Zachodnia,109,0,5,1,1
 A1,D,D-111,Grodzisk Mazowiecki Radońska,111,0,1,1,1
 A12,D,D-203,Milanówek Grudów,203,0,2,1,1
 A1,D,D-113,Grodzisk Mazowiecki Radońska,113,0,1,1,1
