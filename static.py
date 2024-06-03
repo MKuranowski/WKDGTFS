@@ -106,9 +106,7 @@ def extract_trips_from_csv(f: Iterable[str]) -> Iterable[Trip]:
         )
 
 
-def extract_stop_times(
-    stop_ids: Sequence[str], csv_times: Sequence[str]
-) -> list[StopTime]:
+def extract_stop_times(stop_ids: Sequence[str], csv_times: Sequence[str]) -> list[StopTime]:
     stop_times: list[StopTime] = []
 
     for idx, (stop_id, csv_time) in enumerate(zip(stop_ids, csv_times, strict=True)):
@@ -150,7 +148,10 @@ def extract_stop_times(
 OUTBOUND_DIRECTION: list[tuple[str, str]] = [
     ("wzach", "walje"),
     ("prusz", "komor"),
+    ("prusp", "komor"),
+    ("komor", "regul"),
     ("plglo", "milgr"),
+    ("plzac", "milgr"),
     ("plglo", "gmjor"),
     ("gmjor", "gmrad"),
 ]
@@ -176,9 +177,7 @@ class Shaper:
 
         self.file = open("gtfs/shapes.txt", mode="w", encoding="utf-8", newline="")
         self.writer = csv.writer(self.file)
-        self.writer.writerow(
-            ("shape_id", "shape_pt_sequence", "shape_pt_lat", "shape_pt_lon")
-        )
+        self.writer.writerow(("shape_id", "shape_pt_sequence", "shape_pt_lat", "shape_pt_lon"))
 
     def close(self) -> None:
         self.file.close()
@@ -243,9 +242,7 @@ class GTFSGenerator:
             )
         )
 
-        self.f_times = open(
-            "gtfs/stop_times.txt", mode="w", encoding="utf-8", newline=""
-        )
+        self.f_times = open("gtfs/stop_times.txt", mode="w", encoding="utf-8", newline="")
         self.w_times = csv.writer(self.f_times)
         self.w_times.writerow(
             (
@@ -330,7 +327,5 @@ if __name__ == "__main__":
                 continue
 
             print(timetable_file_path.name)
-            with timetable_file_path.open(
-                mode="r", encoding="utf-8-sig", newline=""
-            ) as f:
+            with timetable_file_path.open(mode="r", encoding="utf-8-sig", newline="") as f:
                 generator.process_trips_from_file(f)
