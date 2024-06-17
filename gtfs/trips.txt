@@ -1,209 +1,87 @@
 route_id,service_id,trip_id,trip_headsign,trip_short_name,direction_id,shape_id,wheelchair_accessible,bikes_allowed
-A12,A,A-2351,Milanówek Grudów,2351,0,0,1,1
-A1,A,A-1151,Reguły,1151,0,1,1,1
-A1,A,A-4003,Grodzisk Mazowiecki Radońska,4003,0,2,1,1
-A1,A,A-1053,Grodzisk Mazowiecki Radońska,1053,0,3,1,1
-A12,A,A-2051,Milanówek Grudów,2051,0,4,1,1
-A1,A,A-1153,Reguły,1153,0,1,1,1
-A1,A,A-4005,Grodzisk Mazowiecki Radońska,4005,0,2,1,1
-ZA1,A,A-5505,Komorów,5505,0,5,1,2
-A1,A,A-4007,Grodzisk Mazowiecki Radońska,4007,0,2,1,1
-ZA1,A,A-5153,Komorów,5153,1,6,1,2
-A1,A,A-1055,Grodzisk Mazowiecki Radońska,1055,0,3,1,1
-A12,A,A-2053,Milanówek Grudów,2053,0,4,1,1
-A1,A,A-1155,Reguły,1155,0,1,1,1
-A1,A,A-4009,Grodzisk Mazowiecki Radońska,4009,0,2,1,1
-ZA1,A,A-5009,Komorów,5009,0,7,1,2
-A1,A,A-4011,Grodzisk Mazowiecki Radońska,4011,0,2,1,1
-ZA1,A,A-5155,Komorów,5155,1,6,1,2
-A1,A,A-1057,Grodzisk Mazowiecki Radońska,1057,0,3,1,1
-A12,A,A-2055,Milanówek Grudów,2055,0,4,1,1
-A1,A,A-1157,Reguły,1157,0,1,1,1
-A1,A,A-4013,Grodzisk Mazowiecki Radońska,4013,0,2,1,1
-ZA1,A,A-5013,Komorów,5013,0,7,1,2
-A1,A,A-4015,Grodzisk Mazowiecki Radońska,4015,0,2,1,1
-ZA1,A,A-5157,Komorów,5157,1,6,1,2
-A1,A,A-1059,Grodzisk Mazowiecki Radońska,1059,0,3,1,1
-A12,A,A-2057,Milanówek Grudów,2057,0,4,1,1
-A1,A,A-1159,Reguły,1159,0,1,1,1
-A1,A,A-4017,Grodzisk Mazowiecki Radońska,4017,0,2,1,1
-ZA1,A,A-5017,Komorów,5017,0,7,1,2
-A1,A,A-4019,Grodzisk Mazowiecki Radońska,4019,0,2,1,1
-ZA1,A,A-5159,Komorów,5159,1,6,1,2
-A1,A,A-1061,Grodzisk Mazowiecki Radońska,1061,0,3,1,1
-A12,A,A-2059,Milanówek Grudów,2059,0,4,1,1
-A1,A,A-1161,Reguły,1161,0,1,1,1
-A1,A,A-4021,Grodzisk Mazowiecki Radońska,4021,0,2,1,1
-ZA1,A,A-5021,Komorów,5021,0,7,1,2
-A1,A,A-4023,Grodzisk Mazowiecki Radońska,4023,0,2,1,1
-ZA1,A,A-5161,Komorów,5161,1,6,1,2
-A1,A,A-1063,Grodzisk Mazowiecki Radońska,1063,0,3,1,1
-A12,A,A-2061,Milanówek Grudów,2061,0,4,1,1
-A1,A,A-1163,Reguły,1163,0,1,1,1
-A1,A,A-4025,Grodzisk Mazowiecki Radońska,4025,0,2,1,1
-ZA1,A,A-5025,Komorów,5025,0,7,1,2
-A1,A,A-4027,Grodzisk Mazowiecki Radońska,4027,0,2,1,1
-ZA1,A,A-5163,Komorów,5163,1,6,1,2
-A1,A,A-1065,Grodzisk Mazowiecki Radońska,1065,0,3,1,1
-A12,A,A-2063,Milanówek Grudów,2063,0,4,1,1
-A1,A,A-1165,Reguły,1165,0,1,1,1
-A1,A,A-4029,Grodzisk Mazowiecki Radońska,4029,0,2,1,1
-ZA1,A,A-5029,Komorów,5029,0,7,1,2
-A1,A,A-4031,Grodzisk Mazowiecki Radońska,4031,0,2,1,1
-ZA1,A,A-5165,Komorów,5165,1,6,1,2
-A1,A,A-1067,Grodzisk Mazowiecki Radońska,1067,0,3,1,1
-A12,A,A-2065,Milanówek Grudów,2065,0,4,1,1
-A1,A,A-1167,Reguły,1167,0,1,1,1
-A1,A,A-4033,Grodzisk Mazowiecki Radońska,4033,0,2,1,1
-ZA1,A,A-5033,Komorów,5033,0,7,1,2
-A1,A,A-4035,Grodzisk Mazowiecki Radońska,4035,0,2,1,1
-ZA1,A,A-5167,Komorów,5167,1,6,1,2
-A1,A,A-1069,Grodzisk Mazowiecki Radońska,1069,0,3,1,1
-A12,A,A-2067,Milanówek Grudów,2067,0,4,1,1
-A1,A,A-1169,Reguły,1169,0,1,1,1
-A1,A,A-4037,Grodzisk Mazowiecki Radońska,4037,0,2,1,1
-ZA1,A,A-5037,Komorów,5037,0,7,1,2
-A1,A,A-4039,Grodzisk Mazowiecki Radońska,4039,0,2,1,1
-ZA1,A,A-5169,Komorów,5169,1,6,1,2
-A1,A,A-1071,Grodzisk Mazowiecki Radońska,1071,0,3,1,1
-A12,A,A-2069,Milanówek Grudów,2069,0,4,1,1
-A1,A,A-1171,Reguły,1171,0,1,1,1
-A1,A,A-4041,Grodzisk Mazowiecki Radońska,4041,0,2,1,1
-ZA1,A,A-5041,Komorów,5041,0,7,1,2
-A1,A,A-4043,Grodzisk Mazowiecki Radońska,4043,0,2,1,1
-ZA1,A,A-5171,Komorów,5171,1,6,1,2
-A1,A,A-1073,Grodzisk Mazowiecki Radońska,1073,0,3,1,1
-A12,A,A-2071,Milanówek Grudów,2071,0,4,1,1
-A1,A,A-1173,Reguły,1173,0,1,1,1
-A1,A,A-4045,Grodzisk Mazowiecki Radońska,4045,0,2,1,1
-ZA1,A,A-5045,Komorów,5045,0,7,1,2
-A1,A,A-4047,Grodzisk Mazowiecki Radońska,4047,0,2,1,1
-ZA1,A,A-5173,Komorów,5173,1,6,1,2
-A1,A,A-1075,Grodzisk Mazowiecki Radońska,1075,0,3,1,1
-A12,A,A-2073,Milanówek Grudów,2073,0,4,1,1
-A1,A,A-1175,Reguły,1175,0,1,1,1
-A1,A,A-4049,Grodzisk Mazowiecki Radońska,4049,0,2,1,1
-ZA1,A,A-5049,Komorów,5049,0,7,1,2
-A1,A,A-4051,Grodzisk Mazowiecki Radońska,4051,0,2,1,1
-ZA1,A,A-5175,Komorów,5175,1,6,1,2
-A1,A,A-1077,Grodzisk Mazowiecki Radońska,1077,0,3,1,1
-A12,A,A-2075,Milanówek Grudów,2075,0,4,1,1
-A1,A,A-1177,Reguły,1177,0,1,1,1
-A1,A,A-4053,Grodzisk Mazowiecki Radońska,4053,0,2,1,1
-ZA1,A,A-5053,Komorów,5053,0,7,1,2
-A1,A,A-4055,Grodzisk Mazowiecki Radońska,4055,0,2,1,1
-ZA1,A,A-5177,Komorów,5177,1,6,1,2
-A1,A,A-1079,Grodzisk Mazowiecki Radońska,1079,0,3,1,1
-A12,A,A-2077,Milanówek Grudów,2077,0,4,1,1
-A1,A,A-1179,Reguły,1179,0,1,1,1
-A1,A,A-4057,Grodzisk Mazowiecki Radońska,4057,0,2,1,1
-ZA1,A,A-5057,Komorów,5057,0,7,1,2
-A1,A,A-3351,Grodzisk Mazowiecki Radońska,3351,0,8,1,1
-A1,A,A-4001,Grodzisk Mazowiecki Radońska,4001,0,2,1,1
-ZA1,A,A-5179,Komorów,5179,1,6,1,2
-A1,A,A-1081,Grodzisk Mazowiecki Radońska,1081,0,3,1,1
-A1,A,A-1051,Grodzisk Mazowiecki Radońska,1051,0,3,1,1
-A1,A,A-1050,Warszawa Śródmieście WKD,1050,1,9,1,1
-A1,A,A-1052,Warszawa Śródmieście WKD,1052,1,9,1,1
-A1,A,A-3350,Podkowa Leśna Zachodnia,3350,1,10,1,1
-A1,A,A-4000,Komorów,4000,1,11,1,1
-A1,A,A-1150,Warszawa Śródmieście WKD,1150,1,12,1,1
-A1,A,A-2050,Komorów,2050,1,13,1,1
-A1,A,A-1054,Warszawa Śródmieście WKD,1054,1,9,1,1
-A1,A,A-4002,Komorów,4002,1,11,1,1
-ZA1,A,A-5152,Reguły,5152,0,14,1,2
-A1,A,A-4004,Komorów,4004,1,11,1,1
-ZA1,A,A-5004,Malichy,5004,1,15,1,2
-A1,A,A-1152,Warszawa Śródmieście WKD,1152,1,12,1,1
-A1,A,A-2052,Komorów,2052,1,13,1,1
-A1,A,A-1056,Warszawa Śródmieście WKD,1056,1,9,1,1
-A1,A,A-4006,Komorów,4006,1,11,1,1
-ZA1,A,A-5154,Reguły,5154,0,14,1,2
-A1,A,A-4008,Komorów,4008,1,11,1,1
-ZA1,A,A-5008,Malichy,5008,1,15,1,2
-A1,A,A-1154,Warszawa Śródmieście WKD,1154,1,12,1,1
-A1,A,A-2054,Komorów,2054,1,13,1,1
-A1,A,A-1058,Warszawa Śródmieście WKD,1058,1,9,1,1
-A1,A,A-4010,Komorów,4010,1,11,1,1
-ZA1,A,A-5156,Reguły,5156,0,14,1,2
-A1,A,A-4012,Komorów,4012,1,11,1,1
-ZA1,A,A-5012,Malichy,5012,1,15,1,2
-A1,A,A-1156,Warszawa Śródmieście WKD,1156,1,12,1,1
-A1,A,A-2056,Komorów,2056,1,13,1,1
-A1,A,A-1060,Warszawa Śródmieście WKD,1060,1,9,1,1
-A1,A,A-4014,Komorów,4014,1,11,1,1
-ZA1,A,A-5158,Reguły,5158,0,14,1,2
-A1,A,A-4016,Komorów,4016,1,11,1,1
-ZA1,A,A-5016,Malichy,5016,1,15,1,2
-A1,A,A-1158,Warszawa Śródmieście WKD,1158,1,12,1,1
-A1,A,A-2058,Komorów,2058,1,13,1,1
-A1,A,A-1062,Warszawa Śródmieście WKD,1062,1,9,1,1
-A1,A,A-4018,Komorów,4018,1,11,1,1
-ZA1,A,A-5160,Reguły,5160,0,14,1,2
-A1,A,A-4020,Komorów,4020,1,11,1,1
-ZA1,A,A-5020,Malichy,5020,1,15,1,2
-A1,A,A-1160,Warszawa Śródmieście WKD,1160,1,12,1,1
-A1,A,A-2060,Komorów,2060,1,13,1,1
-A1,A,A-1064,Warszawa Śródmieście WKD,1064,1,9,1,1
-A1,A,A-4022,Komorów,4022,1,11,1,1
-ZA1,A,A-5162,Reguły,5162,0,14,1,2
-A1,A,A-4024,Komorów,4024,1,11,1,1
-ZA1,A,A-5024,Malichy,5024,1,15,1,2
-A1,A,A-1162,Warszawa Śródmieście WKD,1162,1,12,1,1
-A1,A,A-2062,Komorów,2062,1,13,1,1
-A1,A,A-1066,Warszawa Śródmieście WKD,1066,1,9,1,1
-A1,A,A-4026,Komorów,4026,1,11,1,1
-ZA1,A,A-5164,Reguły,5164,0,14,1,2
-A1,A,A-4028,Komorów,4028,1,11,1,1
-ZA1,A,A-5028,Malichy,5028,1,15,1,2
-A1,A,A-1164,Warszawa Śródmieście WKD,1164,1,12,1,1
-A1,A,A-2064,Komorów,2064,1,13,1,1
-A1,A,A-1068,Warszawa Śródmieście WKD,1068,1,9,1,1
-A1,A,A-4030,Komorów,4030,1,11,1,1
-ZA1,A,A-5166,Reguły,5166,0,14,1,2
-A1,A,A-4032,Komorów,4032,1,11,1,1
-ZA1,A,A-5032,Malichy,5032,1,15,1,2
-A1,A,A-1166,Warszawa Śródmieście WKD,1166,1,12,1,1
-A1,A,A-2066,Komorów,2066,1,13,1,1
-A1,A,A-1070,Warszawa Śródmieście WKD,1070,1,9,1,1
-A1,A,A-4034,Komorów,4034,1,11,1,1
-ZA1,A,A-5168,Reguły,5168,0,14,1,2
-A1,A,A-4036,Komorów,4036,1,11,1,1
-ZA1,A,A-5036,Malichy,5036,1,15,1,2
-A1,A,A-1168,Warszawa Śródmieście WKD,1168,1,12,1,1
-A1,A,A-2068,Komorów,2068,1,13,1,1
-A1,A,A-1072,Warszawa Śródmieście WKD,1072,1,9,1,1
-A1,A,A-4038,Komorów,4038,1,11,1,1
-ZA1,A,A-5170,Reguły,5170,0,14,1,2
-A1,A,A-4040,Komorów,4040,1,11,1,1
-ZA1,A,A-5040,Malichy,5040,1,15,1,2
-A1,A,A-1170,Warszawa Śródmieście WKD,1170,1,12,1,1
-A1,A,A-2070,Komorów,2070,1,13,1,1
-A1,A,A-1074,Warszawa Śródmieście WKD,1074,1,9,1,1
-A1,A,A-4042,Komorów,4042,1,11,1,1
-ZA1,A,A-5172,Reguły,5172,0,14,1,2
-A1,A,A-4044,Komorów,4044,1,11,1,1
-ZA1,A,A-5044,Malichy,5044,1,15,1,2
-A1,A,A-1172,Warszawa Śródmieście WKD,1172,1,12,1,1
-A1,A,A-2072,Komorów,2072,1,13,1,1
-A1,A,A-1076,Warszawa Śródmieście WKD,1076,1,9,1,1
-A1,A,A-4046,Komorów,4046,1,11,1,1
-ZA1,A,A-5174,Reguły,5174,0,14,1,2
-A1,A,A-4048,Komorów,4048,1,11,1,1
-ZA1,A,A-5048,Malichy,5048,1,15,1,2
-A1,A,A-1174,Warszawa Śródmieście WKD,1174,1,12,1,1
-A1,A,A-2074,Komorów,2074,1,13,1,1
-A1,A,A-1078,Warszawa Śródmieście WKD,1078,1,9,1,1
-A1,A,A-4050,Komorów,4050,1,11,1,1
-ZA1,A,A-5176,Reguły,5176,0,14,1,2
-A1,A,A-4052,Komorów,4052,1,11,1,1
-ZA1,A,A-5052,Malichy,5052,1,15,1,2
-A1,A,A-1176,Warszawa Śródmieście WKD,1176,1,12,1,1
-A1,A,A-2076,Komorów,2076,1,13,1,1
-A1,A,A-1080,Warszawa Śródmieście WKD,1080,1,9,1,1
-A1,A,A-4054,Komorów,4054,1,11,1,1
-ZA1,A,A-5178,Reguły,5178,0,14,1,2
-A1,A,A-4056,Komorów,4056,1,11,1,1
-ZA1,A,A-5556,Pruszków,5556,1,16,1,2
-A1,A,A-1178,Warszawa Śródmieście WKD,1178,1,12,1,1
-A12,A,A-2350,Podkowa Leśna Zachodnia,2350,1,17,1,1
+A12,A,A-2203,Milanówek Grudów,2203,0,0,1,1
+A12,A,A-2205,Milanówek Grudów,2205,0,0,1,1
+A1,A,A-105,Grodzisk Mazowiecki Radońska,105,0,1,1,1
+A12,A,A-201,Milanówek Grudów,201,0,2,1,1
+A1,A,A-107,Grodzisk Mazowiecki Radońska,107,0,1,1,1
+A12,A,A-203,Milanówek Grudów,203,0,2,1,1
+A1,A,A-109,Grodzisk Mazowiecki Radońska,109,0,1,1,1
+A12,A,A-205,Milanówek Grudów,205,0,2,1,1
+A1,A,A-111,Grodzisk Mazowiecki Radońska,111,0,1,1,1
+A12,A,A-207,Milanówek Grudów,207,0,2,1,1
+A1,A,A-113,Grodzisk Mazowiecki Radońska,113,0,1,1,1
+A12,A,A-209,Milanówek Grudów,209,0,2,1,1
+A1,A,A-115,Grodzisk Mazowiecki Radońska,115,0,1,1,1
+A12,A,A-211,Milanówek Grudów,211,0,2,1,1
+A1,A,A-117,Grodzisk Mazowiecki Radońska,117,0,1,1,1
+A12,A,A-213,Milanówek Grudów,213,0,2,1,1
+A1,A,A-119,Grodzisk Mazowiecki Radońska,119,0,1,1,1
+A12,A,A-215,Milanówek Grudów,215,0,2,1,1
+A1,A,A-121,Grodzisk Mazowiecki Radońska,121,0,1,1,1
+A12,A,A-217,Milanówek Grudów,217,0,2,1,1
+A1,A,A-123,Grodzisk Mazowiecki Radońska,123,0,1,1,1
+A12,A,A-219,Milanówek Grudów,219,0,2,1,1
+A1,A,A-125,Grodzisk Mazowiecki Radońska,125,0,1,1,1
+A12,A,A-221,Milanówek Grudów,221,0,2,1,1
+A1,A,A-127,Grodzisk Mazowiecki Radońska,127,0,1,1,1
+A12,A,A-223,Milanówek Grudów,223,0,2,1,1
+A1,A,A-129,Grodzisk Mazowiecki Radońska,129,0,1,1,1
+A12,A,A-225,Milanówek Grudów,225,0,2,1,1
+A1,A,A-131,Grodzisk Mazowiecki Radońska,131,0,1,1,1
+A12,A,A-227,Milanówek Grudów,227,0,2,1,1
+A1,A,A-133,Grodzisk Mazowiecki Radońska,133,0,1,1,1
+A12,A,A-229,Milanówek Grudów,229,0,2,1,1
+A1,A,A-135,Grodzisk Mazowiecki Radońska,135,0,1,1,1
+A12,A,A-231,Milanówek Grudów,231,0,2,1,1
+A1,A,A-137,Grodzisk Mazowiecki Radońska,137,0,1,1,1
+A12,A,A-233,Milanówek Grudów,233,0,2,1,1
+A1,A,A-139,Grodzisk Mazowiecki Radońska,139,0,1,1,1
+A12,A,A-235,Milanówek Grudów,235,0,2,1,1
+A1,A,A-141,Grodzisk Mazowiecki Radońska,141,0,1,1,1
+A1,A,A-2201,Grodzisk Mazowiecki Radońska,2201,0,3,1,1
+A1,A,A-143,Grodzisk Mazowiecki Radońska,143,0,1,1,1
+A1,A,A-101,Grodzisk Mazowiecki Radońska,101,0,1,1,1
+A1,A,A-103,Grodzisk Mazowiecki Radońska,103,0,1,1,1
+A1,A,A-100,Warszawa Śródmieście WKD,100,1,4,1,1
+A1,A,A-2200,Podkowa Leśna Zachodnia,2200,1,5,1,1
+A1,A,A-102,Warszawa Śródmieście WKD,102,1,4,1,1
+A1,A,A-200,Warszawa Śródmieście WKD,200,1,6,1,1
+A1,A,A-2202,Podkowa Leśna Zachodnia,2202,1,5,1,1
+A1,A,A-104,Warszawa Śródmieście WKD,104,1,4,1,1
+A1,A,A-202,Warszawa Śródmieście WKD,202,1,7,1,1
+A1,A,A-106,Warszawa Śródmieście WKD,106,1,4,1,1
+A1,A,A-204,Warszawa Śródmieście WKD,204,1,7,1,1
+A1,A,A-108,Warszawa Śródmieście WKD,108,1,4,1,1
+A1,A,A-206,Warszawa Śródmieście WKD,206,1,7,1,1
+A1,A,A-110,Warszawa Śródmieście WKD,110,1,4,1,1
+A1,A,A-208,Warszawa Śródmieście WKD,208,1,7,1,1
+A1,A,A-112,Warszawa Śródmieście WKD,112,1,4,1,1
+A1,A,A-210,Warszawa Śródmieście WKD,210,1,7,1,1
+A1,A,A-114,Warszawa Śródmieście WKD,114,1,4,1,1
+A1,A,A-212,Warszawa Śródmieście WKD,212,1,7,1,1
+A1,A,A-116,Warszawa Śródmieście WKD,116,1,4,1,1
+A1,A,A-214,Warszawa Śródmieście WKD,214,1,7,1,1
+A1,A,A-118,Warszawa Śródmieście WKD,118,1,4,1,1
+A1,A,A-216,Warszawa Śródmieście WKD,216,1,7,1,1
+A1,A,A-120,Warszawa Śródmieście WKD,120,1,4,1,1
+A1,A,A-218,Warszawa Śródmieście WKD,218,1,7,1,1
+A1,A,A-122,Warszawa Śródmieście WKD,122,1,4,1,1
+A1,A,A-220,Warszawa Śródmieście WKD,220,1,7,1,1
+A1,A,A-124,Warszawa Śródmieście WKD,124,1,4,1,1
+A1,A,A-222,Warszawa Śródmieście WKD,222,1,7,1,1
+A1,A,A-126,Warszawa Śródmieście WKD,126,1,4,1,1
+A1,A,A-224,Warszawa Śródmieście WKD,224,1,7,1,1
+A1,A,A-128,Warszawa Śródmieście WKD,128,1,4,1,1
+A1,A,A-226,Warszawa Śródmieście WKD,226,1,7,1,1
+A1,A,A-130,Warszawa Śródmieście WKD,130,1,4,1,1
+A1,A,A-228,Warszawa Śródmieście WKD,228,1,7,1,1
+A1,A,A-132,Warszawa Śródmieście WKD,132,1,4,1,1
+A1,A,A-230,Warszawa Śródmieście WKD,230,1,7,1,1
+A1,A,A-134,Warszawa Śródmieście WKD,134,1,4,1,1
+A1,A,A-232,Warszawa Śródmieście WKD,232,1,7,1,1
+A1,A,A-136,Warszawa Śródmieście WKD,136,1,4,1,1
+A1,A,A-234,Warszawa Śródmieście WKD,234,1,7,1,1
+A1,A,A-138,Warszawa Śródmieście WKD,138,1,4,1,1
+A1,A,A-236,Warszawa Śródmieście WKD,236,1,7,1,1
+A1,A,A-140,Warszawa Śródmieście WKD,140,1,4,1,1
+A12,A,A-2204,Podkowa Leśna Zachodnia,2204,1,8,1,1
