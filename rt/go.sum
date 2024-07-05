@@ -1,5 +1,7 @@
 github.com/MKuranowski/go-extra-lib v0.0.0-20230305030858-11eb462dcd47 h1:oARfzwkyMNTV55CpAYkvSgGHzJW1/6Ix1tbX6S+Lz3Y=
 github.com/MKuranowski/go-extra-lib v0.0.0-20230305030858-11eb462dcd47/go.mod h1:uBqH+SAbL89G6cQD+ohmoPPzV9usJnmYS+y0H/txFlA=
+github.com/MKuranowski/go-extra-lib v0.0.0-20240705181849-6e653125f57a h1:ucwm9h8mbsKElBUNPWiKc8z5NhfN2i+uYsIiUiN/iHY=
+github.com/MKuranowski/go-extra-lib v0.0.0-20240705181849-6e653125f57a/go.mod h1:XBGjeDCe3eKwbzkBY718s19G9IjbRkH/zg1+Aaivquo=
 github.com/MobilityData/gtfs-realtime-bindings/golang/gtfs v1.0.0 h1:f4P+fVYmSIWj4b/jvbMdmrmsx/Xb+5xCpYYtVXOdKoc=
 github.com/MobilityData/gtfs-realtime-bindings/golang/gtfs v1.0.0/go.mod h1:nSmbVVQSM4lp9gYvVaaTotnRxSwZXEdFnJARofg5V4g=
 github.com/PuerkitoBio/goquery v1.9.2 h1:4/wZksC3KgkQw7SQgkKotmKljk0M6V8TUvA8Wb4yPeE=

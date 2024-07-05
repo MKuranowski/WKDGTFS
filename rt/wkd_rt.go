@@ -5,6 +5,7 @@ package main
 
 import (
 	"archive/zip"
+	"cmp"
 	"errors"
 	"flag"
 	"fmt"
@@ -14,6 +15,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"slices"
 	"strings"
 	"time"
 
@@ -322,6 +324,11 @@ type StaticData struct {
 	// ServiceIDToNumberToTripID maps a service_id to a TrainNumberToTripID mapping
 	ServiceIDToNumberToTripID map[string]map[string]string
 
+	// TripIDToDirectionID maps a trip_id to a direction_id:
+	// 0 if train is outbound (Grodzisk direction) or
+	// 1 if train is inbound (Warszawa direction)
+	TripIDToDirectionID map[string]uint8
+
 	// TrainNumberToTripID maps trip_short_name (train number) to the trip_id;
 	// valid only until the end of a day; see Until.
 	TrainNumberToTripID map[string]string
@@ -580,8 +587,9 @@ func (sd *StaticData) readCalendarDates(gtfs fs.FS) error {
 }
 
 func (sd *StaticData) readTrips(gtfs fs.FS) error {
-	// Clear the ServiceIDToNumberToTripID table
+	// Clear the ServiceIDToNumberToTripID and TripIDToDirectionID tables
 	sd.ServiceIDToNumberToTripID = make(map[string]map[string]string)
+	sd.TripIDToDirectionID = make(map[string]uint8)
 
 	// Try to open trips.txt
 	f, err := gtfs.Open("trips.txt")
@@ -606,19 +614,32 @@ func (sd *StaticData) readTrips(gtfs fs.FS) error {
 		// Get its trip_id
 		id, ok := record["trip_id"]
 		if !ok {
-			return fmt.Errorf("calendar.txt: missing trip_id")
+			return fmt.Errorf("trips.txt: missing trip_id")
 		}
 
 		// Get its service_id
 		serviceID, ok := record["service_id"]
 		if !ok {
-			return fmt.Errorf("calendar.txt: missing service_id")
+			return fmt.Errorf("trips.txt: missing service_id")
 		}
 
 		// Get its train number
 		number, ok := record["trip_short_name"]
 		if !ok {
-			return fmt.Errorf("calendar.txt: missing trip_short_name")
+			return fmt.Errorf("trips.txt: missing trip_short_name")
+		}
+
+		// Get its direction_id
+		directionIdStr, ok := record["direction_id"]
+		if !ok {
+			return fmt.Errorf("trips.txt: missing direction_id")
+		} else if directionIdStr == "0" {
+			sd.TripIDToDirectionID[id] = 0
+		} else if directionIdStr == "1" {
+			sd.TripIDToDirectionID[id] = 1
+		} else {
+			row, _ := r.FieldPos(0)
+			return fmt.Errorf("trips.txt:%d: invalid direction_id: %q", row, directionIdStr)
 		}
 
 		// Update the ServiceIDToNumberToTripID table
@@ -767,10 +788,42 @@ func (sd *StaticData) MatchWith(facts []LiveFact, fetchTime time.Time) ([]Matche
  * GTFS-Realtime creation *
  **************************/
 
+var (
+	OutboundStopIDIndex = map[string]int{
+		"wsrod": 0, "wocho": 1, "wzach": 2, "wreor": 3, "walje": 4, "wrako": 5, "wsalo": 6,
+		"opacz": 7, "micha": 8, "regul": 9, "malic": 10, "twork": 11, "prusz": 12, "komor": 13,
+		"nwwar": 14, "kanie": 15, "otreb": 16, "plwsc": 17, "plglo": 18, "plzac": 19, "poles": 20,
+		"milgr": 21, "kazim": 22, "brzoz": 23, "gmokr": 24, "gmpia": 25, "gmjor": 26, "gmrad": 27,
+	}
+	InboundStopIDIndexOffset = 27
+)
+
+// GetStopTimeUpdateComparator returns a comparison function for ordering StopTimeUpdates
+// by increasing stop_sequence, depending if a train is outbound (towards Grodzisk) or
+// inbound (towards Warsaw).
+func GetStopTimeUpdateComparator(directionId uint8) func(a, b *gtfsrt.TripUpdate_StopTimeUpdate) int {
+	return func(a, b *gtfsrt.TripUpdate_StopTimeUpdate) int {
+		aIdx, ok := OutboundStopIDIndex[*a.StopId]
+		if !ok {
+			log.Print(ColorYellow, "Unknown order of stop_id:", *a.StopId, ColorReset)
+		}
+
+		bIdx, ok := OutboundStopIDIndex[*b.StopId]
+		if !ok {
+			log.Print(ColorYellow, "Unknown order of stop_id:", *b.StopId, ColorReset)
+		}
+
+		if directionId == 1 {
+			return cmp.Compare(bIdx, aIdx)
+		}
+		return cmp.Compare(aIdx, bIdx)
+	}
+}
+
 // Ptr returns a pointer to v. Useful for constants and literals.
 func Ptr[T any](v T) *T { return &v }
 
-func ToGTFSRealtime(facts []MatchedFact, updateTime time.Time) *gtfsrt.FeedMessage {
+func ToGTFSRealtime(facts []MatchedFact, updateTime time.Time, tripIdToDirectionId map[string]uint8) *gtfsrt.FeedMessage {
 	// Group all facts by tripID
 	factsByTrip := iter.AggregateBy(iter.OverSlice(facts), func(fact MatchedFact) string { return fact.TripID })
 
@@ -778,6 +831,11 @@ func ToGTFSRealtime(facts []MatchedFact, updateTime time.Time) *gtfsrt.FeedMessa
 	entities := make([]*gtfsrt.FeedEntity, 0, len(factsByTrip))
 	for tripID, facts := range factsByTrip {
 		tripID := tripID
+		directionID, ok := tripIdToDirectionId[tripID]
+		if !ok {
+			log.Print(ColorYellow, "Failed to get direction_id of trip_id:", tripID, ColorReset)
+			continue
+		}
 
 		// Create stop_time_updates for this trip's facts
 		updates := make([]*gtfsrt.TripUpdate_StopTimeUpdate, 0, len(facts))
@@ -787,6 +845,9 @@ func ToGTFSRealtime(facts []MatchedFact, updateTime time.Time) *gtfsrt.FeedMessa
 				Departure: &gtfsrt.TripUpdate_StopTimeEvent{Time: Ptr(fact.Time.Unix())},
 			})
 		}
+
+		// Sort StopTimeUpdates by increasing stop_sequence
+		slices.SortFunc(updates, GetStopTimeUpdateComparator(directionID))
 
 		// Add a FeedEntity with this trip's updates to the feed
 		entities = append(entities, &gtfsrt.FeedEntity{
@@ -864,7 +925,7 @@ func oneShot(sd *StaticData, target string, humanReadable bool) (err error) {
 	log.Print("Matched ", len(matched), " facts; ", len(live)-len(matched), " remained unmatched")
 
 	log.Print("Saving to target file")
-	err = SaveProtoToFile(ToGTFSRealtime(matched, fetchTime), target, humanReadable)
+	err = SaveProtoToFile(ToGTFSRealtime(matched, fetchTime, sd.TripIDToDirectionID), target, humanReadable)
 	return
 }
 
@@ -916,7 +977,7 @@ func loop(period time.Duration, sd *StaticData, target string, humanReadable boo
 		}
 
 		// Save to the target file
-		err = SaveProtoToFile(ToGTFSRealtime(matched, fetchTime), target, humanReadable)
+		err = SaveProtoToFile(ToGTFSRealtime(matched, fetchTime, sd.TripIDToDirectionID), target, humanReadable)
 		if err != nil {
 			log.Fatal(err)
 		}
