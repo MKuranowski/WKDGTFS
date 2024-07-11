@@ -150,6 +150,7 @@ OUTBOUND_DIRECTION: list[tuple[str, str]] = [
     ("prusz", "komor"),
     ("prusp", "komor"),
     ("komor", "regul"),
+    ("komor", "plglo"),
     ("plglo", "milgr"),
     ("plzac", "milgr"),
     ("plglo", "gmjor"),
