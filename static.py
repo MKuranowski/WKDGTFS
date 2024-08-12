@@ -1,332 +1,356 @@
-# Copyright (c) 2023 Mikołaj Kuranowski
+# © Copyright 2024 Mikołaj Kuranowski
 # SPDX-License-Identifier: MIT
 
 import csv
 import re
-from contextlib import closing
-from dataclasses import dataclass
-from itertools import chain, groupby, pairwise, starmap
+from argparse import ArgumentParser, Namespace
+from glob import glob
+from itertools import chain, groupby, pairwise
+from os.path import basename
 from pathlib import Path
-from typing import Iterable, Sequence, TypeVar
-from warnings import warn
+from typing import Final, Iterable, Sequence, TypeVar, cast
 
 import pyroutelib3
+from impuls import (
+    App,
+    DBConnection,
+    LocalResource,
+    Pipeline,
+    PipelineOptions,
+    Task,
+    TaskRuntime,
+)
+from impuls.errors import DataError, MultipleDataErrors
+from impuls.extern import load_gtfs
+from impuls.model import FeedInfo, StopTime, TimePoint
+from impuls.tasks import AddEntity, GenerateTripHeadsign, SaveGTFS
 
+STATIC_FILES_DIR = Path(__file__).with_name("static_files")
 T = TypeVar("T")
-Pt = tuple[float, float]
 
 
-# Utility functions
+class AssignDirectionIds(Task):
+    # List of pairs of stops in the outbound direction -
+    # if a trip stops at the first one before the second one,
+    # the direction_id should be "0", or "1" if it stops
+    # on the second one before the first.
+    OUTBOUND_DIRECTION: Final[Sequence[tuple[str, str]]] = [
+        ("wzach", "walje"),
+        ("prusz", "komor"),
+        ("prusp", "komor"),
+        ("komor", "regul"),
+        ("komor", "plglo"),
+        ("plglo", "milgr"),
+        ("plzac", "milgr"),
+        ("plglo", "gmjor"),
+        ("gmjor", "gmrad"),
+    ]
+
+    def execute(self, r: TaskRuntime) -> None:
+        self.db = r.db
+        trip_ids = [cast(str, i[0]) for i in r.db.raw_execute("SELECT trip_id FROM trips")]
+        with r.db.transaction():
+            r.db.raw_execute_many(
+                "UPDATE trips SET direction = ? WHERE trip_id = ?",
+                MultipleDataErrors.catch_all(
+                    "AssignDirectionIds",
+                    map(self.assign_direction_id, trip_ids),
+                ),
+            )
+
+    def assign_direction_id(self, trip_id: str) -> tuple[int, str]:
+        stop_id_to_idx = {
+            cast(str, i[0]): cast(int, i[1])
+            for i in self.db.raw_execute(
+                "SELECT stop_id, stop_sequence FROM stop_times WHERE trip_id = ?", (trip_id,)
+            )
+        }
+
+        for stop_a, stop_b in self.OUTBOUND_DIRECTION:
+            a_idx = stop_id_to_idx.get(stop_a)
+            b_idx = stop_id_to_idx.get(stop_b)
+            if a_idx is not None and b_idx is not None:
+                return (0 if a_idx < b_idx else 1), trip_id
+
+        stops = sorted(stop_id_to_idx, key=lambda stop_id: stop_id_to_idx[stop_id])
+        raise DataError(f"can't detect direction of trip {trip_id} (stops: {stops})")
 
 
-def remove_consecutive_runs(it: Iterable[T]) -> Iterable[T]:
-    """remove_consecutive_runs replaces consecutive runs of equal elements
-    just by the first elements.
+class LoadSchedules(Task):
+    def __init__(self, schedule_csv_resources: Iterable[str]) -> None:
+        super().__init__()
+        self.schedule_csv_resources = schedule_csv_resources
 
-    >>> list(remove_consecutive_runs([1, 1, 2, 3, 3, 4, 1]))
-    [1, 2, 3, 4, 1]
-    """
-    return (k for k, _ in groupby(it))
+    def execute(self, r: TaskRuntime) -> None:
+        with r.db.transaction():
+            for resource in self.schedule_csv_resources:
+                with r.resources[resource].open_text(encoding="utf-8-sig", newline="") as f:
+                    self.load_trips_from_file(f, r.db)
 
+    def load_trips_from_file(self, f: Iterable[str], db: DBConnection) -> None:
+        columns = list(self.transpose(csv.reader(f)))
+        stop_ids = columns[0][3:]
+        for column in columns[1:]:
+            self.load_trip(column, stop_ids, db)
 
-def transpose(it: Iterable[Iterable[T]]) -> Iterable[tuple[T, ...]]:
-    """transpose returns a 2D iterable "flipped diagonally", aka. with rows swapped with columns.
-
-    >>> list(transpose([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
-    [(1, 4, 7), (2, 5, 8), (3, 6, 9)]
-    """
-    return zip(*it)
-
-
-def time_from_str(x: str) -> int:
-    """time_from_str tries to parse a HH:MM[:SS] string into a
-    seconds-since-midnight time value.
-
-    >>> time_from_str("9:15")
-    33300
-    >>> time_from_str("05:05:30")
-    18330
-    >>> time_from_str("27:46:40")
-    100000
-    """
-    regex_match = re.match(r"([0-9]{1,2}):([0-9]{2})(?::([0-9]{2}))?", x)
-    if not regex_match:
-        raise ValueError(f"invalid time string: {x!r}")
-
-    hours = int(regex_match[1])
-    minutes = int(regex_match[2])
-    seconds = int(regex_match[3]) if regex_match[3] else 0
-    return hours * 3600 + minutes * 60 + seconds
-
-
-def time_to_str(s: int) -> str:
-    """time_to_str converts a seconds-since-midnight time value and
-    converts it into a GTFS-compliant string.
-
-    >>> time_to_str(33300)
-    '09:15:00'
-    >>> time_to_str(18330)
-    '05:05:30'
-    >>> time_to_str(100_000)
-    '27:46:40'
-    """
-    m, s = divmod(s, 60)
-    h, m = divmod(m, 60)
-    return f"{h:0>2}:{m:0>2}:{s:0>2}"
-
-
-# Schedule reading
-
-
-@dataclass
-class StopTime:
-    stop: str
-    arrival: int
-    departure: int
-
-
-@dataclass
-class Trip:
-    number: str
-    route: str
-    service: str
-    times: list[StopTime]
-
-
-def extract_trips_from_csv(f: Iterable[str]) -> Iterable[Trip]:
-    columns = list(transpose(csv.reader(f)))
-    stop_ids = columns[0][3:]
-
-    for trip_column in columns[1:]:
-        yield Trip(
-            number=trip_column[0],
-            route=trip_column[1],
-            service=trip_column[2],
-            times=extract_stop_times(stop_ids, trip_column[3:]),
+    def load_trip(self, column: Sequence[str], stop_ids: Sequence[str], db: DBConnection) -> None:
+        short_name = column[0]
+        route_id = column[1]
+        calendar_id = column[2]
+        trip_id = f"{calendar_id}-{short_name}"
+        db.raw_execute(
+            "INSERT INTO trips (trip_id, route_id, calendar_id, short_name, wheelchair_accessible, "
+            "bikes_allowed) VALUES (?,?,?,?,1,?)",
+            (trip_id, route_id, calendar_id, short_name, 0 if route_id.startswith("Z") else 1),
         )
+        db.create_many(StopTime, self.parse_stop_times(column[3:], stop_ids, trip_id))
+
+    def parse_stop_times(
+        self,
+        times: Sequence[str],
+        stop_ids: Sequence[str],
+        trip_id: str,
+    ) -> list[StopTime]:
+        stop_times = list[StopTime]()
+
+        for idx, (stop_id, time_str) in enumerate(zip(stop_ids, times, strict=True)):
+            # Try to parse the time
+            time = self.parse_time(time_str)
+            if time is None:
+                continue
+
+            # Ensure no time travel
+            if stop_times and time < stop_times[-1].departure_time:
+                time = TimePoint(days=1, seconds=time.total_seconds())
+
+            # Special handling for arrival and departure times spread across multiple rows
+            if stop_id == "" and idx > 0:
+                stop_id = stop_ids[idx - 1]
+
+            # Ensure we have a stop_id
+            if not stop_id:
+                raise ValueError(f"missing stop_id for row: {idx + 4}")
+
+            # If the latests StopTime has the same stop_id, only update its departure time
+            if stop_times and stop_times[-1].stop_id == stop_id:
+                stop_times[-1].departure_time = time
+            else:
+                stop_times.append(StopTime(trip_id, stop_id, idx, time, time))
+
+        return stop_times
+
+    @staticmethod
+    def transpose(it: Iterable[Iterable[T]]) -> Iterable[tuple[T, ...]]:
+        return zip(*it)
+
+    @staticmethod
+    def parse_time(x: str) -> TimePoint | None:
+        x = x.strip()
+        if x in {"", "|", "<", ">"}:
+            return None
+
+        regex_match = re.match(r"([0-9]{1,2}):([0-9]{2})(?::([0-9]{2}))?", x)
+        if not regex_match:
+            raise ValueError(f"invalid time string: {x!r}")
+
+        hours = int(regex_match[1])
+        minutes = int(regex_match[2])
+        seconds = int(regex_match[3]) if regex_match[3] else 0
+        return TimePoint(hours=hours, minutes=minutes, seconds=seconds)
 
 
-def extract_stop_times(stop_ids: Sequence[str], csv_times: Sequence[str]) -> list[StopTime]:
-    stop_times: list[StopTime] = []
-
-    for idx, (stop_id, csv_time) in enumerate(zip(stop_ids, csv_times, strict=True)):
-        # Skip "times" which indicate that a vehicle does not stop
-        csv_time = csv_time.strip()
-        if csv_time in {"", "|", "<", ">"}:
-            continue
-
-        # Try to parse the time
-        time = time_from_str(csv_time)
-
-        # Ensure no time travel
-        if stop_times and time < stop_times[-1].departure:
-            time += 86400
-
-        # Special handling for arrival and departure times spread across multiple rows
-        if stop_id == "" and idx > 0:
-            stop_id = stop_ids[idx - 1]
-
-        # Ensure we have a stop_id
-        if not stop_id:
-            raise ValueError(f"missing stop_id for row: {idx + 4}")
-
-        # If the latests StopTime has the same stop_id, only update its departure time
-        if stop_times and stop_times[-1].stop == stop_id:
-            stop_times[-1].departure = time
-        else:
-            stop_times.append(StopTime(stop_id, time, time))
-
-    return stop_times
+class LoadStaticFiles(Task):
+    def execute(self, r: TaskRuntime) -> None:
+        with r.db.released() as db_path:
+            load_gtfs(db_path, STATIC_FILES_DIR)
 
 
-# GTFS generation
+class GenerateShapes(Task):
+    def __init__(self, osm_resource: str) -> None:
+        super().__init__()
+        self.osm_resource = osm_resource
 
-# List of pairs of stops in the outbound direction -
-# if a trip stops at the first one before the second one,
-# the direction_id should be "0", or "1" if it stops
-# on the second one before the first.
-OUTBOUND_DIRECTION: list[tuple[str, str]] = [
-    ("wzach", "walje"),
-    ("prusz", "komor"),
-    ("prusp", "komor"),
-    ("komor", "regul"),
-    ("komor", "plglo"),
-    ("plglo", "milgr"),
-    ("plzac", "milgr"),
-    ("plglo", "gmjor"),
-    ("gmjor", "gmrad"),
-]
+        self._stop_id_to_node = dict[str, int]()
+        self._stops_to_shape = dict[tuple[str, ...], int]()
+        self._shape_id_counter = 0
 
+    def clear(self) -> None:
+        self._stop_id_to_node.clear()
+        self._stops_to_shape.clear()
+        self._shape_id_counter = 0
 
-def detect_direction_id(stops: Sequence[str]) -> str:
-    stop_indices = {stop: i for i, stop in enumerate(stops)}
-    for left, right in OUTBOUND_DIRECTION:
-        left_idx = stop_indices.get(left)
-        right_idx = stop_indices.get(right)
-        if left_idx is not None and right_idx is not None:
-            return "0" if left_idx < right_idx else "1"
-    raise ValueError(f"can't detect direction of stops:\n\t{stops}")
+    def execute(self, r: TaskRuntime) -> None:
+        self.clear()
 
+        self.logger.debug("Loading OSM graph")
+        with r.resources[self.osm_resource].open_binary() as f:
+            graph = pyroutelib3.osm.Graph.from_file(pyroutelib3.osm.RailwayProfile(), f)
 
-class Shaper:
-    def __init__(self) -> None:
-        self.router = pyroutelib3.Router("train", "shapes.osm")
-        self.stop_to_node = {}
+        self.logger.debug("Mapping stops to nodes")
+        self._map_stops_to_nodes(graph, r.db)
 
-        self.cache: dict[tuple[str, ...], str] = {}
-        self.shape_id_counter = 0
+        trip_ids = [cast(str, i[0]) for i in r.db.raw_execute("SELECT trip_id FROM trips")]
+        with r.db.transaction():
+            for trip_id in trip_ids:
+                self._assign_shape(trip_id, r.db, graph)
 
-        self.file = open("gtfs/shapes.txt", mode="w", encoding="utf-8", newline="")
-        self.writer = csv.writer(self.file)
-        self.writer.writerow(("shape_id", "shape_pt_sequence", "shape_pt_lat", "shape_pt_lon"))
+    def _map_stops_to_nodes(self, graph: pyroutelib3.osm.Graph, db: DBConnection) -> None:
+        kd = pyroutelib3.KDTree[pyroutelib3.osm.GraphNode].build(graph.nodes.values())
+        assert kd is not None
 
-    def close(self) -> None:
-        self.file.close()
+        for stop_id, lat, lon in db.raw_execute("SELECT stop_id, lat, lon FROM stops"):
+            stop_id = cast(str, stop_id)
+            lat = cast(float, lat)
+            lon = cast(float, lon)
+            node = kd.find_nearest_neighbor((lat, lon))
+            self._stop_id_to_node[stop_id] = node.id
 
-    def get_shape(self, stops: Sequence[str]) -> str:
-        # Check if a shape for this sequence of stops was already generated
-        stops_hash = tuple(stops)
-        cached_shape_id = self.cache.get(stops_hash)
-        if cached_shape_id is not None:
-            return cached_shape_id
+    def _assign_shape(self, trip_id: str, db: DBConnection, graph: pyroutelib3.osm.Graph) -> None:
+        stops = self._trip_stops(trip_id, db)
+        shape_id = self._stops_to_shape.get(stops)
+        if shape_id is None:
+            shape_id = self._generate_shape(stops, db, graph)
+        db.raw_execute("UPDATE trips SET shape_id = ? WHERE trip_id = ?", (shape_id, trip_id))
 
-        # Generate a new shape under a new shape_id
-        shape_id = str(self.shape_id_counter)
-        self.shape_id_counter += 1
+    def _generate_shape(
+        self,
+        stops: tuple[str, ...],
+        db: DBConnection,
+        graph: pyroutelib3.osm.Graph,
+    ) -> int:
+        shape_id = self._shape_id_counter
+        self._shape_id_counter += 1
+        self.logger.debug("Generating shape %d (%s)", shape_id, stops)
 
-        shape_points = self.generate_shape(stops)
+        nodes = (self._stop_id_to_node[stop_id] for stop_id in stops)
+        node_pairs = pairwise(nodes)
+        legs = (pyroutelib3.find_route(graph, a, b) for a, b in node_pairs)
+        shape_nodes = self.remove_consecutive_runs(chain.from_iterable(legs))
+        shape_pts = (graph.get_node(i).position for i in shape_nodes)
 
-        # Save the shape to shapes.txt and save the shape_id in cached
-        self.write_shape(shape_id, shape_points)
-        self.cache[stops_hash] = shape_id
+        db.raw_execute("INSERT INTO shapes (shape_id) VALUES (?)", (shape_id,))
+        db.raw_execute_many(
+            "INSERT INTO shape_points (shape_id, sequence, lat, lon) VALUES (?, ?, ?, ?)",
+            ((shape_id, idx, lat, lon) for idx, (lat, lon) in enumerate(shape_pts)),
+        )
+        self._stops_to_shape[stops] = shape_id
         return shape_id
 
-    def write_shape(self, shape_id: str, points: Iterable[Pt]) -> None:
-        for idx, (lat, lon) in enumerate(points):
-            self.writer.writerow((shape_id, idx, lat, lon))
+    @staticmethod
+    def remove_consecutive_runs(it: Iterable[T]) -> Iterable[T]:
+        return (k for k, _ in groupby(it))
 
-    def generate_shape(self, stops: Sequence[str]) -> Iterable[Pt]:
-        stop_pairs = pairwise(stops)
-        legs = starmap(self.generate_shape_for_pair, stop_pairs)
-        all_nodes = chain.from_iterable(legs)
-        unique_nodes = remove_consecutive_runs(all_nodes)
-        positions = map(self.router.nodeLatLon, unique_nodes)
-        return positions
-
-    def generate_shape_for_pair(self, from_id: str, to_id: str) -> list[int]:
-        from_node = self.stop_to_node[from_id]
-        to_node = self.stop_to_node[to_id]
-        status, nodes = self.router.doRoute(from_node, to_node)
-
-        if status != "success":
-            warn(f"No shape between {from_id} and {to_id}: {status}")
-            nodes = [from_node, to_node]
-
-        return nodes
-
-
-class GTFSGenerator:
-    def __init__(self) -> None:
-        self.f_trips = open("gtfs/trips.txt", mode="w", encoding="utf-8", newline="")
-        self.w_trips = csv.writer(self.f_trips)
-        self.w_trips.writerow(
-            (
-                "route_id",
-                "service_id",
-                "trip_id",
-                "trip_headsign",
-                "trip_short_name",
-                "direction_id",
-                "shape_id",
-                "wheelchair_accessible",
-                "bikes_allowed",
+    @staticmethod
+    def _trip_stops(trip_id: str, db: DBConnection) -> tuple[str, ...]:
+        return tuple(
+            cast(str, i[0])
+            for i in db.raw_execute(
+                "SELECT stop_id FROM stop_times WHERE trip_id = ? ORDER BY stop_sequence ASC",
+                (trip_id,),
             )
         )
 
-        self.f_times = open("gtfs/stop_times.txt", mode="w", encoding="utf-8", newline="")
-        self.w_times = csv.writer(self.f_times)
-        self.w_times.writerow(
-            (
-                "trip_id",
-                "arrival_time",
-                "departure_time",
-                "stop_id",
-                "stop_sequence",
-            )
+
+class WKDGTFS(App):
+    def add_arguments(self, parser: ArgumentParser) -> None:
+        parser.add_argument("feed_version")
+
+    def prepare(self, args: Namespace, options: PipelineOptions) -> Pipeline:
+        schedule_resources = {
+            basename(filename): LocalResource(filename) for filename in glob("schedules/*.csv")
+        }
+
+        return Pipeline(
+            tasks=[
+                LoadStaticFiles(),
+                AddEntity(
+                    entity=FeedInfo(
+                        publisher_name="Mikołaj Kuranowski",
+                        publisher_url="https://mkuran.pl/gtfs/",
+                        lang="pl",
+                        version=args.feed_version,
+                    )
+                ),
+                LoadSchedules(schedule_resources.keys()),
+                GenerateTripHeadsign(),
+                AssignDirectionIds(),
+                GenerateShapes("shapes.osm"),
+                SaveGTFS(
+                    {
+                        "agency": (
+                            "agency_id",
+                            "agency_name",
+                            "agency_url",
+                            "agency_lang",
+                            "agency_timezone",
+                        ),
+                        "calendar": (
+                            "service_id",
+                            "monday",
+                            "tuesday",
+                            "wednesday",
+                            "thursday",
+                            "friday",
+                            "saturday",
+                            "sunday",
+                            "start_date",
+                            "end_date",
+                        ),
+                        "fare_attributes": (
+                            "agency_id",
+                            "fare_id",
+                            "price",
+                            "currency_type",
+                            "payment_method",
+                            "transfers",
+                            "transfer_duration",
+                        ),
+                        "routes": (
+                            "agency_id",
+                            "route_id",
+                            "route_short_name",
+                            "route_long_name",
+                            "route_type",
+                            "route_color",
+                            "route_text_color",
+                        ),
+                        "stops": (
+                            "stop_id",
+                            "stop_name",
+                            "stop_lat",
+                            "stop_lon",
+                            "wheelchair_boarding",
+                        ),
+                        "trips": (
+                            "route_id",
+                            "service_id",
+                            "trip_id",
+                            "trip_headsign",
+                            "trip_short_name",
+                            "direction_id",
+                            "shape_id",
+                            "wheelchair_accessible",
+                            "bikes_allowed",
+                        ),
+                        "stop_times": (
+                            "trip_id",
+                            "stop_sequence",
+                            "stop_id",
+                            "arrival_time",
+                            "departure_time",
+                        ),
+                        "shapes": ("shape_id", "shape_pt_sequence", "shape_pt_lat", "shape_pt_lon"),
+                    },
+                    f"wkd-{args.feed_version.replace("-", "")}.zip",
+                ),
+            ],
+            resources={
+                **schedule_resources,
+                "shapes.osm": LocalResource("shapes.osm"),
+            },
+            options=options,
         )
-
-        self.shaper = Shaper()
-        self.seen_trip_ids: set[str] = set()
-        self.stop_names: dict[str, str] = {}
-
-    def load_stop_data(self) -> None:
-        with open("gtfs/stops.txt", mode="r", encoding="utf-8-sig", newline="") as f:
-            for row in csv.DictReader(f):
-                id = row["stop_id"]
-                name = row["stop_name"]
-                lat = float(row["stop_lat"])
-                lon = float(row["stop_lon"])
-
-                self.stop_names[id] = name
-                self.shaper.stop_to_node[id] = self.shaper.router.findNode(lat, lon)
-
-    def close(self) -> None:
-        self.f_trips.close()
-        self.f_times.close()
-        self.shaper.close()
-
-    def write_trip(self, t: Trip) -> None:
-        trip_id = f"{t.service}-{t.number}"
-        if trip_id in self.seen_trip_ids:
-            raise ValueError(f"generated duplicate trip_id: {trip_id!r}")
-        self.seen_trip_ids.add(trip_id)
-
-        trip_stops = [i.stop for i in t.times]
-        direction_id = detect_direction_id(trip_stops)
-        shape_id = self.shaper.get_shape(trip_stops)
-        headsign = self.stop_names[t.times[-1].stop]
-        wheelchairs = "1"  # all trips are wheelchair-accessible
-        bikes = "2" if t.route[0] == "Z" else "1"  # no bikes in rail repl. buses
-
-        self.w_trips.writerow(
-            (
-                t.route,
-                t.service,
-                trip_id,
-                headsign,
-                t.number,
-                direction_id,
-                shape_id,
-                wheelchairs,
-                bikes,
-            )
-        )
-
-        for seq, st in enumerate(t.times):
-            self.w_times.writerow(
-                (
-                    trip_id,
-                    time_to_str(st.arrival),
-                    time_to_str(st.departure),
-                    st.stop,
-                    seq,
-                )
-            )
-
-    def process_trips_from_file(self, f: Iterable[str]) -> None:
-        for trip in extract_trips_from_csv(f):
-            self.write_trip(trip)
 
 
 if __name__ == "__main__":
-    with closing(GTFSGenerator()) as generator:
-        generator.load_stop_data()
-
-        for timetable_file_path in Path("schedules").iterdir():
-            # Skip non-csv files
-            if not timetable_file_path.suffix == ".csv":
-                continue
-
-            print(timetable_file_path.name)
-            with timetable_file_path.open(mode="r", encoding="utf-8-sig", newline="") as f:
-                generator.process_trips_from_file(f)
+    WKDGTFS().run()
