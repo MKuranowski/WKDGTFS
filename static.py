@@ -45,6 +45,7 @@ GTFS_HEADERS = {
         "start_date",
         "end_date",
     ),
+    "calendar_dates": ("date", "service_id", "exception_type"),
     "fare_attributes": (
         "agency_id",
         "fare_id",
@@ -323,6 +324,41 @@ class GenerateShapes(Task):
         )
 
 
+class GenerateCalendarExceptions(Task):
+    EXCEPTIONS: Final[list[str]] = [
+        "2024-11-01", "2024-11-11", "2024-12-24", "2024-12-25", "2024-12-26", "2024-12-31",
+        "2025-01-01", "2025-01-06", "2025-04-21", "2025-05-01", "2024-06-19", "2025-08-15"
+    ]
+
+    def execute(self, r: TaskRuntime) -> None:
+        with r.db.transaction():
+            if self.has_calendar(r.db, "D"):
+                r.db.raw_execute_many(
+                    "INSERT INTO calendar_exceptions (calendar_id, date, exception_type) "
+                    "VALUES ('D', ?, 2)",
+                    ((date,) for date in self.EXCEPTIONS),
+                )
+
+            if self.has_calendar(r.db, "C"):
+                r.db.raw_execute_many(
+                    "INSERT INTO calendar_exceptions (calendar_id, date, exception_type) "
+                    "VALUES ('C', ?, 1)",
+                    ((date,) for date in self.EXCEPTIONS),
+                )
+
+    @staticmethod
+    def has_calendar(db: DBConnection, id: str) -> bool:
+        return (
+            cast(
+                int,
+                db.raw_execute(
+                    "SELECT COUNT(*) FROM calendars WHERE calendar_id = ?", (id,)
+                ).one_must("count must return a result")[0],
+            )
+            > 0
+        )
+
+
 class WKDGTFS(App):
     def add_arguments(self, parser: ArgumentParser) -> None:
         parser.add_argument("feed_version")
@@ -344,6 +380,7 @@ class WKDGTFS(App):
                     )
                 ),
                 LoadSchedules(schedule_resources.keys()),
+                GenerateCalendarExceptions(),
                 GenerateTripHeadsign(),
                 AssignDirectionIds(),
                 GenerateShapes("shapes.osm"),
