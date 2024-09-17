@@ -14,6 +14,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path"
 	"regexp"
 	"slices"
 	"strings"
@@ -885,7 +886,7 @@ func SaveProtoToFile(m proto.Message, target string, humanReadable bool) (err er
 	}
 
 	// Save data to a temporary file
-	tempFile := target + ".tmp"
+	tempFile := path.Join(path.Dir(target), "."+path.Base(target)+".tmp")
 	err = os.WriteFile(tempFile, data, 0o666)
 	if err != nil {
 		err = fmt.Errorf("failed to write to %s: %w", tempFile, err)
