@@ -1,4 +1,4 @@
-# © Copyright 2024 Mikołaj Kuranowski
+# © Copyright 2024-2025 Mikołaj Kuranowski
 # SPDX-License-Identifier: MIT
 
 import csv
@@ -11,29 +11,21 @@ from pathlib import Path
 from typing import Final, Iterable, Sequence, TypeVar, cast
 
 import pyroutelib3
-from impuls import (
-    App,
-    DBConnection,
-    LocalResource,
-    Pipeline,
-    PipelineOptions,
-    Task,
-    TaskRuntime,
-)
+from impuls import App, DBConnection, LocalResource, Pipeline, PipelineOptions, Task, TaskRuntime
 from impuls.errors import DataError, MultipleDataErrors
 from impuls.extern import load_gtfs
 from impuls.model import FeedInfo, StopTime, TimePoint
 from impuls.tasks import AddEntity, GenerateTripHeadsign, SaveGTFS
 
 GTFS_HEADERS = {
-    "agency": (
+    "agency.txt": (
         "agency_id",
         "agency_name",
         "agency_url",
         "agency_lang",
         "agency_timezone",
     ),
-    "calendar": (
+    "calendar.txt": (
         "service_id",
         "monday",
         "tuesday",
@@ -45,8 +37,8 @@ GTFS_HEADERS = {
         "start_date",
         "end_date",
     ),
-    "calendar_dates": ("date", "service_id", "exception_type"),
-    "fare_attributes": (
+    "calendar_dates.txt": ("date", "service_id", "exception_type"),
+    "fare_attributes.txt": (
         "agency_id",
         "fare_id",
         "price",
@@ -55,13 +47,13 @@ GTFS_HEADERS = {
         "transfers",
         "transfer_duration",
     ),
-    "feed_info": (
+    "feed_info.txt": (
         "feed_publisher_name",
         "feed_publisher_url",
         "feed_lang",
         "feed_version",
     ),
-    "routes": (
+    "routes.txt": (
         "agency_id",
         "route_id",
         "route_short_name",
@@ -70,14 +62,14 @@ GTFS_HEADERS = {
         "route_color",
         "route_text_color",
     ),
-    "stops": (
+    "stops.txt": (
         "stop_id",
         "stop_name",
         "stop_lat",
         "stop_lon",
         "wheelchair_boarding",
     ),
-    "trips": (
+    "trips.txt": (
         "route_id",
         "service_id",
         "trip_id",
@@ -88,14 +80,14 @@ GTFS_HEADERS = {
         "wheelchair_accessible",
         "bikes_allowed",
     ),
-    "stop_times": (
+    "stop_times.txt": (
         "trip_id",
         "stop_sequence",
         "stop_id",
         "arrival_time",
         "departure_time",
     ),
-    "shapes": ("shape_id", "shape_pt_sequence", "shape_pt_lat", "shape_pt_lon"),
+    "shapes.txt": ("shape_id", "shape_pt_sequence", "shape_pt_lat", "shape_pt_lon"),
 }
 
 STATIC_FILES_DIR = Path(__file__).with_name("static_files")
@@ -326,8 +318,18 @@ class GenerateShapes(Task):
 
 class GenerateCalendarExceptions(Task):
     EXCEPTIONS: Final[list[str]] = [
-        "2024-11-01", "2024-11-11", "2024-12-24", "2024-12-25", "2024-12-26", "2024-12-31",
-        "2025-01-01", "2025-01-06", "2025-04-21", "2025-05-01", "2024-06-19", "2025-08-15"
+        "2024-11-01",
+        "2024-11-11",
+        "2024-12-24",
+        "2024-12-25",
+        "2024-12-26",
+        "2024-12-31",
+        "2025-01-01",
+        "2025-01-06",
+        "2025-04-21",
+        "2025-05-01",
+        "2024-06-19",
+        "2025-08-15",
     ]
 
     def execute(self, r: TaskRuntime) -> None:

@@ -12,15 +12,15 @@ from impuls.tasks import LoadGTFS, SaveGTFS
 DATE_RE = re.compile(r"(20[0-9][0-9])\W?([01][0-9])\W?([0-3][0-9])")
 
 GTFS_HEADERS = {
-    "agency": (
+    "agency.txt": (
         "agency_id",
         "agency_name",
         "agency_url",
         "agency_lang",
         "agency_timezone",
     ),
-    "calendar_dates": ("service_id", "date", "exception_type"),
-    "fare_attributes": (
+    "calendar_dates.txt": ("service_id", "date", "exception_type"),
+    "fare_attributes.txt": (
         "agency_id",
         "fare_id",
         "price",
@@ -29,13 +29,13 @@ GTFS_HEADERS = {
         "transfers",
         "transfer_duration",
     ),
-    "feed_info": (
+    "feed_info.txt": (
         "feed_publisher_name",
         "feed_publisher_url",
         "feed_lang",
         "feed_version",
     ),
-    "routes": (
+    "routes.txt": (
         "agency_id",
         "route_id",
         "route_short_name",
@@ -44,14 +44,14 @@ GTFS_HEADERS = {
         "route_color",
         "route_text_color",
     ),
-    "stops": (
+    "stops.txt": (
         "stop_id",
         "stop_name",
         "stop_lat",
         "stop_lon",
         "wheelchair_boarding",
     ),
-    "trips": (
+    "trips.txt": (
         "route_id",
         "service_id",
         "trip_id",
@@ -62,14 +62,14 @@ GTFS_HEADERS = {
         "wheelchair_accessible",
         "bikes_allowed",
     ),
-    "stop_times": (
+    "stop_times.txt": (
         "trip_id",
         "stop_sequence",
         "stop_id",
         "arrival_time",
         "departure_time",
     ),
-    "shapes": ("shape_id", "shape_pt_sequence", "shape_pt_lat", "shape_pt_lon"),
+    "shapes.txt": ("shape_id", "shape_pt_sequence", "shape_pt_lat", "shape_pt_lon"),
 }
 
 
