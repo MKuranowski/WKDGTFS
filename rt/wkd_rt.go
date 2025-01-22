@@ -21,7 +21,6 @@ import (
 	"time"
 
 	"github.com/MKuranowski/go-extra-lib/clock"
-	"github.com/MKuranowski/go-extra-lib/container/bitset"
 	"github.com/MKuranowski/go-extra-lib/container/set"
 	"github.com/MKuranowski/go-extra-lib/encoding/mcsv"
 	"github.com/MKuranowski/go-extra-lib/iter"
@@ -428,107 +427,13 @@ func (sd *StaticData) readStops(gtfs fs.FS) error {
 	return nil
 }
 
-func calendarRecordToActiveWeekdays(record map[string]string) (s bitset.Small) {
-	if record["monday"] == "1" {
-		s.Add(int(time.Monday))
-	}
-	if record["tuesday"] == "1" {
-		s.Add(int(time.Tuesday))
-	}
-	if record["wednesday"] == "1" {
-		s.Add(int(time.Wednesday))
-	}
-	if record["thursday"] == "1" {
-		s.Add(int(time.Thursday))
-	}
-	if record["friday"] == "1" {
-		s.Add(int(time.Friday))
-	}
-	if record["saturday"] == "1" {
-		s.Add(int(time.Saturday))
-	}
-	if record["sunday"] == "1" {
-		s.Add(int(time.Sunday))
-	}
-	return
-}
-
-func (sd *StaticData) readCalendar(gtfs fs.FS) error {
+func (sd *StaticData) readCalendarDates(gtfs fs.FS) error {
 	// Clear the DateToServices table
 	sd.DateToServices = make(map[Date]set.Set[string])
 
-	// Try to open calendar.txt
-	f, err := gtfs.Open("calendar.txt")
-	if errors.Is(err, fs.ErrNotExist) {
-		log.Print("calendar.txt does not exist")
-		return nil
-	} else if err != nil {
-		return fmt.Errorf("calendar.txt: Open: %w", err)
-	}
-	defer f.Close()
-	log.Print("Loading calendar.txt")
-
-	// Read the CSV file
-	r := mcsv.NewReader(f)
-	r.ReuseRecord = true
-	for {
-		// Get next record from calendar.txt
-		record, err := r.Read()
-		if errors.Is(err, io.EOF) {
-			break
-		} else if err != nil {
-			return fmt.Errorf("calendar.txt: Read: %w", err)
-		}
-
-		// Get its service_id
-		id, has := record["service_id"]
-		if !has {
-			return fmt.Errorf("calendar.txt: missing service_id")
-		}
-
-		// Get the start_date
-		day, err := time.ParseInLocation("20060102", record["start_date"], sd.warsawTime)
-		if err != nil {
-			return fmt.Errorf("calendar.txt: invalid start_date: %w", err)
-		}
-
-		// Get the end_date
-		end, err := time.ParseInLocation("20060102", record["end_date"], sd.warsawTime)
-		if err != nil {
-			return fmt.Errorf("calendar.txt: invalid end_date: %w", err)
-		}
-
-		// Get the set of valid weekdays
-		validWeekdays := calendarRecordToActiveWeekdays(record)
-
-		// Iterate over the calendar span
-		for !day.After(end) {
-			// Check if day is active
-			if validWeekdays.Has(int(day.Weekday())) {
-				date := NewDateFromTime(day)
-
-				servicesSet, has := sd.DateToServices[date]
-				if !has {
-					sd.DateToServices[date] = set.Set[string]{id: {}}
-				} else {
-					servicesSet.Add(id)
-				}
-			}
-
-			day = day.AddDate(0, 0, 1)
-		}
-	}
-
-	return nil
-}
-
-func (sd *StaticData) readCalendarDates(gtfs fs.FS) error {
 	// Try to open calendar_dates.txt
 	f, err := gtfs.Open("calendar_dates.txt")
-	if errors.Is(err, fs.ErrNotExist) {
-		log.Print("calendar_dates.txt does not exist")
-		return nil
-	} else if err != nil {
+	if err != nil {
 		return fmt.Errorf("calendar_dates.txt: Open: %w", err)
 	}
 	defer f.Close()
@@ -538,7 +443,7 @@ func (sd *StaticData) readCalendarDates(gtfs fs.FS) error {
 	r := mcsv.NewReader(f)
 	r.ReuseRecord = true
 	for {
-		// Get next record from calendar.txt
+		// Get next record from calendar_dates.txt
 		record, err := r.Read()
 		if errors.Is(err, io.EOF) {
 			break
@@ -657,11 +562,6 @@ func (sd *StaticData) readTrips(gtfs fs.FS) error {
 
 func (sd *StaticData) refreshGTFS(gtfs fs.FS) error {
 	err := sd.readStops(gtfs)
-	if err != nil {
-		return err
-	}
-
-	err = sd.readCalendar(gtfs)
 	if err != nil {
 		return err
 	}
