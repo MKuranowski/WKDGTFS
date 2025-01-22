@@ -1,21 +1,23 @@
 # © Copyright 2024-2025 Mikołaj Kuranowski
 # SPDX-License-Identifier: MIT
 
-import csv
-import re
+import os
 from argparse import ArgumentParser, Namespace
-from glob import glob
+from collections.abc import Iterable
 from itertools import chain, groupby, pairwise
-from os.path import basename
 from pathlib import Path
-from typing import Final, Iterable, Sequence, TypeVar, cast
+from typing import Any, Final, Iterable, Sequence, TypeVar, cast
+from xml.etree import ElementTree as ET
 
 import pyroutelib3
-from impuls import App, DBConnection, LocalResource, Pipeline, PipelineOptions, Task, TaskRuntime
+from impuls import App, DBConnection, Pipeline, PipelineOptions, Task, TaskRuntime
 from impuls.errors import DataError, MultipleDataErrors
 from impuls.extern import load_gtfs
-from impuls.model import FeedInfo, StopTime, TimePoint
-from impuls.tasks import AddEntity, GenerateTripHeadsign, SaveGTFS
+from impuls.model import Date, FeedInfo, TimePoint, Trip
+from impuls.resource import HTTPResource, LocalResource, ZippedResource
+from impuls.tasks import AddEntity, GenerateTripHeadsign, SaveGTFS, SplitTripLegs
+from impuls.tools import polish_calendar_exceptions
+from impuls.tools.temporal import BoundedDateRange
 
 GTFS_HEADERS = {
     "agency.txt": (
@@ -24,18 +26,6 @@ GTFS_HEADERS = {
         "agency_url",
         "agency_lang",
         "agency_timezone",
-    ),
-    "calendar.txt": (
-        "service_id",
-        "monday",
-        "tuesday",
-        "wednesday",
-        "thursday",
-        "friday",
-        "saturday",
-        "sunday",
-        "start_date",
-        "end_date",
     ),
     "calendar_dates.txt": ("date", "service_id", "exception_type"),
     "fare_attributes.txt": (
@@ -142,86 +132,183 @@ class AssignDirectionIds(Task):
 
 
 class LoadSchedules(Task):
-    def __init__(self, schedule_csv_resources: Iterable[str]) -> None:
+    NS = {"sitkol": "http://model.km.sitkol.tktelekom.pl"}
+    STOP_ID_LOOKUP = {
+        # cspell: disable
+        "1": "gmrad",
+        "2": "gmjor",
+        "3": "gmpia",
+        "4": "gmokr",
+        "5": "brzoz",
+        "6": "kazim",
+        "7": "plzac",
+        "8": "plglo",
+        "9": "plwsc",
+        "10": "otreb",
+        "11": "kanie",
+        "12": "nwwar",
+        "13": "komor",
+        "14": "prusz",
+        "15": "twork",
+        "16": "malic",
+        "17": "regul",
+        "18": "micha",
+        "19": "opacz",
+        "20": "wsalo",
+        "21": "wrako",
+        "22": "walje",
+        "23": "wreor",
+        "24": "wzach",
+        "25": "wocho",
+        "26": "wsrod",
+        "27": "poles",
+        "28": "milgr",
+        # cspell: enable
+    }
+
+    def __init__(self) -> None:
         super().__init__()
-        self.schedule_csv_resources = schedule_csv_resources
+        self.holidays = set[Date]()
 
     def execute(self, r: TaskRuntime) -> None:
+        self.retrieve_holidays(r)
+        with r.resources["wkd.xml"].open_text(encoding="utf-8") as f:
+            tt = ET.parse(f).getroot()
+
         with r.db.transaction():
-            for resource in self.schedule_csv_resources:
-                with r.resources[resource].open_text(encoding="utf-8-sig", newline="") as f:
-                    self.load_trips_from_file(f, r.db)
+            r.db.raw_execute("UPDATE feed_info SET version = ?", (tt.attrib["created"],))
+            for train in tt.findall("sitkol:train", self.NS):
+                self.parse_train(r.db, train)
 
-    def load_trips_from_file(self, f: Iterable[str], db: DBConnection) -> None:
-        columns = list(self.transpose(csv.reader(f)))
-        stop_ids = columns[0][3:]
-        for column in columns[1:]:
-            self.load_trip(column, stop_ids, db)
+    def retrieve_holidays(self, r: TaskRuntime) -> None:
+        self.holidays.clear()
+        resource = r.resources["calendar_exceptions.csv"]
+        region = polish_calendar_exceptions.PolishRegion.MAZOWIECKIE
+        for date, details in polish_calendar_exceptions.load_exceptions(resource, region).items():
+            if polish_calendar_exceptions.CalendarExceptionType.HOLIDAY in details.typ:
+                self.holidays.add(date)
 
-    def load_trip(self, column: Sequence[str], stop_ids: Sequence[str], db: DBConnection) -> None:
-        short_name = column[0]
-        route_id = column[1]
-        calendar_id = column[2]
-        trip_id = f"{calendar_id}-{short_name}"
+    def parse_train(self, db: DBConnection, train: ET.Element) -> None:
+        route_id = train.findtext("sitkol:information/sitkol:symbol", "", self.NS).strip()
+        if not route_id:
+            raise DataError("<train> without a <symbol>")
+
+        number = train.findtext("sitkol:information/sitkol:number", "", self.NS).strip()
+        if not number:
+            raise DataError("<train> without a <number>")
+
+        version = train.findtext("sitkol:information/sitkol:version", "", self.NS).strip()
+        if not version:
+            raise DataError("<train> without a <version>")
+
+        id = f"{number}_{version}"
+
+        db.raw_execute("INSERT INTO calendars (calendar_id) VALUES (?)", (id,))
         db.raw_execute(
-            "INSERT INTO trips (trip_id, route_id, calendar_id, short_name, wheelchair_accessible, "
-            "bikes_allowed) VALUES (?,?,?,?,1,?)",
-            (trip_id, route_id, calendar_id, short_name, 0 if route_id.startswith("Z") else 1),
+            (
+                "INSERT INTO trips (trip_id, route_id, calendar_id, short_name, "
+                "wheelchair_accessible, bikes_allowed) VALUES (?, ?, ?, ?, 1, 1)"
+            ),
+            (id, route_id, id, number),
         )
-        db.create_many(StopTime, self.parse_stop_times(column[3:], stop_ids, trip_id))
 
-    def parse_stop_times(
-        self,
-        times: Sequence[str],
-        stop_ids: Sequence[str],
-        trip_id: str,
-    ) -> list[StopTime]:
-        stop_times = list[StopTime]()
+        self.parse_days(id, db, train.find("sitkol:information/sitkol:days", self.NS))
+        self.parse_route(id, db, train.findall("sitkol:route/sitkol:station", self.NS))
 
-        for idx, (stop_id, time_str) in enumerate(zip(stop_ids, times, strict=True)):
-            # Try to parse the time
-            time = self.parse_time(time_str)
-            if time is None:
-                continue
+    def parse_days(self, id: str, db: DBConnection, days: ET.Element | None) -> None:
+        if days is None:
+            raise DataError(f"train {id!r} has no <days>")
 
-            # Ensure no time travel
-            if stop_times and time < stop_times[-1].departure_time:
-                time = TimePoint(days=1, seconds=time.total_seconds())
+        # Parse days->dayOperationCode
+        match days.attrib["dayOperationCode"]:
+            case "C":
+                weekdays = 0b1100000
+                runs_on_holidays = True
+            case "D":
+                weekdays = 0b0011111
+                runs_on_holidays = False
+            case unrecognized:
+                raise DataError(f"Unrecognized dayOperationCode: {unrecognized!r}")
 
-            # Special handling for arrival and departure times spread across multiple rows
-            if stop_id == "" and idx > 0:
-                stop_id = stop_ids[idx - 1]
+        # Parse days->start and days->end, taking dayOperationCode and holidays into account
+        active_days = set[Date]()
+        for day in self.parse_date_range(days):
+            is_holiday = day in self.holidays
+            is_base_active = bool(weekdays & (1 << day.weekday()))
 
-            # Ensure we have a stop_id
-            if not stop_id:
-                raise ValueError(f"missing stop_id for row: {idx + 4}")
+            # A day is active in either of the 3 cases:
+            # 1. the weekday matches AND don't care about holidays
+            # 2. the weekday matches AND it's not a holiday
+            # 3. the services run on holidays AND it's a holiday
+            if (
+                (is_base_active and runs_on_holidays is None)  # type: ignore
+                or (is_base_active and not is_holiday)
+                or (runs_on_holidays and is_holiday)
+            ):
+                active_days.add(day)
 
-            # If the latests StopTime has the same stop_id, only update its departure time
-            if stop_times and stop_times[-1].stop_id == stop_id:
-                stop_times[-1].departure_time = time
-            else:
-                stop_times.append(StopTime(trip_id, stop_id, idx, time, time))
+        # Parse days->include
+        for included_range in days.findall("sitkol:include/sitkol:days", self.NS):
+            active_days.update(self.parse_date_range(included_range))
 
-        return stop_times
+        # Parse days->exclude
+        for included_range in days.findall("sitkol:exclude/sitkol:days", self.NS):
+            active_days.difference_update(self.parse_date_range(included_range))
+
+        # Warn if there are no days
+        if not active_days:
+            raise DataError(f"train {id!r} has an empty dates set")
+
+        # Insert the dates to the DB
+        db.raw_execute_many(
+            "INSERT INTO calendar_exceptions (calendar_id,date,exception_type) VALUES (?,?,?)",
+            ((id, i.isoformat(), 1) for i in active_days),
+        )
+
+    def parse_route(self, id: str, db: DBConnection, stations: Iterable[ET.Element]) -> None:
+        previous_dep = TimePoint()
+
+        for idx, station in enumerate(stations):
+            stop_id = self.STOP_ID_LOOKUP[station.attrib["id"]]
+            arr = self.parse_time(station.attrib["arr"] or station.attrib["dep"])
+            dep = self.parse_time(station.attrib["dep"] or station.attrib["arr"])
+            is_bus = station.attrib.get("serviceType") == "BUS"
+
+            if arr < previous_dep or (idx == 0 and dep < TimePoint(hours=2, minutes=30)):
+                arr = self.add_24h(arr)
+            if dep < arr:
+                dep = self.add_24h(dep)
+
+            db.raw_execute(
+                (
+                    "INSERT INTO stop_times (trip_id, stop_id, stop_sequence, arrival_time, "
+                    "departure_time, platform) VALUES (?, ?, ?, ?, ?, ?)"
+                ),
+                (
+                    id,
+                    stop_id,
+                    idx,
+                    round(arr.total_seconds()),
+                    round(dep.total_seconds()),
+                    "BUS" if is_bus else "",
+                ),
+            )
 
     @staticmethod
-    def transpose(it: Iterable[Iterable[T]]) -> Iterable[tuple[T, ...]]:
-        return zip(*it)
+    def parse_time(x: str) -> TimePoint:
+        h, m = map(int, x.split(":"))
+        return TimePoint(hours=h, minutes=m)
 
     @staticmethod
-    def parse_time(x: str) -> TimePoint | None:
-        x = x.strip()
-        if x in {"", "|", "<", ">"}:
-            return None
+    def parse_date_range(e: ET.Element) -> BoundedDateRange:
+        return BoundedDateRange(
+            start=Date.from_ymd_str(e.attrib["start"]),
+            end=Date.from_ymd_str(e.attrib["end"]),
+        )
 
-        regex_match = re.match(r"([0-9]{1,2}):([0-9]{2})(?::([0-9]{2}))?", x)
-        if not regex_match:
-            raise ValueError(f"invalid time string: {x!r}")
-
-        hours = int(regex_match[1])
-        minutes = int(regex_match[2])
-        seconds = int(regex_match[3]) if regex_match[3] else 0
-        return TimePoint(hours=hours, minutes=minutes, seconds=seconds)
+    @staticmethod
+    def add_24h(x: TimePoint) -> TimePoint:
+        return TimePoint(seconds=x.total_seconds() + 86_400)
 
 
 class LoadStaticFiles(Task):
@@ -316,60 +403,20 @@ class GenerateShapes(Task):
         )
 
 
-class GenerateCalendarExceptions(Task):
-    EXCEPTIONS: Final[list[str]] = [
-        "2024-11-01",
-        "2024-11-11",
-        "2024-12-24",
-        "2024-12-25",
-        "2024-12-26",
-        "2024-12-31",
-        "2025-01-01",
-        "2025-01-06",
-        "2025-04-21",
-        "2025-05-01",
-        "2024-06-19",
-        "2025-08-15",
-    ]
-
-    def execute(self, r: TaskRuntime) -> None:
-        with r.db.transaction():
-            if self.has_calendar(r.db, "D"):
-                r.db.raw_execute_many(
-                    "INSERT INTO calendar_exceptions (calendar_id, date, exception_type) "
-                    "VALUES ('D', ?, 2)",
-                    ((date,) for date in self.EXCEPTIONS),
-                )
-
-            if self.has_calendar(r.db, "C"):
-                r.db.raw_execute_many(
-                    "INSERT INTO calendar_exceptions (calendar_id, date, exception_type) "
-                    "VALUES ('C', ?, 1)",
-                    ((date,) for date in self.EXCEPTIONS),
-                )
-
-    @staticmethod
-    def has_calendar(db: DBConnection, id: str) -> bool:
-        return (
-            cast(
-                int,
-                db.raw_execute(
-                    "SELECT COUNT(*) FROM calendars WHERE calendar_id = ?", (id,)
-                ).one_must("count must return a result")[0],
-            )
-            > 0
-        )
+class SplitBusLegs(SplitTripLegs):
+    def update_trip(self, trip: Trip, data: Any, db: DBConnection) -> None:
+        if data:
+            new_route_id = f"Z{trip.route_id}"
+            trip.route_id = new_route_id
+            trip.bikes_allowed = False
 
 
 class WKDGTFS(App):
     def add_arguments(self, parser: ArgumentParser) -> None:
-        parser.add_argument("feed_version")
+        parser.add_argument("-k", "--apikey", help="kolej-wkd.pl apikey")
 
     def prepare(self, args: Namespace, options: PipelineOptions) -> Pipeline:
-        schedule_resources = {
-            basename(filename): LocalResource(filename) for filename in glob("schedules/*.csv")
-        }
-
+        apikey = self.resolve_apikey(args.apikey)
         return Pipeline(
             tasks=[
                 LoadStaticFiles(),
@@ -378,22 +425,40 @@ class WKDGTFS(App):
                         publisher_name="Mikołaj Kuranowski",
                         publisher_url="https://mkuran.pl/gtfs/",
                         lang="pl",
-                        version=args.feed_version,
+                        version="",
                     )
                 ),
-                LoadSchedules(schedule_resources.keys()),
-                GenerateCalendarExceptions(),
+                LoadSchedules(),
                 GenerateTripHeadsign(),
                 AssignDirectionIds(),
+                SplitBusLegs(),
                 GenerateShapes("shapes.osm"),
-                SaveGTFS(GTFS_HEADERS, f"wkd-{args.feed_version.replace("-", "")}.zip"),
+                SaveGTFS(GTFS_HEADERS, "wkd.zip", ensure_order=True),
             ],
             resources={
-                **schedule_resources,
+                "wkd.xml": ZippedResource(
+                    HTTPResource.get(f"http://www.kolej-wkd.pl/pliki/{apikey}/2024-2025/zip/")
+                ),
                 "shapes.osm": LocalResource("shapes.osm"),
+                "calendar_exceptions.csv": polish_calendar_exceptions.RESOURCE,
             },
             options=options,
         )
+
+    @staticmethod
+    def resolve_apikey(arg: str | None) -> str:
+        if arg:
+            return arg
+        elif env := os.getenv("WKD_APIKEY"):
+            return env
+        elif env_file := os.getenv("WKD_APIKEY_FILE"):
+            with open(env_file, "r", encoding="ascii") as f:
+                return f.read().strip()
+        else:
+            raise ValueError(
+                "Missing kolej-wkd.pl apikey. Use the `-k` command line argument, "
+                "`WKD_APIKEY` or `WKD_APIKEY_FILE` environment variables."
+            )
 
 
 if __name__ == "__main__":
