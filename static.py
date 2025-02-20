@@ -293,6 +293,7 @@ class LoadSchedules(Task):
                     "BUS" if is_bus else "",
                 ),
             )
+            previous_dep = dep
 
     @staticmethod
     def parse_time(x: str) -> TimePoint:
