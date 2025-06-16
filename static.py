@@ -97,6 +97,7 @@ class AssignDirectionIds(Task):
         ("komor", "plglo"),
         ("plglo", "milgr"),
         ("plzac", "milgr"),
+        ("plzac", "gmrad"),
         ("plglo", "gmjor"),
         ("gmjor", "gmrad"),
     ]
