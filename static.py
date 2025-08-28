@@ -190,9 +190,10 @@ class LoadSchedules(Task):
                 self.holidays.add(date)
 
     def parse_train(self, db: DBConnection, train: ET.Element) -> None:
-        route_id = train.findtext("sitkol:information/sitkol:symbol", "", self.NS).strip()
-        if not route_id:
+        symbol = train.findtext("sitkol:information/sitkol:symbol", "", self.NS).strip()
+        if not symbol:
             raise DataError("<train> without a <symbol>")
+        route_id = "Z" if "ZKA" in symbol else "A"
 
         number = train.findtext("sitkol:information/sitkol:number", "", self.NS).strip()
         if not number:
@@ -208,9 +209,9 @@ class LoadSchedules(Task):
         db.raw_execute(
             (
                 "INSERT INTO trips (trip_id, route_id, calendar_id, short_name, "
-                "wheelchair_accessible, bikes_allowed) VALUES (?, ?, ?, ?, 1, 1)"
+                "wheelchair_accessible, bikes_allowed) VALUES (?, ?, ?, ?, 1, ?)"
             ),
-            (id, route_id, id, number),
+            (id, route_id, id, number, 1 if route_id == "A" else 0),
         )
 
         self.parse_days(id, db, train.find("sitkol:information/sitkol:days", self.NS))
