@@ -234,6 +234,9 @@ class LoadSchedules(Task):
             case "1234567":
                 weekdays = 0b1111111
                 runs_on_holidays = True
+            case "23456":
+                weekdays = 0b0111110
+                runs_on_holidays = False
             case unrecognized:
                 raise DataError(f"Unrecognized dayOperationCode: {unrecognized!r}")
 
