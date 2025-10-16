@@ -100,6 +100,7 @@ class AssignDirectionIds(Task):
         ("plzac", "gmrad"),
         ("plglo", "gmjor"),
         ("gmjor", "gmrad"),
+        ("prusp", "nwwar"),
     ]
 
     def execute(self, r: TaskRuntime) -> None:
@@ -164,6 +165,7 @@ class LoadSchedules(Task):
         "26": "wsrod",
         "27": "poles",
         "28": "milgr",
+        "102": "prusp",
         # cspell: enable
     }
 
@@ -412,7 +414,7 @@ class GenerateShapes(Task):
 class SplitBusLegs(SplitTripLegs):
     def update_trip(self, trip: Trip, data: Any, db: DBConnection) -> None:
         if data:
-            new_route_id = f"Z{trip.route_id}"
+            new_route_id = "Z"
             trip.route_id = new_route_id
             trip.bikes_allowed = False
 

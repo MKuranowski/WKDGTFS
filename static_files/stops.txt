@@ -12,6 +12,7 @@ regul,Reguły,52.1704016,20.8590621,1
 malic,Malichy,52.1693915,20.8411556,1
 twork,Tworki,52.1690033,20.8232948,1
 prusz,Pruszków WKD,52.1616392,20.8166108,1
+prusp,Pruszków PKP,52.1682532,20.7988684,0
 komor,Komorów,52.148087,20.811352,1
 nwwar,Nowa Wieś Warszawska,52.1404979,20.7956386,1
 kanie,Kanie Helenowskie,52.1316424,20.7742801,1
