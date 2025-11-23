@@ -95,10 +95,10 @@ class AssignDirectionIds(Task):
         ("prusp", "komor"),
         ("komor", "regul"),
         ("komor", "plglo"),
+        ("plglo", "plzac"),
         ("plglo", "milgr"),
         ("plzac", "milgr"),
         ("plzac", "gmrad"),
-        ("plglo", "gmjor"),
         ("gmjor", "gmrad"),
         ("prusp", "nwwar"),
     ]
