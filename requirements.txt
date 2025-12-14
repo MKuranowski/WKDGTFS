@@ -1,2 +1,2 @@
 pyroutelib3 ~= 2.0
-impuls ~= 2.1
+impuls ~= 2.3

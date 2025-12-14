@@ -17,7 +17,7 @@ from impuls.model import Date, FeedInfo, TimePoint, Trip
 from impuls.resource import HTTPResource, LocalResource, ZippedResource
 from impuls.tasks import AddEntity, GenerateTripHeadsign, SaveGTFS, SplitTripLegs
 from impuls.tools import polish_calendar_exceptions
-from impuls.tools.temporal import BoundedDateRange
+from impuls.tools.temporal import BoundedDateRange, get_european_railway_schedule_revision
 
 GTFS_HEADERS = {
     "agency.txt": (
@@ -428,6 +428,7 @@ class WKDGTFS(App):
 
     def prepare(self, args: Namespace, options: PipelineOptions) -> Pipeline:
         apikey = self.resolve_apikey(args.apikey)
+        revision = get_european_railway_schedule_revision()
         return Pipeline(
             tasks=[
                 LoadStaticFiles(),
@@ -448,7 +449,7 @@ class WKDGTFS(App):
             ],
             resources={
                 "wkd.xml": ZippedResource(
-                    HTTPResource.get(f"http://www.kolej-wkd.pl/pliki/{apikey}/2024-2025/zip/")
+                    HTTPResource.get(f"http://www.kolej-wkd.pl/pliki/{apikey}/{revision}/zip/")
                 ),
                 "shapes.osm": LocalResource("shapes.osm"),
                 "calendar_exceptions.csv": polish_calendar_exceptions.RESOURCE,
