@@ -172,9 +172,12 @@ class LoadSchedules(Task):
     def __init__(self) -> None:
         super().__init__()
         self.holidays = set[Date]()
+        self.missing_stations = dict[str, str]()
 
     def execute(self, r: TaskRuntime) -> None:
         self.retrieve_holidays(r)
+        self.missing_stations.clear()
+
         with r.resources["wkd.xml"].open_text(encoding="utf-8") as f:
             tt = ET.parse(f).getroot()
 
@@ -182,6 +185,12 @@ class LoadSchedules(Task):
             r.db.raw_execute("UPDATE feed_info SET version = ?", (tt.attrib["created"],))
             for train in tt.findall("sitkol:train", self.NS):
                 self.parse_train(r.db, train)
+
+        if self.missing_stations:
+            raise MultipleDataErrors(
+                "stop lookup",
+                [DataError(f"{id}: {name}") for id, name in self.missing_stations.items()],
+            )
 
     def retrieve_holidays(self, r: TaskRuntime) -> None:
         self.holidays.clear()
@@ -282,7 +291,12 @@ class LoadSchedules(Task):
         previous_dep = TimePoint()
 
         for idx, station in enumerate(stations):
-            stop_id = self.STOP_ID_LOOKUP[station.attrib["id"]]
+            try:
+                stop_id = self.STOP_ID_LOOKUP[station.attrib["id"]]
+            except KeyError:
+                self.missing_stations[station.attrib["id"]] = station.attrib["name"]
+                continue
+
             arr = self.parse_time(station.attrib["arr"] or station.attrib["dep"])
             dep = self.parse_time(station.attrib["dep"] or station.attrib["arr"])
             is_bus = station.attrib.get("serviceType") == "BUS"
