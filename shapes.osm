@@ -509,6 +509,20 @@
   <node id='-103230' action='modify' visible='true' lat='52.10180161454' lon='20.63190847367' />
   <node id='-103231' action='modify' visible='true' lat='52.10123978801' lon='20.63030183047' />
   <node id='-103232' action='modify' visible='true' lat='52.1009119153' lon='20.62927186221' />
+  <node id='-103237' action='modify' visible='true' lat='52.16542012133' lon='20.80778360099'>
+    <tag k='name' v='Pruszków USC' />
+    <tag k='railway' v='station' />
+    <tag k='ref' v='prusc' />
+  </node>
+  <node id='-103249' action='modify' visible='true' lat='52.16932571246' lon='20.81087886751' />
+  <node id='-103250' action='modify' visible='true' lat='52.16815111039' lon='20.80989181459' />
+  <node id='-103251' action='modify' visible='true' lat='52.16653557061' lon='20.80865263402' />
+  <node id='-103252' action='modify' visible='true' lat='52.16363666811' lon='20.80651759028' />
+  <node id='-103253' action='modify' visible='true' lat='52.16190249912' lon='20.80536960483' />
+  <node id='-103254' action='modify' visible='true' lat='52.16009586082' lon='20.81340014398' />
+  <node id='-103255' action='modify' visible='true' lat='52.16171821584' lon='20.81443547666' />
+  <node id='-103256' action='modify' visible='true' lat='52.16258037638' lon='20.81079303682' />
+  <node id='-103277' action='modify' visible='true' lat='52.16145824647' lon='20.81563979119' />
   <way id='-102869' action='modify' visible='true'>
     <nd ref='-102372' />
     <nd ref='-102933' />
@@ -871,6 +885,36 @@
     <nd ref='-103231' />
     <nd ref='-103232' />
     <nd ref='-102810' />
+    <tag k='railway' v='rail' />
+  </way>
+  <way id='-102958' action='modify' visible='true'>
+    <nd ref='-103044' />
+    <nd ref='-103249' />
+    <nd ref='-103250' />
+    <nd ref='-103251' />
+    <nd ref='-103237' />
+    <nd ref='-103252' />
+    <tag k='railway' v='rail' />
+  </way>
+  <way id='-102963' action='modify' visible='true'>
+    <nd ref='-103252' />
+    <nd ref='-103253' />
+    <nd ref='-103254' />
+    <nd ref='-103255' />
+    <tag k='oneway' v='yes' />
+    <tag k='railway' v='rail' />
+  </way>
+  <way id='-102966' action='modify' visible='true'>
+    <nd ref='-103255' />
+    <nd ref='-103256' />
+    <nd ref='-103252' />
+    <tag k='oneway' v='yes' />
+    <tag k='railway' v='rail' />
+  </way>
+  <way id='-103027' action='modify' visible='true'>
+    <nd ref='-103255' />
+    <nd ref='-103277' />
+    <nd ref='-102478' />
     <tag k='railway' v='rail' />
   </way>
 </osm>

@@ -166,6 +166,7 @@ class LoadSchedules(Task):
         "27": "poles",
         "28": "milgr",
         "102": "prusp",
+        "103": "prusc",
         # cspell: enable
     }
 
