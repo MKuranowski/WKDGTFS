@@ -5,17 +5,17 @@ import os
 from argparse import ArgumentParser, Namespace
 
 from impuls import App, Pipeline, PipelineOptions
-from impuls.model import FeedInfo
 from impuls.resource import HTTPResource, LocalResource, ZippedResource
-from impuls.tasks import AddEntity, ExecuteSQL, GenerateTripHeadsign, SaveGTFS
+from impuls.tasks import ExecuteSQL, GenerateTripHeadsign, RemoveUnusedEntities, SaveGTFS
 from impuls.tools import polish_calendar_exceptions
 from impuls.tools.temporal import get_european_railway_schedule_revision
 
+from .add_static_entities import AddStaticEntities
 from .assign_direction_ids import AssignDirectionIds
 from .generate_shapes import GenerateShapes
 from .gtfs import GTFS_HEADERS
 from .load_schedules import LoadSchedules
-from .load_static_files import LoadStaticFiles
+from .load_stops import LoadStops
 from .split_bus_legs import SplitBusLegs
 
 
@@ -28,15 +28,7 @@ class WKDGTFS(App):
         revision = get_european_railway_schedule_revision()
         return Pipeline(
             tasks=[
-                LoadStaticFiles(),
-                AddEntity(
-                    entity=FeedInfo(
-                        publisher_name="Mikołaj Kuranowski",
-                        publisher_url="https://mkuran.pl/gtfs/",
-                        lang="pl",
-                        version="",
-                    )
-                ),
+                AddStaticEntities(),
                 LoadSchedules(),
                 GenerateTripHeadsign(),
                 AssignDirectionIds(),
@@ -49,7 +41,9 @@ class WKDGTFS(App):
                         "     WHERE trips.trip_id = stop_times.trip_id) = 3"
                     ),
                 ),
+                LoadStops("shapes.osm"),
                 GenerateShapes("shapes.osm"),
+                RemoveUnusedEntities(),
                 SaveGTFS(GTFS_HEADERS, "wkd.zip", ensure_order=True),
             ],
             resources={

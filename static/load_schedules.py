@@ -43,7 +43,7 @@ class LoadSchedules(Task):
         "26": "wsrod",
         "27": "poles",
         "28": "milgr",
-        "102": "prusp",
+        "102": "prpkp",
         "103": "prusc",
         # cspell: enable
     }
@@ -52,10 +52,12 @@ class LoadSchedules(Task):
         super().__init__()
         self.holidays = set[Date]()
         self.missing_stations = dict[str, str]()
+        self.inserted_stations = set[str]()
 
     def execute(self, r: TaskRuntime) -> None:
         self.retrieve_holidays(r)
         self.missing_stations.clear()
+        self.inserted_stations.clear()
 
         with r.resources["wkd.xml"].open_text(encoding="utf-8") as f:
             tt = ET.parse(f).getroot()
@@ -170,11 +172,20 @@ class LoadSchedules(Task):
         previous_dep = TimePoint()
 
         for idx, station in enumerate(stations):
+            stop_wkd_id = station.attrib["id"]
+            stop_wkd_name = station.attrib["name"]
             try:
-                stop_id = self.STOP_ID_LOOKUP[station.attrib["id"]]
+                stop_id = self.STOP_ID_LOOKUP[stop_wkd_id]
             except KeyError:
-                self.missing_stations[station.attrib["id"]] = station.attrib["name"]
+                self.missing_stations[stop_wkd_id] = stop_wkd_name
                 continue
+
+            if stop_id not in self.inserted_stations:
+                self.inserted_stations.add(stop_id)
+                db.raw_execute(
+                    "INSERT INTO stops (stop_id, name, lat, lon) VALUES (?, ?, 0, 0)",
+                    (stop_id, stop_wkd_name),
+                )
 
             arr = self.parse_time(station.attrib["arr"] or station.attrib["dep"])
             dep = self.parse_time(station.attrib["dep"] or station.attrib["arr"])

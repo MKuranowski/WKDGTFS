@@ -16,7 +16,7 @@ class AssignDirectionIds(Task):
     OUTBOUND_DIRECTION: Final[Sequence[tuple[str, str]]] = [
         ("wzach", "walje"),
         ("prusz", "komor"),
-        ("prusp", "komor"),
+        ("prpkp", "komor"),
         ("komor", "regul"),
         ("komor", "plglo"),
         ("plglo", "plzac"),
@@ -24,7 +24,7 @@ class AssignDirectionIds(Task):
         ("plzac", "milgr"),
         ("plzac", "gmrad"),
         ("gmjor", "gmrad"),
-        ("prusp", "nwwar"),
+        ("prpkp", "nwwar"),
     ]
 
     def execute(self, r: TaskRuntime) -> None:
