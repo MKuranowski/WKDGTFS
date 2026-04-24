@@ -7,7 +7,7 @@ from argparse import ArgumentParser, Namespace
 from impuls import App, Pipeline, PipelineOptions
 from impuls.model import FeedInfo
 from impuls.resource import HTTPResource, LocalResource, ZippedResource
-from impuls.tasks import AddEntity, GenerateTripHeadsign, SaveGTFS
+from impuls.tasks import AddEntity, ExecuteSQL, GenerateTripHeadsign, SaveGTFS
 from impuls.tools import polish_calendar_exceptions
 from impuls.tools.temporal import get_european_railway_schedule_revision
 
@@ -41,6 +41,14 @@ class WKDGTFS(App):
                 GenerateTripHeadsign(),
                 AssignDirectionIds(),
                 SplitBusLegs(),
+                ExecuteSQL(
+                    task_name="RemoveFakeBusStopTimes",
+                    statement=(
+                        "DELETE FROM stop_times WHERE stop_id = 'malic' "
+                        "AND (SELECT routes.type FROM trips JOIN routes USING (route_id) "
+                        "     WHERE trips.trip_id = stop_times.trip_id) = 3"
+                    ),
+                ),
                 GenerateShapes("shapes.osm"),
                 SaveGTFS(GTFS_HEADERS, "wkd.zip", ensure_order=True),
             ],
