@@ -15,7 +15,7 @@ from .assign_direction_ids import AssignDirectionIds
 from .generate_shapes import GenerateShapes
 from .gtfs import GTFS_HEADERS
 from .load_schedules import LoadSchedules
-from .load_stops import LoadStops
+from .load_stops import LoadStopNames, LoadStops
 from .split_bus_legs import SplitBusLegs
 
 
@@ -30,6 +30,7 @@ class WKDGTFS(App):
             tasks=[
                 AddStaticEntities(),
                 LoadSchedules(),
+                LoadStopNames("shapes.osm"),
                 GenerateTripHeadsign(),
                 AssignDirectionIds(),
                 SplitBusLegs(),

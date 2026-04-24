@@ -80,6 +80,33 @@ class StopExtractor(SAXContentHandler):
         return self.stops
 
 
+class LoadStopNames(Task):
+    def __init__(self, osm_resource: str) -> None:
+        super().__init__()
+        self.osm_resource = osm_resource
+
+    def execute(self, r: TaskRuntime) -> None:
+        with r.resources[self.osm_resource].open_binary() as f:
+            stops = StopExtractor.parse(f)
+        names = self.get_station_names(stops)
+        with r.db.transaction():
+            r.db.raw_execute_many(
+                "UPDATE OR IGNORE stops SET name = ? WHERE stop_id = ?",
+                ((name, id) for (id, name) in names.items()),
+            )
+
+    def get_station_names(self, stops: Mapping[StopKey, Stop]) -> dict[str, str]:
+        primary_names = dict[str, str]()
+        secondary_names = dict[str, str]()
+
+        for (station_id, mode, _), stop in stops.items():
+            table = secondary_names if mode == Route.Type.BUS else primary_names
+            table[station_id] = stop.name
+
+        secondary_names.update(primary_names)
+        return secondary_names
+
+
 class LoadStops(Task):
     def __init__(self, osm_resource: str) -> None:
         super().__init__()
