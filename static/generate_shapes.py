@@ -5,10 +5,16 @@ from collections.abc import Iterable
 from itertools import chain, groupby, pairwise
 from typing import TypeVar, cast
 
-import pyroutelib3
+import routx
 from impuls import DBConnection, Task, TaskRuntime
+from impuls.model import Route
 
 T = TypeVar("T")
+
+PROFILES = {
+    Route.Type.RAIL: routx.OsmProfile.RAILWAY,
+    Route.Type.BUS: routx.OsmProfile.BUS,
+}
 
 
 class GenerateShapes(Task):
@@ -20,38 +26,44 @@ class GenerateShapes(Task):
         self._stops_to_shape = dict[tuple[str, ...], int]()
         self._shape_id_counter = 0
 
-    def clear(self) -> None:
-        self._stop_id_to_node.clear()
-        self._stops_to_shape.clear()
+    def execute(self, r: TaskRuntime) -> None:
         self._shape_id_counter = 0
 
-    def execute(self, r: TaskRuntime) -> None:
-        self.clear()
+        for mode, profile in PROFILES.items():
+            self.logger.info("Generating shapes for %s", mode)
 
-        self.logger.debug("Loading OSM graph")
-        with r.resources[self.osm_resource].open_binary() as f:
-            graph = pyroutelib3.osm.Graph.from_file(pyroutelib3.osm.RailwayProfile(), f)
+            self.logger.debug("Loading OSM graph")
+            graph_file = r.resources[self.osm_resource].stored_at
+            graph = routx.Graph()
+            graph.add_from_osm_file(graph_file, profile)
 
-        self.logger.debug("Mapping stops to nodes")
-        self._map_stops_to_nodes(graph, r.db)
+            self.logger.debug("Mapping stops to nodes")
+            self._map_stops_to_nodes(graph, r.db)
 
-        trip_ids = [cast(str, i[0]) for i in r.db.raw_execute("SELECT trip_id FROM trips")]
-        with r.db.transaction():
-            for trip_id in trip_ids:
-                self._assign_shape(trip_id, r.db, graph)
+            trip_ids = [
+                cast(str, i[0])
+                for i in r.db.raw_execute(
+                    "SELECT trip_id FROM trips JOIN routes USING (route_id) WHERE routes.type = ?",
+                    (mode.value,),
+                )
+            ]
+            with r.db.transaction():
+                self._stops_to_shape.clear()
+                for trip_id in trip_ids:
+                    self._assign_shape(trip_id, r.db, graph)
 
-    def _map_stops_to_nodes(self, graph: pyroutelib3.osm.Graph, db: DBConnection) -> None:
-        kd = pyroutelib3.KDTree[pyroutelib3.osm.GraphNode].build(graph.nodes.values())
-        assert kd is not None
+    def _map_stops_to_nodes(self, graph: routx.Graph, db: DBConnection) -> None:
+        self._stop_id_to_node.clear()
+        kd = routx.KDTree.build(graph)
 
         for stop_id, lat, lon in db.raw_execute("SELECT stop_id, lat, lon FROM stops"):
             stop_id = cast(str, stop_id)
             lat = cast(float, lat)
             lon = cast(float, lon)
-            node = kd.find_nearest_neighbor((lat, lon))
+            node = kd.find_nearest_node(lat, lon)
             self._stop_id_to_node[stop_id] = node.id
 
-    def _assign_shape(self, trip_id: str, db: DBConnection, graph: pyroutelib3.osm.Graph) -> None:
+    def _assign_shape(self, trip_id: str, db: DBConnection, graph: routx.Graph) -> None:
         stops = self._trip_stops(trip_id, db)
         shape_id = self._stops_to_shape.get(stops)
         if shape_id is None:
@@ -62,7 +74,7 @@ class GenerateShapes(Task):
         self,
         stops: tuple[str, ...],
         db: DBConnection,
-        graph: pyroutelib3.osm.Graph,
+        graph: routx.Graph,
     ) -> int:
         shape_id = self._shape_id_counter
         self._shape_id_counter += 1
@@ -70,9 +82,9 @@ class GenerateShapes(Task):
 
         nodes = (self._stop_id_to_node[stop_id] for stop_id in stops)
         node_pairs = pairwise(nodes)
-        legs = (pyroutelib3.find_route(graph, a, b) for a, b in node_pairs)
+        legs = (graph.find_route(a, b, without_turn_around=False) for a, b in node_pairs)
         shape_nodes = self.remove_consecutive_runs(chain.from_iterable(legs))
-        shape_pts = (graph.get_node(i).position for i in shape_nodes)
+        shape_pts = (((n := graph[i]).lat, n.lon) for i in shape_nodes)
 
         db.raw_execute("INSERT INTO shapes (shape_id) VALUES (?)", (shape_id,))
         db.raw_execute_many(
