@@ -19,6 +19,7 @@ class AssignDirectionIds(Task):
         ("prpkp", "komor"),
         ("komor", "regul"),
         ("komor", "plglo"),
+        ("otreb", "plglo"),
         ("plglo", "plzac"),
         ("plglo", "milgr"),
         ("plzac", "milgr"),

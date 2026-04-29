@@ -860,6 +860,62 @@
     <tag k='ref' v='wsrod' />
   </node>
   <node id='-104100' action='modify' visible='true' lat='52.22789799703' lon='21.0035580343' />
+  <node id='-104108' action='modify' visible='true' lat='52.12749143722' lon='20.7609522289' />
+  <node id='-104109' action='modify' visible='true' lat='52.12779112207' lon='20.76096295774' />
+  <node id='-104110' action='modify' visible='true' lat='52.12815008259' lon='20.76088785589' />
+  <node id='-104111' action='modify' visible='true' lat='52.12926975737' lon='20.76025485456' />
+  <node id='-104112' action='modify' visible='true' lat='52.12951015446' lon='20.75999199808' />
+  <node id='-104113' action='modify' visible='true' lat='52.12966822308' lon='20.75949847162' />
+  <node id='-104114' action='modify' visible='true' lat='52.12993825566' lon='20.75854360521' />
+  <node id='-104115' action='modify' visible='true' lat='52.13020499356' lon='20.75736343324' />
+  <node id='-104116' action='modify' visible='true' lat='52.13033671539' lon='20.75684308469' />
+  <node id='-104117' action='modify' visible='true' lat='52.13056393463' lon='20.756397838' />
+  <node id='-104118' action='modify' visible='true' lat='52.1307845667' lon='20.75615643919' />
+  <node id='-104119' action='modify' visible='true' lat='52.13100190468' lon='20.75602769315' />
+  <node id='-104120' action='modify' visible='true' lat='52.13086359882' lon='20.75507282674' />
+  <node id='-104121' action='modify' visible='true' lat='52.1308405478' lon='20.75408577383' />
+  <node id='-104122' action='modify' visible='true' lat='52.13088664982' lon='20.75315236509' />
+  <node id='-104123' action='modify' visible='true' lat='52.1312060697' lon='20.75050234258' />
+  <node id='-104124' action='modify' visible='true' lat='52.13181526951' lon='20.74554561496' />
+  <node id='-104125' action='modify' visible='true' lat='52.1328294809' lon='20.73764919162' />
+  <node id='-104126' action='modify' visible='true' lat='52.13302705186' lon='20.73580383182' />
+  <node id='-104127' action='modify' visible='true' lat='52.13317852233' lon='20.73322891116' />
+  <node id='-104128' action='modify' visible='true' lat='52.13329047844' lon='20.7303535831' />
+  <node id='-104129' action='modify' visible='true' lat='52.13331023537' lon='20.72949527621' />
+  <node id='-104130' action='modify' visible='true' lat='52.13317193667' lon='20.72831510425' />
+  <node id='-104131' action='modify' visible='true' lat='52.13290850939' lon='20.72742461085' />
+  <node id='-104132' action='modify' visible='true' lat='52.13220383374' lon='20.72580455661' />
+  <node id='-104133' action='modify' visible='true' lat='52.13034659781' lon='20.72158812404' />
+  <node id='-104134' action='modify' visible='true' lat='52.12930598497' lon='20.71925996661' />
+  <node id='-104135' action='modify' visible='true' lat='52.12885153249' lon='20.71789740443' />
+  <node id='-104136' action='modify' visible='true' lat='52.1268690117' lon='20.72033285022' />
+  <node id='-104137' action='modify' visible='true' lat='52.12412890421' lon='20.7236909759' />
+  <node id='-104138' action='modify' visible='true' lat='52.12321659216' lon='20.72477995813' />
+  <node id='-104139' action='modify' visible='true' lat='52.12283783034' lon='20.72522520483' />
+  <node id='-104148' action='modify' visible='true' lat='52.12324129391' lon='20.7248604244'>
+    <tag k='direction' v='1' />
+    <tag k='highway' v='bus_stop' />
+    <tag k='local_ref' v='02' />
+    <tag k='name' v='Podkowa Leśna Główna WKD' />
+    <tag k='ref' v='plglo' />
+  </node>
+  <node id='-104149' action='modify' visible='true' lat='52.12280324757' lon='20.72519301832'>
+    <tag k='direction' v='0' />
+    <tag k='highway' v='bus_stop' />
+    <tag k='local_ref' v='01' />
+    <tag k='name' v='Podkowa Leśna Główna WKD' />
+    <tag k='ref' v='plglo' />
+  </node>
+  <node id='-104163' action='modify' visible='true' lat='52.12687397141' lon='20.76107557297'>
+    <tag k='highway' v='bus_stop' />
+    <tag k='local_ref' v='01' />
+    <tag k='name' v='Otrębusy WKD' />
+    <tag k='ref' v='otreb' />
+  </node>
+  <node id='-104173' action='modify' visible='true' lat='52.12741898564' lon='20.76238989294' />
+  <node id='-104174' action='modify' visible='true' lat='52.12685912851' lon='20.76235770643' />
+  <node id='-104175' action='modify' visible='true' lat='52.12651333089' lon='20.76093613565' />
+  <node id='-104176' action='modify' visible='true' lat='52.1268690084' lon='20.76094150007' />
   <way id='-102869' action='modify' visible='true'>
     <nd ref='-102372' />
     <nd ref='-102933' />
@@ -1389,6 +1445,56 @@
     <nd ref='-103985' />
     <nd ref='-103986' />
     <nd ref='-103868' />
+    <tag k='highway' v='tertiary' />
+    <tag k='oneway' v='yes' />
+  </way>
+  <way id='-103427' action='modify' visible='true'>
+    <nd ref='-104108' />
+    <nd ref='-104109' />
+    <nd ref='-104110' />
+    <nd ref='-104111' />
+    <nd ref='-104112' />
+    <nd ref='-104113' />
+    <nd ref='-104114' />
+    <nd ref='-104115' />
+    <nd ref='-104116' />
+    <nd ref='-104117' />
+    <nd ref='-104118' />
+    <nd ref='-104119' />
+    <nd ref='-104120' />
+    <nd ref='-104121' />
+    <nd ref='-104122' />
+    <nd ref='-104123' />
+    <nd ref='-104124' />
+    <nd ref='-104125' />
+    <nd ref='-104126' />
+    <nd ref='-104127' />
+    <nd ref='-104128' />
+    <nd ref='-104129' />
+    <nd ref='-104130' />
+    <nd ref='-104131' />
+    <nd ref='-104132' />
+    <nd ref='-104133' />
+    <nd ref='-104134' />
+    <nd ref='-104135' />
+    <nd ref='-104136' />
+    <nd ref='-104137' />
+    <nd ref='-104138' />
+    <nd ref='-104139' />
+    <tag k='highway' v='tertiary' />
+  </way>
+  <way id='-103480' action='modify' visible='true'>
+    <nd ref='-104108' />
+    <nd ref='-104173' />
+    <nd ref='-104174' />
+    <nd ref='-104175' />
+    <nd ref='-104176' />
+    <tag k='highway' v='tertiary' />
+    <tag k='oneway' v='yes' />
+  </way>
+  <way id='-103484' action='modify' visible='true'>
+    <nd ref='-104176' />
+    <nd ref='-104108' />
     <tag k='highway' v='tertiary' />
     <tag k='oneway' v='yes' />
   </way>
