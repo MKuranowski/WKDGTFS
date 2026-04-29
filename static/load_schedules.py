@@ -3,6 +3,7 @@
 
 from collections.abc import Iterable
 from xml.etree import ElementTree as ET
+import re
 
 from impuls import DBConnection, Task, TaskRuntime
 from impuls.errors import DataError, MultipleDataErrors
@@ -114,24 +115,7 @@ class LoadSchedules(Task):
             raise DataError(f"train {id!r} has no <days>")
 
         # Parse days->dayOperationCode
-        match days.attrib["dayOperationCode"]:
-            case "C":
-                weekdays = 0b1100000
-                runs_on_holidays = True
-            case "D":
-                weekdays = 0b0011111
-                runs_on_holidays = False
-            case "1234567":
-                weekdays = 0b1111111
-                runs_on_holidays = True
-            case "23456":
-                weekdays = 0b0111110
-                runs_on_holidays = False
-            case "17":
-                weekdays = 0b1000001
-                runs_on_holidays = True
-            case unrecognized:
-                raise DataError(f"Unrecognized dayOperationCode: {unrecognized!r}")
+        weekdays, runs_on_holidays = self.parse_day_operation_code(days.attrib["dayOperationCode"])
 
         # Parse days->start and days->end, taking dayOperationCode and holidays into account
         active_days = set[Date]()
@@ -223,6 +207,21 @@ class LoadSchedules(Task):
             start=Date.from_ymd_str(e.attrib["start"]),
             end=Date.from_ymd_str(e.attrib["end"]),
         )
+
+    @staticmethod
+    def parse_day_operation_code(code: str) -> tuple[int, bool]:
+        if code == "C":
+            return 0b1100000, True
+        elif code == "D":
+            return 0b0011111, False
+        elif re.match("^[1-7]+$", code):
+            weekdays = 0
+            for weekday_str in code:
+                weekdays |= 1 << (int(weekday_str) - 1)  # sitkol uses 1==Monday, ..., 7=Sunday
+            runs_on_holidays = bool(weekdays & 0b1000000)
+            return weekdays, runs_on_holidays
+        else:
+            raise DataError(f"Unrecognized dayOperationCode: {code!r}")
 
     @staticmethod
     def add_24h(x: TimePoint) -> TimePoint:
